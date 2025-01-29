@@ -1,0 +1,42 @@
+{
+  "name": "easy-cli",
+  "version": "1.0.0",
+  "description": "Tools and helpers for making building and managing CLIs as easy as possible. Built on top of yargs and yargs-interactive to help streamline building CLIs",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "author": "@patrickeaton",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "rollup -c --bundleConfigAsCjs",
+    "test-config": "yarn --cwd=$INIT_CWD ts-node-script ./scripts/test-load-config.ts"
+  },
+  "dependencies": {
+    "@types/cli-progress": "^3.11.6",
+    "app-root-path": "^3.1.0",
+    "chalk": "^4.1.2",
+    "cli-progress": "^3.12.0",
+    "cli-table": "^0.3.11",
+    "envfile": "^7.1.0",
+    "ora": "^3.2.0",
+    "strip-ansi": "^6.0.0",
+    "typescript": "^5.3.3",
+    "yaml": "^2.7.0",
+    "yargonaut": "^1.1.4",
+    "yargs": "^17.7.2",
+    "yargs-interactive": "^3.0.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@types/cli-table": "^0.3.4",
+    "@types/node": "^20.11.5",
+    "@types/yargs": "^17.0.32",
+    "rollup": "^4.9.5",
+    "rollup-plugin-analyzer": "^4.0.0",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "ts-node": "^10.9.2"
+  }
+}
