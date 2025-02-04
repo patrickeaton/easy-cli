@@ -8,7 +8,7 @@
 
 > **promptNumber**(`prompt`, `options`): `Promise`\<`any`\>
 
-Defined in: [prompts/prompt-number.ts:33](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/prompts/prompt-number.ts#L33)
+Defined in: [prompts/prompt-number.ts:33](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/prompts/prompt-number.ts#L33)
 
 Prompts the user to enter a number.
 

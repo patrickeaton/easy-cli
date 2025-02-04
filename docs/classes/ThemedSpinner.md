@@ -6,7 +6,7 @@
 
 # Class: ThemedSpinner
 
-Defined in: [themes/themed-spinner.ts:18](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/themed-spinner.ts#L18)
+Defined in: [themes/themed-spinner.ts:18](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/themed-spinner.ts#L18)
 
 A class to handle themed spinners
  ThemedSpinner
@@ -33,7 +33,7 @@ spinner.start('Loading...');
 
 > **new ThemedSpinner**(`theme`, `displayOptions`): [`ThemedSpinner`](ThemedSpinner.md)
 
-Defined in: [themes/themed-spinner.ts:28](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/themed-spinner.ts#L28)
+Defined in: [themes/themed-spinner.ts:28](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/themed-spinner.ts#L28)
 
 Creates an instance of ThemedSpinner
 
@@ -61,7 +61,7 @@ The display options for the spinner
 
 > **start**(`text`, `options`?): `Ora`
 
-Defined in: [themes/themed-spinner.ts:39](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/themed-spinner.ts#L39)
+Defined in: [themes/themed-spinner.ts:39](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/themed-spinner.ts#L39)
 
 Starts the spinner
 
@@ -91,7 +91,7 @@ The spinner instance
 
 > **stop**(): `void`
 
-Defined in: [themes/themed-spinner.ts:51](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/themed-spinner.ts#L51)
+Defined in: [themes/themed-spinner.ts:51](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/themed-spinner.ts#L51)
 
 Stops the spinner
 

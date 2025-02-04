@@ -6,7 +6,7 @@
 
 # Class: ThemedSimpleProgressBar
 
-Defined in: [themes/progress/simple-progress.ts:53](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/simple-progress.ts#L53)
+Defined in: [themes/progress/simple-progress.ts:53](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/progress/simple-progress.ts#L53)
 
 A themed simple progress bar that extends a ThemedProgressBar
 
@@ -48,7 +48,7 @@ const progressBar = new ThemedSimpleProgressBar(theme, 'progress', displayOption
 
 > **new ThemedSimpleProgressBar**(`theme`, `name`, `displayOptions`, `progressBarOptions`): [`ThemedSimpleProgressBar`](ThemedSimpleProgressBar.md)
 
-Defined in: [themes/progress/simple-progress.ts:54](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/simple-progress.ts#L54)
+Defined in: [themes/progress/simple-progress.ts:54](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/progress/simple-progress.ts#L54)
 
 #### Parameters
 
@@ -82,7 +82,7 @@ Defined in: [themes/progress/simple-progress.ts:54](https://github.com/patrickea
 
 > `protected` **displayOptions**: [`DisplayOptions`](../type-aliases/DisplayOptions.md)
 
-Defined in: [themes/progress/base.ts:70](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L70)
+Defined in: [themes/progress/base.ts:70](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/progress/base.ts#L70)
 
 #### Inherited from
 
@@ -94,7 +94,7 @@ Defined in: [themes/progress/base.ts:70](https://github.com/patrickeaton/easy-cl
 
 > `protected` **name**: `string`
 
-Defined in: [themes/progress/base.ts:68](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L68)
+Defined in: [themes/progress/base.ts:68](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/progress/base.ts#L68)
 
 #### Inherited from
 
@@ -106,7 +106,7 @@ Defined in: [themes/progress/base.ts:68](https://github.com/patrickeaton/easy-cl
 
 > `protected` **progressBar**: `null` \| `SingleBar`
 
-Defined in: [themes/progress/base.ts:71](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L71)
+Defined in: [themes/progress/base.ts:71](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/progress/base.ts#L71)
 
 #### Inherited from
 
@@ -118,7 +118,7 @@ Defined in: [themes/progress/base.ts:71](https://github.com/patrickeaton/easy-cl
 
 > `protected` **progressBarOptions**: [`ThemedSimpleProgressBarOptions`](../interfaces/ThemedSimpleProgressBarOptions.md)
 
-Defined in: [themes/progress/base.ts:72](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L72)
+Defined in: [themes/progress/base.ts:72](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/progress/base.ts#L72)
 
 #### Inherited from
 
@@ -130,7 +130,7 @@ Defined in: [themes/progress/base.ts:72](https://github.com/patrickeaton/easy-cl
 
 > `protected` **theme**: [`EasyCLITheme`](EasyCLITheme.md)
 
-Defined in: [themes/progress/base.ts:69](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L69)
+Defined in: [themes/progress/base.ts:69](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/progress/base.ts#L69)
 
 #### Inherited from
 
@@ -142,7 +142,7 @@ Defined in: [themes/progress/base.ts:69](https://github.com/patrickeaton/easy-cl
 
 > `protected` **getOptions**(): `Options`
 
-Defined in: [themes/progress/simple-progress.ts:69](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/simple-progress.ts#L69)
+Defined in: [themes/progress/simple-progress.ts:69](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/progress/simple-progress.ts#L69)
 
 An internal method to get the options for the progress bar
 
@@ -160,7 +160,7 @@ An internal method to get the options for the progress bar
 
 > **increment**(`current`?): `void`
 
-Defined in: [themes/progress/simple-progress.ts:112](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/simple-progress.ts#L112)
+Defined in: [themes/progress/simple-progress.ts:112](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/progress/simple-progress.ts#L112)
 
 Increments the progress bar by one.
 
@@ -182,7 +182,7 @@ The current record
 
 > **start**(`initial`, `total`): `SingleBar`
 
-Defined in: [themes/progress/simple-progress.ts:91](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/simple-progress.ts#L91)
+Defined in: [themes/progress/simple-progress.ts:91](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/progress/simple-progress.ts#L91)
 
 Starts the progress bar
 
@@ -216,7 +216,7 @@ The progress bar
 
 > **stop**(): `void`
 
-Defined in: [themes/progress/base.ts:183](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L183)
+Defined in: [themes/progress/base.ts:183](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/progress/base.ts#L183)
 
 Stops the progress bar
 
@@ -234,7 +234,7 @@ Stops the progress bar
 
 > **update**(`progress`, `current`?): `void`
 
-Defined in: [themes/progress/simple-progress.ts:101](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/simple-progress.ts#L101)
+Defined in: [themes/progress/simple-progress.ts:101](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/progress/simple-progress.ts#L101)
 
 Updates the progress bar
 

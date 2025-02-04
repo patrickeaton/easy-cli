@@ -8,7 +8,7 @@
 
 > **ConfigFileParams**: `object`
 
-Defined in: [config/index.ts:48](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/config/index.ts#L48)
+Defined in: [config/index.ts:48](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/config/index.ts#L48)
 
 The parameters to use when loading a configuration file.
 

@@ -8,7 +8,7 @@
 
 > **InitCommandOptions**\<`TGlobalParams`, `TParams`\>: [`CommandSetupOptions`](CommandSetupOptions.md)\<`TGlobalParams`, `TParams`\> & `object`
 
-Defined in: [commands/init.ts:17](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/commands/init.ts#L17)
+Defined in: [commands/init.ts:17](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/commands/init.ts#L17)
 
 Options for the init command
 

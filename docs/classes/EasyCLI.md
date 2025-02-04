@@ -6,7 +6,7 @@
 
 # Class: EasyCLI\<TGlobalParams\>
 
-Defined in: [index.ts:41](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/index.ts#L41)
+Defined in: [index.ts:41](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/index.ts#L41)
 
 The EasyCLI class
 
@@ -35,7 +35,7 @@ The global params for the CLI
 
 > **new EasyCLI**\<`TGlobalParams`\>(`config`?): [`EasyCLI`](EasyCLI.md)\<`TGlobalParams`\>
 
-Defined in: [index.ts:57](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/index.ts#L57)
+Defined in: [index.ts:57](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/index.ts#L57)
 
 Creates a new EasyCLI instance
 
@@ -57,7 +57,7 @@ The configuration for the CLI
 
 > **addCommand**\<`TParams`\>(`command`): [`EasyCLI`](EasyCLI.md)\<`TGlobalParams`\>
 
-Defined in: [index.ts:110](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/index.ts#L110)
+Defined in: [index.ts:110](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/index.ts#L110)
 
 Adds a command to the CLI
 
@@ -85,7 +85,7 @@ The EasyCLI instance
 
 > **execute**(`callback`?): `Promise`\<`void`\>
 
-Defined in: [index.ts:241](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/index.ts#L241)
+Defined in: [index.ts:241](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/index.ts#L241)
 
 Run the CLI with the provided arguments.
 
@@ -107,7 +107,7 @@ A callback to add additional configuration to the CLI via yargs
 
 > **handleConfigFileFlag**(`overrides`?): [`EasyCLI`](EasyCLI.md)\<`TGlobalParams`\>
 
-Defined in: [index.ts:151](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/index.ts#L151)
+Defined in: [index.ts:151](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/index.ts#L151)
 
 Manage the configuration file flag for the CLI
 
@@ -131,7 +131,7 @@ The EasyCLI instance
 
 > **handleVerboseFlag**(`defaultVerbosirty`?, `overrides`?): [`EasyCLI`](EasyCLI.md)\<`TGlobalParams`\>
 
-Defined in: [index.ts:125](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/index.ts#L125)
+Defined in: [index.ts:125](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/index.ts#L125)
 
 Manage the verbose flag for the CLI
 
@@ -161,7 +161,7 @@ The EasyCLI instance
 
 > **setCommands**(`commands`): [`EasyCLI`](EasyCLI.md)\<`TGlobalParams`\>
 
-Defined in: [index.ts:96](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/index.ts#L96)
+Defined in: [index.ts:96](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/index.ts#L96)
 
 Sets all the commands for the CLI, will overwrite any existing commands
 
@@ -185,7 +185,7 @@ The EasyCLI instance
 
 > **setConfigFile**(`config`): [`EasyCLI`](EasyCLI.md)\<`TGlobalParams`\>
 
-Defined in: [index.ts:83](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/index.ts#L83)
+Defined in: [index.ts:83](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/index.ts#L83)
 
 Set the configuration file for the CLI
 
@@ -209,7 +209,7 @@ The EasyCLI instance
 
 > **setTheme**(`theme`): [`EasyCLI`](EasyCLI.md)\<`TGlobalParams`\>
 
-Defined in: [index.ts:71](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/index.ts#L71)
+Defined in: [index.ts:71](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/index.ts#L71)
 
 Set the theme for the CLI
 

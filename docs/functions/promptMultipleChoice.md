@@ -8,7 +8,7 @@
 
 > **promptMultipleChoice**(`prompt`, `choices`, `options`): `Promise`\<`any`\>
 
-Defined in: [prompts/prompt-multiple-choice.ts:35](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/prompts/prompt-multiple-choice.ts#L35)
+Defined in: [prompts/prompt-multiple-choice.ts:35](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/prompts/prompt-multiple-choice.ts#L35)
 
 Prompts the user to select multiple choices from a list of choices, if the input is invalid, it will prompt the user again for a valid input
 

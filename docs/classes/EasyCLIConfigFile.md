@@ -6,7 +6,7 @@
 
 # Class: EasyCLIConfigFile
 
-Defined in: [config/index.ts:62](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/config/index.ts#L62)
+Defined in: [config/index.ts:62](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/config/index.ts#L62)
 
 A class to handle loading and saving configuration files.
 
@@ -16,7 +16,7 @@ A class to handle loading and saving configuration files.
 
 > **new EasyCLIConfigFile**(`params`): [`EasyCLIConfigFile`](EasyCLIConfigFile.md)
 
-Defined in: [config/index.ts:75](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/config/index.ts#L75)
+Defined in: [config/index.ts:75](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/config/index.ts#L75)
 
 Create a new configuration file handler.
 
@@ -38,7 +38,7 @@ The parameters to use when loading the configuration file
 
 > **fileExists**(`filePath`): `boolean`
 
-Defined in: [config/index.ts:303](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/config/index.ts#L303)
+Defined in: [config/index.ts:303](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/config/index.ts#L303)
 
 Check if a configuration file exists.
 
@@ -62,7 +62,7 @@ boolean Whether or not the configuration file exists
 
 > **load**\<`TConfig`\>(`path`): `TConfig`
 
-Defined in: [config/index.ts:269](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/config/index.ts#L269)
+Defined in: [config/index.ts:269](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/config/index.ts#L269)
 
 Load a configuration file for the given path.
 
@@ -88,7 +88,7 @@ An optional path override to use when loading the configuration file, otherwise 
 
 > **save**\<`TConfig`\>(`config`, `filePath`): `Promise`\<`void`\>
 
-Defined in: [config/index.ts:315](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/config/index.ts#L315)
+Defined in: [config/index.ts:315](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/config/index.ts#L315)
 
 Save a configuration object to a file.
 

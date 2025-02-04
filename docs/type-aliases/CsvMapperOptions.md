@@ -8,7 +8,7 @@
 
 > **CsvMapperOptions**\<`TObject`\>: `object`
 
-Defined in: [helpers/csv-file-helper.ts:48](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/helpers/csv-file-helper.ts#L48)
+Defined in: [helpers/csv-file-helper.ts:48](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/helpers/csv-file-helper.ts#L48)
 
 Options for the CSV Mapper.
 

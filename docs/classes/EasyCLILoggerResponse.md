@@ -6,7 +6,7 @@
 
 # Class: EasyCLILoggerResponse
 
-Defined in: [logger/index.ts:86](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L86)
+Defined in: [logger/index.ts:86](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/logger/index.ts#L86)
 
 A response from a logger
 This is used to allow for forcing a log to be output using the `force` method
@@ -27,7 +27,7 @@ logger.log('Hello, world!').force(); // Will be logged
 
 > **new EasyCLILoggerResponse**(`log`, `type`, `logged`): [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
 
-Defined in: [logger/index.ts:87](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L87)
+Defined in: [logger/index.ts:87](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/logger/index.ts#L87)
 
 #### Parameters
 
@@ -53,7 +53,7 @@ Defined in: [logger/index.ts:87](https://github.com/patrickeaton/easy-cli/blob/7
 
 > **force**(): `void`
 
-Defined in: [logger/index.ts:97](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L97)
+Defined in: [logger/index.ts:97](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/logger/index.ts#L97)
 
 Forces the log to be output
 

@@ -6,7 +6,7 @@
 
 # Class: ThemedTable\<TItem\>
 
-Defined in: [themes/themed-table.ts:67](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/themed-table.ts#L67)
+Defined in: [themes/themed-table.ts:67](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/themed-table.ts#L67)
 
 A themed table that extends a cli-table
 
@@ -43,7 +43,7 @@ ThemedTable
 
 > **new ThemedTable**\<`TItem`\>(`__namedParameters`): [`ThemedTable`](ThemedTable.md)\<`TItem`\>
 
-Defined in: [themes/themed-table.ts:72](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/themed-table.ts#L72)
+Defined in: [themes/themed-table.ts:72](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/themed-table.ts#L72)
 
 #### Parameters
 
@@ -61,7 +61,7 @@ Defined in: [themes/themed-table.ts:72](https://github.com/patrickeaton/easy-cli
 
 > **render**(`items`): `void`
 
-Defined in: [themes/themed-table.ts:104](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/themed-table.ts#L104)
+Defined in: [themes/themed-table.ts:104](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/themes/themed-table.ts#L104)
 
 Render the table
 

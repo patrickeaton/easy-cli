@@ -6,7 +6,7 @@
 
 # Class: EasyCLILogger
 
-Defined in: [logger/index.ts:107](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L107)
+Defined in: [logger/index.ts:107](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/logger/index.ts#L107)
 
 A logger for the CLI
 This logger allows for logging with different verbosity levels and themes
@@ -17,7 +17,7 @@ This logger allows for logging with different verbosity levels and themes
 
 > **new EasyCLILogger**(`options`): [`EasyCLILogger`](EasyCLILogger.md)
 
-Defined in: [logger/index.ts:124](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L124)
+Defined in: [logger/index.ts:124](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/logger/index.ts#L124)
 
 Creates a new logger
 
@@ -61,7 +61,7 @@ The verbosity thresholds to use
 
 > **error**(...`args`): [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
 
-Defined in: [logger/index.ts:236](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L236)
+Defined in: [logger/index.ts:236](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/logger/index.ts#L236)
 
 Logs an error message
 
@@ -85,7 +85,7 @@ The arguments to log
 
 > **getExecutionLogs**(): `string`[]
 
-Defined in: [logger/index.ts:281](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L281)
+Defined in: [logger/index.ts:281](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/logger/index.ts#L281)
 
 Gets the execution logs, including logs that were not output due to verbosity
 
@@ -101,7 +101,7 @@ Gets the execution logs, including logs that were not output due to verbosity
 
 > **info**(...`args`): [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
 
-Defined in: [logger/index.ts:226](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L226)
+Defined in: [logger/index.ts:226](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/logger/index.ts#L226)
 
 Logs an info message
 
@@ -125,7 +125,7 @@ The arguments to log
 
 > **log**(...`args`): [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
 
-Defined in: [logger/index.ts:206](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L206)
+Defined in: [logger/index.ts:206](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/logger/index.ts#L206)
 
 Logs a message
 
@@ -149,7 +149,7 @@ The arguments to log
 
 > **printFormattedString**(...`args`): `void`
 
-Defined in: [logger/index.ts:255](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L255)
+Defined in: [logger/index.ts:255](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/logger/index.ts#L255)
 
 Prints a formatted string to the console
 
@@ -171,7 +171,7 @@ The arguments to print
 
 > **success**(...`args`): [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
 
-Defined in: [logger/index.ts:246](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L246)
+Defined in: [logger/index.ts:246](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/logger/index.ts#L246)
 
 Logs a success message
 
@@ -195,7 +195,7 @@ The arguments to log
 
 > **warn**(...`args`): [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
 
-Defined in: [logger/index.ts:216](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L216)
+Defined in: [logger/index.ts:216](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/logger/index.ts#L216)
 
 Logs a warning message
 

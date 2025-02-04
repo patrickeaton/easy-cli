@@ -6,7 +6,7 @@
 
 # Class: EasyCLICommand\<TParams, TGlobalParams\>
 
-Defined in: [commands/index.ts:81](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/commands/index.ts#L81)
+Defined in: [commands/index.ts:81](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/commands/index.ts#L81)
 
 A class that represents a command that can be run in the CLI.
 This class is a wrapper around yargs commands that allows for prompts and flags to be added to the command.
@@ -53,7 +53,7 @@ const command = new EasyCLICommand('do', (params, theme) => {
 
 > **new EasyCLICommand**\<`TParams`, `TGlobalParams`\>(`name`, `handler`, `options`): [`EasyCLICommand`](EasyCLICommand.md)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/index.ts:103](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/commands/index.ts#L103)
+Defined in: [commands/index.ts:103](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/commands/index.ts#L103)
 
 #### Parameters
 
@@ -85,7 +85,7 @@ Optional arguments for setting up the command.
 
 > **addArgument**(`key`, `config`): [`EasyCLICommand`](EasyCLICommand.md)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/index.ts:187](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/commands/index.ts#L187)
+Defined in: [commands/index.ts:187](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/commands/index.ts#L187)
 
 Adds an argument to the command.
 
@@ -116,7 +116,7 @@ This command instance for optional chaining
 
 > **addFlag**(`key`, `config`): [`EasyCLICommand`](EasyCLICommand.md)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/index.ts:161](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/commands/index.ts#L161)
+Defined in: [commands/index.ts:161](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/commands/index.ts#L161)
 
 Adds a flag to the command.
 
@@ -146,7 +146,7 @@ This command instance for optional chaining
 
 > **addPrompt**(`key`, `config`): [`EasyCLICommand`](EasyCLICommand.md)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/index.ts:174](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/commands/index.ts#L174)
+Defined in: [commands/index.ts:174](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/commands/index.ts#L174)
 
 Adds a prompt to the command.
 
@@ -177,7 +177,7 @@ This command instance for optional chaining
 
 > **convertToYargsCommand**(`theme`): `CommandModule`
 
-Defined in: [commands/index.ts:354](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/commands/index.ts#L354)
+Defined in: [commands/index.ts:354](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/commands/index.ts#L354)
 
 Converts the command to a yargs command.
 
@@ -201,7 +201,7 @@ The yargs command.
 
 > **getDefaultArgv**(): `TParams`
 
-Defined in: [commands/index.ts:244](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/commands/index.ts#L244)
+Defined in: [commands/index.ts:244](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/commands/index.ts#L244)
 
 Returns the default values for the command arguments and flags.
 
@@ -217,7 +217,7 @@ The default values for the command arguments and flags
 
 > **getKeys**(): `string`[]
 
-Defined in: [commands/index.ts:138](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/commands/index.ts#L138)
+Defined in: [commands/index.ts:138](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/commands/index.ts#L138)
 
 #### Returns
 
@@ -231,7 +231,7 @@ The keys for all command arguments, flags and prompts.
 
 > **getNames**(): `string`[]
 
-Defined in: [commands/index.ts:131](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/commands/index.ts#L131)
+Defined in: [commands/index.ts:131](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/commands/index.ts#L131)
 
 #### Returns
 
@@ -245,7 +245,7 @@ The names of the command and its aliases.
 
 > **run**(`params`, `theme`): `Promise`\<`void`\>
 
-Defined in: [commands/index.ts:394](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/commands/index.ts#L394)
+Defined in: [commands/index.ts:394](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/commands/index.ts#L394)
 
 Runs the command with the provided arguments.
 
@@ -273,7 +273,7 @@ The theme to use for formatting strings.
 
 > **skipConfigLoad**(): `boolean`
 
-Defined in: [commands/index.ts:149](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/commands/index.ts#L149)
+Defined in: [commands/index.ts:149](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/commands/index.ts#L149)
 
 #### Returns
 

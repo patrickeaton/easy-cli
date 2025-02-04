@@ -6,7 +6,7 @@
 
 # Class: CSVMapper\<TObject, TFileObject\>
 
-Defined in: [helpers/csv-file-helper.ts:62](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/helpers/csv-file-helper.ts#L62)
+Defined in: [helpers/csv-file-helper.ts:63](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/helpers/csv-file-helper.ts#L63)
 
 ## Type Parameters
 
@@ -20,7 +20,7 @@ Defined in: [helpers/csv-file-helper.ts:62](https://github.com/patrickeaton/easy
 
 > **new CSVMapper**\<`TObject`, `TFileObject`\>(`options`): [`CSVMapper`](CSVMapper.md)\<`TObject`, `TFileObject`\>
 
-Defined in: [helpers/csv-file-helper.ts:112](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/helpers/csv-file-helper.ts#L112)
+Defined in: [helpers/csv-file-helper.ts:113](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/helpers/csv-file-helper.ts#L113)
 
 Create a new CSV Mapper.
 
@@ -77,7 +77,7 @@ interactive: true,
 
 > **processFile**(`path`): `Promise`\<\[`string`, `any`\][]\>
 
-Defined in: [helpers/csv-file-helper.ts:187](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/helpers/csv-file-helper.ts#L187)
+Defined in: [helpers/csv-file-helper.ts:188](https://github.com/patrickeaton/easy-cli/blob/273fbeda7c9fba29e0eebd0183c0f5c4b12461f3/src/helpers/csv-file-helper.ts#L188)
 
 Process a CSV file and return the data as an array of transformed objects.
 
