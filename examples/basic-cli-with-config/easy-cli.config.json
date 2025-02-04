@@ -1,0 +1,6 @@
+{
+  "region": "us-east-1",
+  "env": "dev",
+  "name": "my-app",
+  "verbose": 0
+}

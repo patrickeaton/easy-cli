@@ -6,7 +6,10 @@ import {
   ThemedSimpleProgressBar,
   ThemedSimpleProgressBarOptions,
 } from './progress/simple-progress';
-import { ThemedStatusProgressBar, ThemedStatusProgressBarOptions } from './progress';
+import {
+  ThemedStatusProgressBar,
+  ThemedStatusProgressBarOptions,
+} from './progress';
 
 type StringDisplayOptions = {
   bold?: boolean;
@@ -24,19 +27,40 @@ export type DisplayOptions =
   | StringDisplayOptions
   | (string | StringDisplayOptions)[];
 
+export type NamedDisplayOptions =
+  | 'log'
+  | 'error'
+  | 'warn'
+  | 'info'
+  | 'success'
+  | 'default'
+  | string;
+
 export class EasyCLITheme {
   private verbosity: number = 0;
-  private namedDisplayOptions: Record<string, StringDisplayOptions> = {
+  private namedDisplayOptions: Record<
+    NamedDisplayOptions,
+    StringDisplayOptions
+  > = {
     log: {},
     error: { color: '#FF5555', bold: true },
     warn: { color: '#FFFF55' },
     info: { color: '#F5F5F5' },
     success: { color: '#55FF55' },
-    default: { bold: true },
+    default: {},
   };
 
-  constructor(verbosity: number = 0) {
+  constructor(
+    verbosity: number = 0,
+    namedDisplayOptions?: Record<NamedDisplayOptions, StringDisplayOptions>
+  ) {
     this.verbosity = verbosity;
+    if (namedDisplayOptions) {
+      this.namedDisplayOptions = {
+        ...this.namedDisplayOptions,
+        ...namedDisplayOptions,
+      };
+    }
   }
 
   private mergeDisplayOptions(options: DisplayOptions): StringDisplayOptions {
@@ -89,6 +113,14 @@ export class EasyCLITheme {
     return this;
   }
 
+  setNamedDisplayOption(
+    name: NamedDisplayOptions,
+    options: StringDisplayOptions
+  ): EasyCLITheme {
+    this.namedDisplayOptions[name] = options;
+    return this;
+  }
+
   getLogger() {
     return new EasyCLILogger({ theme: this, verbosity: this.verbosity }); // TODO: Add verbosity and other options
   }
@@ -117,3 +149,7 @@ export class EasyCLITheme {
     return new ThemedStatusProgressBar(this, name, format, options); // TODO: Add Other Options
   }
 }
+
+export * from './themed-table';
+export * from './themed-spinner';
+export * from './progress';

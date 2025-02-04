@@ -19,6 +19,7 @@ export type ConfigFileParams = {
   root?: 'cwd' | 'home' | 'app-root'; // Where to start looking for the config file
   path?: string; // The path to search for the config file
   requirePath?: boolean; // Whether or not to require the path to exist
+  failOnMissing?: boolean; // Whether or not to fail if the file is missing
   validator?: any; // TODO: ADD ZOD VALIDATOR
 };
 
@@ -28,6 +29,7 @@ export class EasyCLIConfigFile {
   private recursion: ConfigFileRecursionBehaviour;
   private root: 'cwd' | 'home' | 'app-root';
   private path: string;
+  private failOnMissing: boolean;
 
   constructor({
     filename,
@@ -35,12 +37,14 @@ export class EasyCLIConfigFile {
     recursion = 'no_recursion',
     root = 'cwd',
     path = '',
+    failOnMissing = false,
   }: ConfigFileParams) {
     this.filename = filename;
     this.extensions = extensions;
     this.recursion = recursion;
     this.root = root;
     this.path = path;
+    this.failOnMissing = failOnMissing;
   }
 
   /**
@@ -155,7 +159,10 @@ export class EasyCLIConfigFile {
       recursion === 'prefer_lowest'
     );
 
-    if (!configs.length) return {} as TConfig;
+    if (!configs.length) {
+      if (this.failOnMissing) throw new Error('No configuration file found');
+      return {} as TConfig;
+    }
 
     switch (recursion) {
       case 'prefer_lowest':
@@ -183,12 +190,49 @@ export class EasyCLIConfigFile {
     }
   }
 
-  public load<TConfig extends Record<string, any>>(): TConfig {
+  private findConfigurationFile(filePath: string | null = null): string {
+    if (filePath) {
+      return filePath;
+    }
+
+    return path.resolve(
+      this.getBasePath(),
+      this.path ?? '',
+      `${this.filename}.${this.extensions[0]}`
+    );
+  }
+
+  public load<TConfig extends Record<string, any>>(
+    path: string | null = null
+  ): TConfig {
+    if (path) return this.loadSpecificConfiguration<TConfig>(path);
+
     return this.loadConfigurationFromPath<TConfig>(this.getBasePath());
   }
 
+  private loadSpecificConfiguration<TConfig extends Record<string, any>>(
+    path: string
+  ) {
+    if (fs.existsSync(path)) {
+      return require(path);
+    }
+
+    if (this.failOnMissing) {
+      throw new Error(`Configuration file not found at ${path}`);
+    }
+
+    return {} as TConfig;
+  }
+
+  public fileExists(filePath: string | null = null): boolean {
+    const resolvedPath = this.findConfigurationFile(filePath);
+
+    return fs.existsSync(resolvedPath);
+  }
+
   public async save<TConfig extends Record<string, any>>(
-    config: TConfig
+    config: TConfig,
+    filePath: string | null = null
   ): Promise<void> {
     if (!this.filename)
       throw new Error('No filename provided in config file params');
@@ -202,11 +246,7 @@ export class EasyCLIConfigFile {
       });
     }
 
-    const resolvedPath = path.resolve(
-      this.getBasePath(),
-      this.path ?? '',
-      `${this.filename}.${extension}`
-    );
+    const resolvedPath = this.findConfigurationFile(filePath);
 
     switch (extension) {
       case 'json':

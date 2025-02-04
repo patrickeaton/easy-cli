@@ -1,4 +1,4 @@
-import { DisplayOptions, EasyCLITheme } from '../themes/model';
+import { DisplayOptions, EasyCLITheme } from '../themes';
 import util from 'util';
 
 export type SupportedLogType = 'log' | 'info' | 'warn' | 'error' | 'success';

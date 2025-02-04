@@ -1,10 +1,6 @@
 import yargs from 'yargs';
-import {
-  CommandOption,
-  CommandOptionObject,
-  EasyCLICommand,
-} from './commands';
-import { EasyCLITheme } from './themes/model';
+import { CommandOption, CommandOptionObject, EasyCLICommand } from './commands';
+import { EasyCLITheme } from './themes';
 import { EasyCLIConfigFile } from './config';
 
 export type EasyCLIConfig<TGloablParams> = {
@@ -22,6 +18,7 @@ export class EasyCLI<TGlobalParams> {
   private globalFlags: CommandOptionObject<{}, TGlobalParams> =
     {} as CommandOptionObject<{}, TGlobalParams>;
   private verboseFlag: string | null = null;
+  private configFlag: string | null = null;
   private configFile: EasyCLIConfigFile | null = null;
 
   constructor(config: EasyCLIConfig<TGlobalParams> = {}) {
@@ -74,15 +71,22 @@ export class EasyCLI<TGlobalParams> {
     return this;
   }
 
-  public addInitCommand({
-    name = 'init',
-    description = 'Initialize a new configuration file',
-    keys = null, // What keys to can be used to run this command
-    defaults = {},
-    promptMissing = true,
-    failIfConfigExists = true,
-    callback = null, // If there is custom code that needs to be run, provide it here. ie. Copying other files, etc.
-  }): EasyCLI<TGlobalParams> {
+  public handleConfigFileFlag(
+    overrides = {} as Partial<CommandOption & { name: string }>
+  ): EasyCLI<TGlobalParams> {
+    if (!this.configFile) throw new Error('No configuration file provided');
+
+    this.configFlag = overrides?.name ?? 'config';
+
+    this.globalFlags = {
+      ...this.globalFlags,
+      [overrides?.name ?? 'config']: {
+        alias: 'c',
+        description: 'Specify a configuration file',
+        type: 'string',
+        ...overrides,
+      },
+    };
     return this;
   }
 
@@ -102,12 +106,16 @@ export class EasyCLI<TGlobalParams> {
     return (argv: any) => {
       if (!this.configFile) return argv;
 
-      const config = this.configFile.load();
-
       // TODO: Extract the default values from the command args as well
-      const command = this.commands.find(
-        command => command.getNames().includes(argv['_'][0])
+      const command = this.commands.find(command =>
+        command.getNames().includes(argv['_'][0])
       );
+
+      if (command?.skipConfigLoad()) return argv;
+
+      const configPath = argv?.[this?.configFlag as string] ?? null;
+
+      const config = this.configFile.load(configPath);
 
       const defaults: any = this.getDefaults();
 
@@ -143,7 +151,6 @@ export class EasyCLI<TGlobalParams> {
   public async execute(
     callback: ((app: typeof yargs) => typeof yargs) | null = null
   ): Promise<void> {
-   
     const app = yargs;
 
     app.scriptName(this.executionName);
@@ -159,7 +166,7 @@ export class EasyCLI<TGlobalParams> {
     });
 
     if (this.defaultCommand) {
-      app.demandCommand().help().wrap(72);
+      app.help().wrap(72);
     }
 
     const middleware = [];
@@ -176,3 +183,10 @@ export class EasyCLI<TGlobalParams> {
     app.parse();
   }
 }
+
+export * from './commands';
+export * from './config';
+export * from './themes';
+export * from './helpers';
+export * from './prompts';
+export * from './logger';

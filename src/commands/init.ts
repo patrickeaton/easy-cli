@@ -1,0 +1,71 @@
+import { command } from 'yargs';
+import { CommandSetupOptions, EasyCLICommand } from '.';
+import { EasyCLIConfigFile } from '../config';
+import { EasyCLITheme } from '../themes';
+
+export type InitCommandOptions<TGlobalParams, TParams> = CommandSetupOptions<
+  TGlobalParams,
+  TParams
+> & {
+  failOnExists?: boolean; // Should the command fail if the config file already exists?
+  globalKeysToUse?: string[]; // What key(s) are you setting?
+  defaults?: Partial<TGlobalParams & TParams>; // The default values to use
+  transformer?: (params: TGlobalParams & TParams) => any; // How to transform the params before saving
+  configFlag?: string; // The name of the variable to use for the config file
+};
+
+export class EasyCLIInitCommand<TParams, TGloablParams> extends EasyCLICommand<
+  TParams,
+  TGloablParams
+> {
+  constructor(
+    config: EasyCLIConfigFile,
+    name: string = 'init',
+    options: InitCommandOptions<TGloablParams, TParams> = {}
+  ) {
+    if (!config) {
+      throw new Error('EasyCLIConfigFile is required for init command');
+    }
+
+    const {
+      globalKeysToUse = [],
+      transformer = (params: TGloablParams & TParams) => params,
+      defaults = {},
+      configFlag = 'config',
+      ...commandOptions
+    } = options;
+
+    const handler = async (
+      params: TGloablParams & TParams,
+      theme: EasyCLITheme | null
+    ) => {
+      if (
+        options.failOnExists &&
+        config.fileExists((params as any)?.[configFlag] ?? null)
+      ) {
+        throw new Error('Config file already exists');
+      }
+
+      const logger = theme?.getLogger();
+
+      const keys = [...this.getKeys(), ...globalKeysToUse];
+
+      const clean = Object.entries(params as any).reduce(
+        (acc, [key, value]) => {
+          if (keys.includes(key as string)) {
+            acc[key] = value;
+          }
+
+          return acc;
+        },
+        defaults as any
+      );
+
+      const transformed = transformer(clean);
+      logger?.success('Saving config file');
+      await config.save(transformed);
+    };
+
+    super(name, handler, commandOptions);
+  }
+}

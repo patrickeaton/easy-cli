@@ -1,5 +1,5 @@
 import Table from 'cli-table';
-import { DisplayOptions, EasyCLITheme } from './model';
+import { DisplayOptions, EasyCLITheme } from '.';
 
 export type ThemedTableColumn<TItem = Record<string, any>> = {
   name: string;

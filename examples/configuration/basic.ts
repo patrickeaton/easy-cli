@@ -1,4 +1,4 @@
-import { EasyCLIConfigFile } from '../src/config';
+import { EasyCLIConfigFile } from '../../src/config';
 
 const main = async () => {
   const config = new EasyCLIConfigFile({

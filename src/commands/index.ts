@@ -1,4 +1,4 @@
-import { EasyCLITheme } from '../themes/model';
+import { EasyCLITheme } from '../themes';
 import { Options, PositionalOptions, CommandModule } from 'yargs';
 
 // @ts-ignore Untyped Module
@@ -23,6 +23,7 @@ export type CommandSetupOptions<TGlobalParams, TParams> = {
   flags?: CommandOptionObject<TGlobalParams, TParams>;
   prompts?: CommandOptionObject<TGlobalParams, TParams>;
   args?: CommandOptionObject<TGlobalParams, TParams>;
+  skipConfig?: boolean;
 };
 
 export class EasyCLICommand<
@@ -32,6 +33,7 @@ export class EasyCLICommand<
   private name: string;
   private aliases: string[];
   private description: string;
+  private skipConfig: boolean;
   private flags: CommandOptionObject<TGlobalParams, TParams>;
   private prompts: CommandOptionObject<TGlobalParams, TParams>;
   private args: CommandOptionObject<TGlobalParams, TParams>;
@@ -52,6 +54,7 @@ export class EasyCLICommand<
       flags = {} as CommandOptionObject<TGlobalParams, TParams>,
       prompts = {} as CommandOptionObject<TGlobalParams, TParams>,
       args = {} as CommandOptionObject<TGlobalParams, TParams>,
+      skipConfig = false,
     }: CommandSetupOptions<TGlobalParams, TParams>
   ) {
     this.name = name;
@@ -61,10 +64,23 @@ export class EasyCLICommand<
     this.flags = flags;
     this.prompts = prompts;
     this.args = args;
+    this.skipConfig = skipConfig;
   }
 
   public getNames(): string[] {
     return [this.name, ...this.aliases];
+  }
+
+  public getKeys(): string[] {
+    return [
+      ...Object.keys(this.flags),
+      ...Object.keys(this.prompts),
+      ...Object.keys(this.args),
+    ];
+  }
+
+  public skipConfigLoad(): boolean {
+    return this.skipConfig;
   }
 
   public addFlag(key: keyof TParams & TGlobalParams, config: CommandOption) {
@@ -237,7 +253,8 @@ export class EasyCLICommand<
         return opts.demandOption ? `<${arrayKey}>` : `[${arrayKey}]`;
       })
       .join(' ');
-    const command = `${this.name} ${positionals}`;
+
+    const command = `${this.name} ${positionals}`.trim();
 
     return {
       command: command,
@@ -272,3 +289,6 @@ export class EasyCLICommand<
     );
   }
 }
+
+export * from './configure';
+export * from './init';

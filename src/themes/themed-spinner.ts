@@ -1,4 +1,4 @@
-import { DisplayOptions, EasyCLITheme } from './model';
+import { DisplayOptions, EasyCLITheme } from '.';
 import ora, { Ora } from 'ora';
 
 export class ThemedSpinner {

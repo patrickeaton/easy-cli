@@ -1,12 +1,11 @@
-import { loadConfigurationFromPath } from '../src/config/load-configuration';
 import {
   promptChoice,
   promptConfirm,
   promptMultipleChoice,
   promptNumber,
   promptTextInput,
-} from '../src/prompts';
-import { EasyCLITheme } from '../src/themes/model';
+} from '../../src/prompts';
+import { EasyCLITheme } from '../../src/themes';
 
 const main = async () => {
   const theme = new EasyCLITheme(3);

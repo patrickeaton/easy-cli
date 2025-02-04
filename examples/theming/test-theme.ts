@@ -1,4 +1,4 @@
-import { EasyCLITheme } from '../src/themes/model';
+import { EasyCLITheme } from '../../src/themes';
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 

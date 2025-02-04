@@ -1,6 +1,6 @@
 // @ts-ignore Untyped Module
 import yargsInteractive from 'yargs-interactive';
-import { DisplayOptions, EasyCLITheme } from '../themes/model';
+import { DisplayOptions, EasyCLITheme } from '../themes';
 import sripeAnsi from 'strip-ansi';
 
 type Options = {

@@ -1,6 +1,8 @@
 {
+  "include": ["src/**/*.ts"],
   "compilerOptions": {
     "outDir": "./dist",
+    "baseUrl": ".",
     "module": "CommonJS",
     "target": "es2019",
     "moduleResolution": "node",

@@ -5,12 +5,20 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./helpers": "./dist/helpers/index.js",
+    "./themes": "./dist/themes/index.js",
+    "./prompts": "./dist/prompts/index.js",
+    "./config": "./dist/config/index.js"
+  },
   "author": "@patrickeaton",
   "license": "MIT",
   "private": false,
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
-    "test-config": "yarn --cwd=$INIT_CWD ts-node-script ./scripts/test-load-config.ts"
+    "test-config": "yarn --cwd=$INIT_CWD ts-node-script ./scripts/test-load-config.ts",
+    "docs": "typedoc --plugin typedoc-plugin-markdown src"
   },
   "dependencies": {
     "@types/cli-progress": "^3.11.6",
@@ -18,6 +26,7 @@
     "chalk": "^4.1.2",
     "cli-progress": "^3.12.0",
     "cli-table": "^0.3.11",
+    "csv-parser": "^3.2.0",
     "envfile": "^7.1.0",
     "ora": "^3.2.0",
     "strip-ansi": "^6.0.0",
@@ -28,15 +37,16 @@
     "yargs-interactive": "^3.0.1"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/cli-table": "^0.3.4",
     "@types/node": "^20.11.5",
     "@types/yargs": "^17.0.32",
     "rollup": "^4.9.5",
-    "rollup-plugin-analyzer": "^4.0.0",
+    "rollup-plugin-cleandir": "^3.0.0",
     "rollup-plugin-typescript2": "^0.36.0",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "typedoc": "^0.27.6",
+    "typedoc-plugin-markdown": "^4.4.1"
   }
 }

@@ -1,4 +1,4 @@
-import { DisplayOptions, EasyCLITheme } from '../model';
+import { DisplayOptions, EasyCLITheme } from '..';
 import { Options, SingleBar } from 'cli-progress';
 
 export type ThemedProgressBarOptions = {

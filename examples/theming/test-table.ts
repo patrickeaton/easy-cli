@@ -1,6 +1,5 @@
-import { loadConfigurationFromPath } from '../src/config/load-configuration';
-import { EasyCLITheme } from '../src/themes/model';
-import { ThemedTable } from '../src/themes/themed-table';
+import { EasyCLITheme } from '../../src/themes';
+import { ThemedTable } from '../../src/themes/themed-table';
 
 const main = async () => {
   const theme = new EasyCLITheme(3);
