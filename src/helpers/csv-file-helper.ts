@@ -58,6 +58,7 @@ export type CsvMapperOptions<TObject extends Record<string, any>> = {
 
 /*
  * A class to map CSV files to objects.
+ * @group helpers 
  */
 export class CSVMapper<
   TObject extends Record<string, any> = Record<string, any>,
