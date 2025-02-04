@@ -3,6 +3,18 @@ import { CommandOption, CommandOptionObject, EasyCLICommand } from './commands';
 import { EasyCLITheme } from './themes';
 import { EasyCLIConfigFile } from './config';
 
+/**
+ * The configuration for the EasyCLI
+ *  @template TGloablParams The global params for the CLI
+ *
+ * @typedef EasyCLIConfig
+ * @type {object}
+ *
+ * @property {string} [executionName] The name to display in the help menu and error messages for the CLI
+ * @property {string} [defaultCommand] The default command to run if no command is provided (defaults to 'help')
+ * @property {EasyCLICommand[]} [commands] The commands to add to the CLI
+ * @property {CommandOptionObject} [globalFlags] The global flags to add to the CLI
+ */
 export type EasyCLIConfig<TGloablParams> = {
   executionName?: string; // The name to display in the help menu and error messages for the CLI
   defaultCommand?: string; // The default command to run if no command is provided (defaults to 'help')
@@ -10,6 +22,22 @@ export type EasyCLIConfig<TGloablParams> = {
   globalFlags?: CommandOptionObject<{}, TGloablParams>;
 };
 
+/**
+ * The EasyCLI class
+ * @template TGlobalParams The global params for the CLI
+ *
+ * @example
+ * ```typescript
+ * const cli = new EasyCLI({
+ *   executionName: 'my-cli',
+ * });
+ *
+ * const command = new EasyCLICommand(...);
+ * cli.addCommand(command);
+ *
+ * cli.execute();
+ * ```
+ */
 export class EasyCLI<TGlobalParams> {
   private executionName: string = '';
   private defaultCommand: string = 'help';
@@ -21,6 +49,11 @@ export class EasyCLI<TGlobalParams> {
   private configFlag: string | null = null;
   private configFile: EasyCLIConfigFile | null = null;
 
+  /**
+   * Creates a new EasyCLI instance
+   *
+   * @param {EasyCLIConfig} [config={}] The configuration for the CLI
+   */
   constructor(config: EasyCLIConfig<TGlobalParams> = {}) {
     this.executionName = config?.executionName ?? '';
     this.commands = config?.commands ?? [];
@@ -28,16 +61,38 @@ export class EasyCLI<TGlobalParams> {
       config?.globalFlags ?? ({} as CommandOptionObject<{}, TGlobalParams>);
   }
 
+  /**
+   * Set the theme for the CLI
+   *
+   * @param {EasyCLITheme} theme The theme to use
+   *
+   * @returns {EasyCLI} The EasyCLI instance
+   */
   public setTheme(theme: EasyCLITheme | null): EasyCLI<TGlobalParams> {
     this.theme = theme;
     return this;
   }
 
-  public setConfig(config: EasyCLIConfigFile): EasyCLI<TGlobalParams> {
+  /**
+   * Set the configuration file for the CLI
+   *
+   * @param {EasyCLIConfigFile} config The configuration file to use
+   *
+   * @returns {EasyCLI} The EasyCLI instance
+   */
+  public setConfigFile(config: EasyCLIConfigFile): EasyCLI<TGlobalParams> {
     this.configFile = config;
     return this;
   }
 
+  /**
+   * Sets all the commands for the CLI, will overwrite any existing commands
+   *
+   * @param {EasyCLICommand[]} commands The commands to add to the CLI
+   *
+   * @returns {EasyCLI} The EasyCLI instance
+   *
+   */
   public setCommands(
     commands: EasyCLICommand<{}, TGlobalParams>[]
   ): EasyCLI<TGlobalParams> {
@@ -45,6 +100,13 @@ export class EasyCLI<TGlobalParams> {
     return this;
   }
 
+  /**
+   * Adds a command to the CLI
+   *
+   * @param {EasyCLICommand} command The command to add
+   *
+   * @returns {EasyCLI} The EasyCLI instance
+   */
   public addCommand<TParams>(
     command: EasyCLICommand<{}, TGlobalParams>
   ): EasyCLI<TGlobalParams> {
@@ -52,6 +114,14 @@ export class EasyCLI<TGlobalParams> {
     return this;
   }
 
+  /**
+   * Manage the verbose flag for the CLI
+   *
+   * @param {number} [defaultVerbosirty=0] The default verbosity level
+   * @param {Partial<CommandOption & { name: string }>} [overrides={}] Any overrides for the verbose flag
+   *
+   * @returns {EasyCLI} The EasyCLI instance
+   */
   public handleVerboseFlag(
     defaultVerbosirty = 0,
     overrides = {} as Partial<CommandOption & { name: string }>
@@ -71,6 +141,13 @@ export class EasyCLI<TGlobalParams> {
     return this;
   }
 
+  /**
+   * Manage the configuration file flag for the CLI
+   *
+   * @param {Partial<CommandOption & { name: string }>} [overrides={}] Any overrides for the configuration file flag
+   *
+   * @returns {EasyCLI} The EasyCLI instance
+   */
   public handleConfigFileFlag(
     overrides = {} as Partial<CommandOption & { name: string }>
   ): EasyCLI<TGlobalParams> {
@@ -90,6 +167,11 @@ export class EasyCLI<TGlobalParams> {
     return this;
   }
 
+  /**
+   * An internal method to get the default values for the global flags
+   *
+   * @returns The default values for the global flags
+   */
   private getDefaults(): Partial<TGlobalParams> {
     return Object.keys(this.globalFlags).reduce(
       (acc: TGlobalParams, key: string) => {
@@ -102,6 +184,9 @@ export class EasyCLI<TGlobalParams> {
     );
   }
 
+  /**
+   * @returns A middleware function to load the configuration file
+   */
   private configMiddleware() {
     return (argv: any) => {
       if (!this.configFile) return argv;
@@ -138,6 +223,9 @@ export class EasyCLI<TGlobalParams> {
     };
   }
 
+  /**
+   * @returns A middleware function to set the verbosity level
+   */
   private verboseMiddleware() {
     return (argv: any) => {
       if (this.verboseFlag && argv[this.verboseFlag])
@@ -147,6 +235,8 @@ export class EasyCLI<TGlobalParams> {
 
   /**
    * Run the CLI with the provided arguments.
+   *
+   * @param {((app: typeof yargs) => typeof yargs) | null} [callback=null] A callback to add additional configuration to the CLI via yargs
    */
   public async execute(
     callback: ((app: typeof yargs) => typeof yargs) | null = null

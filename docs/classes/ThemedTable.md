@@ -6,11 +6,36 @@
 
 # Class: ThemedTable\<TItem\>
 
-Defined in: [themes/themed-table.ts:19](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/themed-table.ts#L19)
+Defined in: [themes/themed-table.ts:67](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/themed-table.ts#L67)
+
+A themed table that extends a cli-table
+
+## Param
+
+The options for the themed table
+
+## Example
+
+```typescript
+const theme = new EasyCLITheme();
+const table = new ThemedTable({
+  theme,
+  columns: [
+    { name: 'Name', data: item => item.name },
+    { name: 'Age', data: item => item.age },
+  ],
+});
+
+table.render([
+  { name: 'Alice', age: 25 },
+  { name: 'Bob', age: 30 },
+]);
 
 ## Type Parameters
 
 • **TItem** *extends* `Record`\<`string`, `any`\>
+
+ThemedTable
 
 ## Constructors
 
@@ -18,7 +43,7 @@ Defined in: [themes/themed-table.ts:19](https://github.com/patrickeaton/easy-cli
 
 > **new ThemedTable**\<`TItem`\>(`__namedParameters`): [`ThemedTable`](ThemedTable.md)\<`TItem`\>
 
-Defined in: [themes/themed-table.ts:24](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/themed-table.ts#L24)
+Defined in: [themes/themed-table.ts:72](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/themed-table.ts#L72)
 
 #### Parameters
 
@@ -36,13 +61,17 @@ Defined in: [themes/themed-table.ts:24](https://github.com/patrickeaton/easy-cli
 
 > **render**(`items`): `void`
 
-Defined in: [themes/themed-table.ts:47](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/themed-table.ts#L47)
+Defined in: [themes/themed-table.ts:104](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/themed-table.ts#L104)
+
+Render the table
 
 #### Parameters
 
 ##### items
 
 `TItem`[]
+
+The items to render
 
 #### Returns
 

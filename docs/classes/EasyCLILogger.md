@@ -6,35 +6,50 @@
 
 # Class: EasyCLILogger
 
-Defined in: [logger/index.ts:66](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/logger/index.ts#L66)
+Defined in: [logger/index.ts:107](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L107)
+
+A logger for the CLI
+This logger allows for logging with different verbosity levels and themes
 
 ## Constructors
 
 ### new EasyCLILogger()
 
-> **new EasyCLILogger**(`__namedParameters`): [`EasyCLILogger`](EasyCLILogger.md)
+> **new EasyCLILogger**(`options`): [`EasyCLILogger`](EasyCLILogger.md)
 
-Defined in: [logger/index.ts:73](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/logger/index.ts#L73)
+Defined in: [logger/index.ts:124](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L124)
+
+Creates a new logger
 
 #### Parameters
 
-##### \_\_namedParameters
+##### options
+
+The options for the logger
 
 ###### theme
 
 [`EasyCLITheme`](EasyCLITheme.md)
 
+The theme to use for the logger
+
 ###### timestamp
 
 `boolean` = `true`
+
+Whether to include a timestamp in the execution logs (Default: true)
 
 ###### verbosity
 
 `number` = `0`
 
+The verbosity level to use (Default: 0)
+
 ###### verbosityThresholds
 
 `Record`\<[`SupportedLogType`](../type-aliases/SupportedLogType.md), `number`\> = `...`
+
+The verbosity thresholds to use
 
 #### Returns
 
@@ -46,7 +61,9 @@ Defined in: [logger/index.ts:73](https://github.com/patrickeaton/easy-cli/blob/a
 
 > **error**(...`args`): [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
 
-Defined in: [logger/index.ts:142](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/logger/index.ts#L142)
+Defined in: [logger/index.ts:236](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L236)
+
+Logs an error message
 
 #### Parameters
 
@@ -54,9 +71,13 @@ Defined in: [logger/index.ts:142](https://github.com/patrickeaton/easy-cli/blob/
 
 ...`unknown`[]
 
+The arguments to log
+
 #### Returns
 
 [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
+
+- The response from the logger
 
 ***
 
@@ -64,11 +85,15 @@ Defined in: [logger/index.ts:142](https://github.com/patrickeaton/easy-cli/blob/
 
 > **getExecutionLogs**(): `string`[]
 
-Defined in: [logger/index.ts:170](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/logger/index.ts#L170)
+Defined in: [logger/index.ts:281](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L281)
+
+Gets the execution logs, including logs that were not output due to verbosity
 
 #### Returns
 
 `string`[]
+
+- The execution logs
 
 ***
 
@@ -76,7 +101,9 @@ Defined in: [logger/index.ts:170](https://github.com/patrickeaton/easy-cli/blob/
 
 > **info**(...`args`): [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
 
-Defined in: [logger/index.ts:138](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/logger/index.ts#L138)
+Defined in: [logger/index.ts:226](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L226)
+
+Logs an info message
 
 #### Parameters
 
@@ -84,9 +111,13 @@ Defined in: [logger/index.ts:138](https://github.com/patrickeaton/easy-cli/blob/
 
 ...`unknown`[]
 
+The arguments to log
+
 #### Returns
 
 [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
+
+- The response from the logger
 
 ***
 
@@ -94,7 +125,9 @@ Defined in: [logger/index.ts:138](https://github.com/patrickeaton/easy-cli/blob/
 
 > **log**(...`args`): [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
 
-Defined in: [logger/index.ts:130](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/logger/index.ts#L130)
+Defined in: [logger/index.ts:206](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L206)
+
+Logs a message
 
 #### Parameters
 
@@ -102,9 +135,13 @@ Defined in: [logger/index.ts:130](https://github.com/patrickeaton/easy-cli/blob/
 
 ...`unknown`[]
 
+The arguments to log
+
 #### Returns
 
 [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
+
+- The response from the logger
 
 ***
 
@@ -112,13 +149,17 @@ Defined in: [logger/index.ts:130](https://github.com/patrickeaton/easy-cli/blob/
 
 > **printFormattedString**(...`args`): `void`
 
-Defined in: [logger/index.ts:150](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/logger/index.ts#L150)
+Defined in: [logger/index.ts:255](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L255)
+
+Prints a formatted string to the console
 
 #### Parameters
 
 ##### args
 
 ...(`string` \| \{ `format`: [`DisplayOptions`](../type-aliases/DisplayOptions.md); `text`: `string`; \})[]
+
+The arguments to print
 
 #### Returns
 
@@ -130,7 +171,9 @@ Defined in: [logger/index.ts:150](https://github.com/patrickeaton/easy-cli/blob/
 
 > **success**(...`args`): [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
 
-Defined in: [logger/index.ts:146](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/logger/index.ts#L146)
+Defined in: [logger/index.ts:246](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L246)
+
+Logs a success message
 
 #### Parameters
 
@@ -138,9 +181,13 @@ Defined in: [logger/index.ts:146](https://github.com/patrickeaton/easy-cli/blob/
 
 ...`unknown`[]
 
+The arguments to log
+
 #### Returns
 
 [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
+
+- The response from the logger
 
 ***
 
@@ -148,7 +195,9 @@ Defined in: [logger/index.ts:146](https://github.com/patrickeaton/easy-cli/blob/
 
 > **warn**(...`args`): [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
 
-Defined in: [logger/index.ts:134](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/logger/index.ts#L134)
+Defined in: [logger/index.ts:216](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/logger/index.ts#L216)
+
+Logs a warning message
 
 #### Parameters
 
@@ -156,6 +205,10 @@ Defined in: [logger/index.ts:134](https://github.com/patrickeaton/easy-cli/blob/
 
 ...`unknown`[]
 
+The arguments to log
+
 #### Returns
 
 [`EasyCLILoggerResponse`](EasyCLILoggerResponse.md)
+
+- The response from the logger

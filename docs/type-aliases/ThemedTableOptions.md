@@ -8,7 +8,9 @@
 
 > **ThemedTableOptions**\<`TItem`\>: `object`
 
-Defined in: [themes/themed-table.ts:13](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/themed-table.ts#L13)
+Defined in: [themes/themed-table.ts:37](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/themed-table.ts#L37)
+
+Options for the themed table
 
 ## Type Parameters
 

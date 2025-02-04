@@ -8,13 +8,15 @@
 
 > **ConfigFileParams**: `object`
 
-Defined in: [config/index.ts:15](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/config/index.ts#L15)
+Defined in: [config/index.ts:48](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/config/index.ts#L48)
+
+The parameters to use when loading a configuration file.
 
 ## Type declaration
 
 ### extensions
 
-> **extensions**: `ValidExtensions`[]
+> **extensions**: [`ValidExtensions`](ValidExtensions.md)[]
 
 ### failOnMissing?
 
@@ -30,7 +32,7 @@ Defined in: [config/index.ts:15](https://github.com/patrickeaton/easy-cli/blob/a
 
 ### recursion?
 
-> `optional` **recursion**: `ConfigFileRecursionBehaviour`
+> `optional` **recursion**: [`ConfigFileRecursionBehaviour`](ConfigFileRecursionBehaviour.md)
 
 ### requirePath?
 
@@ -39,7 +41,3 @@ Defined in: [config/index.ts:15](https://github.com/patrickeaton/easy-cli/blob/a
 ### root?
 
 > `optional` **root**: `"cwd"` \| `"home"` \| `"app-root"`
-
-### validator?
-
-> `optional` **validator**: `any`

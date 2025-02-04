@@ -8,7 +8,9 @@
 
 > **ThemedProgressBarOptions**: `object`
 
-Defined in: [themes/progress/base.ts:4](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L4)
+Defined in: [themes/progress/base.ts:20](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L20)
+
+Options for the progress bar
 
 ## Type declaration
 

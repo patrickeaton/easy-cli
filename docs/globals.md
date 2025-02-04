@@ -21,6 +21,13 @@
 - [ThemedStatusProgressBar](classes/ThemedStatusProgressBar.md)
 - [ThemedTable](classes/ThemedTable.md)
 
+## Interfaces
+
+- [StatusPayload](interfaces/StatusPayload.md)
+- [StringDisplayOptions](interfaces/StringDisplayOptions.md)
+- [ThemedSimpleProgressBarOptions](interfaces/ThemedSimpleProgressBarOptions.md)
+- [ThemedStatusProgressBarOptions](interfaces/ThemedStatusProgressBarOptions.md)
+
 ## Type Aliases
 
 - [CommandArgument](type-aliases/CommandArgument.md)
@@ -28,6 +35,7 @@
 - [CommandOptionObject](type-aliases/CommandOptionObject.md)
 - [CommandSetupOptions](type-aliases/CommandSetupOptions.md)
 - [ConfigFileParams](type-aliases/ConfigFileParams.md)
+- [ConfigFileRecursionBehaviour](type-aliases/ConfigFileRecursionBehaviour.md)
 - [ConfigureCommandOptions](type-aliases/ConfigureCommandOptions.md)
 - [CsvFieldMapping](type-aliases/CsvFieldMapping.md)
 - [CsvFieldMappings](type-aliases/CsvFieldMappings.md)
@@ -37,13 +45,16 @@
 - [InitCommandOptions](type-aliases/InitCommandOptions.md)
 - [NamedDisplayOptions](type-aliases/NamedDisplayOptions.md)
 - [ObjectDataMapper](type-aliases/ObjectDataMapper.md)
-- [StatusPayload](type-aliases/StatusPayload.md)
+- [PromptChoiceOptions](type-aliases/PromptChoiceOptions.md)
+- [PromptConfirmOptions](type-aliases/PromptConfirmOptions.md)
+- [PromptMultipleChoiceOptions](type-aliases/PromptMultipleChoiceOptions.md)
+- [PromptNumberOptions](type-aliases/PromptNumberOptions.md)
+- [PromptTextOptions](type-aliases/PromptTextOptions.md)
 - [SupportedLogType](type-aliases/SupportedLogType.md)
 - [ThemedProgressBarOptions](type-aliases/ThemedProgressBarOptions.md)
-- [ThemedSimpleProgressBarOptions](type-aliases/ThemedSimpleProgressBarOptions.md)
-- [ThemedStatusProgressBarOptions](type-aliases/ThemedStatusProgressBarOptions.md)
 - [ThemedTableColumn](type-aliases/ThemedTableColumn.md)
 - [ThemedTableOptions](type-aliases/ThemedTableOptions.md)
+- [ValidExtensions](type-aliases/ValidExtensions.md)
 
 ## Variables
 

@@ -8,7 +8,9 @@
 
 > **ThemedTableColumn**\<`TItem`\>: `object`
 
-Defined in: [themes/themed-table.ts:4](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/themed-table.ts#L4)
+Defined in: [themes/themed-table.ts:17](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/themed-table.ts#L17)
+
+A column in a themed table
 
 ## Type Parameters
 

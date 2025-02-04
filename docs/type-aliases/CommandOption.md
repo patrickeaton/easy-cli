@@ -8,7 +8,9 @@
 
 > **CommandOption**: `Options` & `object`
 
-Defined in: [commands/index.ts:7](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/commands/index.ts#L7)
+Defined in: [commands/index.ts:10](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/commands/index.ts#L10)
+
+A command positional option that can be passed to a command with the option to prompt the user for the value.
 
 ## Type declaration
 

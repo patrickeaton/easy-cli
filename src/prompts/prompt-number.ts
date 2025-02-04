@@ -2,7 +2,19 @@
 import yargsInteractive from 'yargs-interactive';
 import { DisplayOptions, EasyCLITheme } from '../themes';
 
-type Options = {
+/**
+ * Options for the promptNumber function
+ * 
+ * @typedef PromptNumberOptions
+ * @type {object}
+ * 
+ * @property {number | null} [value=null] The default value to use
+ * @property {(input: number) => boolean} [validator=() => true] A function to validate the input
+ * @property {string} [validationErrorMessage='Invalid input'] The error message to display if the input is invalid
+ * @property {EasyCLITheme} [theme=null] The theme to use
+ * @property {DisplayOptions} [promptTheme='default'] The theme to use for the prompt
+ */
+export type PromptNumberOptions = {
   value?: number | null;
   validator?: (input: number) => boolean;
   validationErrorMessage?: string;
@@ -10,6 +22,14 @@ type Options = {
   promptTheme?: DisplayOptions;
 };
 
+/**
+ * Prompts the user to enter a number.
+ * 
+ * @param {string} prompt The prompt to display to the user
+ * @param {PromptNumberOptions} options The options for the prompt
+ * 
+ * @returns {Promise<number>} The number the user entered
+ */
 export const promptNumber = async (
   prompt: string,
   {
@@ -18,7 +38,7 @@ export const promptNumber = async (
     validationErrorMessage = 'Invalid input',
     theme = null,
     promptTheme = 'default',
-  }: Options = {}
+  }: PromptNumberOptions = {}
 ) => {
   while (true) {
     const { choice } = await yargsInteractive()

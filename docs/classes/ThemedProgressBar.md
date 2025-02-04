@@ -6,7 +6,25 @@
 
 # Class: ThemedProgressBar\<T\>
 
-Defined in: [themes/progress/base.ts:37](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L37)
+Defined in: [themes/progress/base.ts:65](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L65)
+
+A themed progress bar, can be overridden to add additional functionality
+
+## Param
+
+The theme to use
+
+## Param
+
+The name of the progress bar
+
+## Param
+
+The display options for the progress bar
+
+## Param
+
+The options for the progress bar
 
 ## Extended by
 
@@ -17,13 +35,15 @@ Defined in: [themes/progress/base.ts:37](https://github.com/patrickeaton/easy-cl
 
 • **T** *extends* [`ThemedProgressBarOptions`](../type-aliases/ThemedProgressBarOptions.md) = [`ThemedProgressBarOptions`](../type-aliases/ThemedProgressBarOptions.md)
 
+ThemedProgressBar
+
 ## Constructors
 
 ### new ThemedProgressBar()
 
 > **new ThemedProgressBar**\<`T`\>(`theme`, `name`, `displayOptions`, `progressBarOptions`): [`ThemedProgressBar`](ThemedProgressBar.md)\<`T`\>
 
-Defined in: [themes/progress/base.ts:46](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L46)
+Defined in: [themes/progress/base.ts:74](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L74)
 
 #### Parameters
 
@@ -53,7 +73,7 @@ Defined in: [themes/progress/base.ts:46](https://github.com/patrickeaton/easy-cl
 
 > `protected` **displayOptions**: [`DisplayOptions`](../type-aliases/DisplayOptions.md)
 
-Defined in: [themes/progress/base.ts:42](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L42)
+Defined in: [themes/progress/base.ts:70](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L70)
 
 ***
 
@@ -61,7 +81,7 @@ Defined in: [themes/progress/base.ts:42](https://github.com/patrickeaton/easy-cl
 
 > `protected` **name**: `string`
 
-Defined in: [themes/progress/base.ts:40](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L40)
+Defined in: [themes/progress/base.ts:68](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L68)
 
 ***
 
@@ -69,7 +89,7 @@ Defined in: [themes/progress/base.ts:40](https://github.com/patrickeaton/easy-cl
 
 > `protected` **progressBar**: `null` \| `SingleBar`
 
-Defined in: [themes/progress/base.ts:43](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L43)
+Defined in: [themes/progress/base.ts:71](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L71)
 
 ***
 
@@ -77,7 +97,7 @@ Defined in: [themes/progress/base.ts:43](https://github.com/patrickeaton/easy-cl
 
 > `protected` **progressBarOptions**: `T`
 
-Defined in: [themes/progress/base.ts:44](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L44)
+Defined in: [themes/progress/base.ts:72](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L72)
 
 ***
 
@@ -85,7 +105,7 @@ Defined in: [themes/progress/base.ts:44](https://github.com/patrickeaton/easy-cl
 
 > `protected` **theme**: [`EasyCLITheme`](EasyCLITheme.md)
 
-Defined in: [themes/progress/base.ts:41](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L41)
+Defined in: [themes/progress/base.ts:69](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L69)
 
 ## Methods
 
@@ -93,11 +113,15 @@ Defined in: [themes/progress/base.ts:41](https://github.com/patrickeaton/easy-cl
 
 > `protected` **getOptions**(): `Options`
 
-Defined in: [themes/progress/base.ts:61](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L61)
+Defined in: [themes/progress/base.ts:94](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L94)
+
+An internal method to get the options for the progress bar
 
 #### Returns
 
 `Options`
+
+The options for the progress bar
 
 ***
 
@@ -105,7 +129,9 @@ Defined in: [themes/progress/base.ts:61](https://github.com/patrickeaton/easy-cl
 
 > **start**(`initial`, `total`, `payload`, `options`): `SingleBar`
 
-Defined in: [themes/progress/base.ts:124](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L124)
+Defined in: [themes/progress/base.ts:166](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L166)
+
+Starts the progress bar
 
 #### Parameters
 
@@ -113,17 +139,25 @@ Defined in: [themes/progress/base.ts:124](https://github.com/patrickeaton/easy-c
 
 `number`
 
+The initial number of items processed
+
 ##### total
 
 `number`
+
+The total number of items to process
 
 ##### payload
 
 `Record`\<`string`, `any`\> = `{}`
 
+The payload to pass to the progress bar
+
 ##### options
 
 `Options` = `{}`
+
+A set of options for the progress bar
 
 #### Returns
 
@@ -135,7 +169,9 @@ Defined in: [themes/progress/base.ts:124](https://github.com/patrickeaton/easy-c
 
 > **stop**(): `void`
 
-Defined in: [themes/progress/base.ts:138](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L138)
+Defined in: [themes/progress/base.ts:183](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L183)
+
+Stops the progress bar
 
 #### Returns
 

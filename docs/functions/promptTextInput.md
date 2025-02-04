@@ -6,9 +6,11 @@
 
 # Function: promptTextInput()
 
-> **promptTextInput**(`prompt`, `__namedParameters`): `Promise`\<`any`\>
+> **promptTextInput**(`prompt`, `options`): `Promise`\<`any`\>
 
-Defined in: [prompts/prompt-text.ts:14](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/prompts/prompt-text.ts#L14)
+Defined in: [prompts/prompt-text.ts:34](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/prompts/prompt-text.ts#L34)
+
+Prompts the user to enter text.
 
 ## Parameters
 
@@ -16,10 +18,16 @@ Defined in: [prompts/prompt-text.ts:14](https://github.com/patrickeaton/easy-cli
 
 `string`
 
-### \_\_namedParameters
+The prompt to display to the user
 
-`Options` = `{}`
+### options
+
+[`PromptTextOptions`](../type-aliases/PromptTextOptions.md) = `{}`
+
+The options for the prompt
 
 ## Returns
 
 `Promise`\<`any`\>
+
+The validated text the user entered

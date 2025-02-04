@@ -6,25 +6,43 @@
 
 # Class: EasyCLITheme
 
-Defined in: [themes/index.ts:39](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/index.ts#L39)
+Defined in: [themes/index.ts:77](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/index.ts#L77)
+
+A theme for the CLI, that allows for customizing the look and feel of the CLI, generating logs, tables, spinners, and progress bars.
+
+ *  EasyCLITheme
+
+## Example
+
+```typescript
+const theme = new EasyCLITheme();
+const logger = theme.getLogger();
+logger.log('Hello, world!');
+```
 
 ## Constructors
 
 ### new EasyCLITheme()
 
-> **new EasyCLITheme**(`verbosity`, `namedDisplayOptions`?): [`EasyCLITheme`](EasyCLITheme.md)
+> **new EasyCLITheme**(`verbosity`?, `namedDisplayOptions`?): [`EasyCLITheme`](EasyCLITheme.md)
 
-Defined in: [themes/index.ts:53](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/index.ts#L53)
+Defined in: [themes/index.ts:97](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/index.ts#L97)
+
+Creates an instance of EasyCLITheme.
 
 #### Parameters
 
-##### verbosity
+##### verbosity?
 
 `number` = `0`
 
+The verbosity level of the theme
+
 ##### namedDisplayOptions?
 
-`Record`\<`string`, `StringDisplayOptions`\>
+`Record`\<`string`, [`StringDisplayOptions`](../interfaces/StringDisplayOptions.md)\>
+
+The named display options for the theme
 
 #### Returns
 
@@ -36,7 +54,9 @@ Defined in: [themes/index.ts:53](https://github.com/patrickeaton/easy-cli/blob/a
 
 > **formattedString**(`string`, `options`): `string`
 
-Defined in: [themes/index.ts:96](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/index.ts#L96)
+Defined in: [themes/index.ts:159](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/index.ts#L159)
+
+Formats a string with the display options
 
 #### Parameters
 
@@ -44,13 +64,27 @@ Defined in: [themes/index.ts:96](https://github.com/patrickeaton/easy-cli/blob/a
 
 `string`
 
+The string to format
+
 ##### options
 
 [`DisplayOptions`](../type-aliases/DisplayOptions.md)
 
+The display options to use
+
 #### Returns
 
 `string`
+
+The formatted string
+
+#### Example
+
+```typescript
+const theme = new EasyCLITheme();
+const formatted = theme.formattedString('Hello, world!', ['info', { bold: true }]);
+console.log(formatted);
+```
 
 ***
 
@@ -58,7 +92,9 @@ Defined in: [themes/index.ts:96](https://github.com/patrickeaton/easy-cli/blob/a
 
 > **getLogger**(): [`EasyCLILogger`](EasyCLILogger.md)
 
-Defined in: [themes/index.ts:124](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/index.ts#L124)
+Defined in: [themes/index.ts:206](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/index.ts#L206)
+
+Gets a logger with the theme
 
 #### Returns
 
@@ -68,9 +104,11 @@ Defined in: [themes/index.ts:124](https://github.com/patrickeaton/easy-cli/blob/
 
 ### getSimpleProgressBar()
 
-> **getSimpleProgressBar**(`name`, `format`, `options`): [`ThemedSimpleProgressBar`](ThemedSimpleProgressBar.md)
+> **getSimpleProgressBar**(`name`, `format`?, `options`?): [`ThemedSimpleProgressBar`](ThemedSimpleProgressBar.md)
 
-Defined in: [themes/index.ts:136](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/index.ts#L136)
+Defined in: [themes/index.ts:274](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/index.ts#L274)
+
+Gets a simple progress bar with the theme
 
 #### Parameters
 
@@ -78,13 +116,13 @@ Defined in: [themes/index.ts:136](https://github.com/patrickeaton/easy-cli/blob/
 
 `string`
 
-##### format
+##### format?
 
 [`DisplayOptions`](../type-aliases/DisplayOptions.md) = `'default'`
 
-##### options
+##### options?
 
-[`ThemedSimpleProgressBarOptions`](../type-aliases/ThemedSimpleProgressBarOptions.md) = `{}`
+[`ThemedSimpleProgressBarOptions`](../interfaces/ThemedSimpleProgressBarOptions.md) = `{}`
 
 #### Returns
 
@@ -94,13 +132,15 @@ Defined in: [themes/index.ts:136](https://github.com/patrickeaton/easy-cli/blob/
 
 ### getSpinner()
 
-> **getSpinner**(`format`): [`ThemedSpinner`](ThemedSpinner.md)
+> **getSpinner**(`format`?): [`ThemedSpinner`](ThemedSpinner.md)
 
-Defined in: [themes/index.ts:132](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/index.ts#L132)
+Defined in: [themes/index.ts:253](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/index.ts#L253)
+
+Gets a spinner with the theme
 
 #### Parameters
 
-##### format
+##### format?
 
 [`DisplayOptions`](../type-aliases/DisplayOptions.md) = `'default'`
 
@@ -112,9 +152,11 @@ Defined in: [themes/index.ts:132](https://github.com/patrickeaton/easy-cli/blob/
 
 ### getStatusProgressBar()
 
-> **getStatusProgressBar**(`name`, `format`, `options`): [`ThemedStatusProgressBar`](ThemedStatusProgressBar.md)
+> **getStatusProgressBar**(`name`, `format`?, `options`?): [`ThemedStatusProgressBar`](ThemedStatusProgressBar.md)
 
-Defined in: [themes/index.ts:144](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/index.ts#L144)
+Defined in: [themes/index.ts:298](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/index.ts#L298)
+
+Gets a status progress bar with the theme
 
 #### Parameters
 
@@ -122,13 +164,13 @@ Defined in: [themes/index.ts:144](https://github.com/patrickeaton/easy-cli/blob/
 
 `string`
 
-##### format
+##### format?
 
 [`DisplayOptions`](../type-aliases/DisplayOptions.md) = `'default'`
 
-##### options
+##### options?
 
-[`ThemedStatusProgressBarOptions`](../type-aliases/ThemedStatusProgressBarOptions.md) = `{}`
+[`ThemedStatusProgressBarOptions`](../interfaces/ThemedStatusProgressBarOptions.md) = `{}`
 
 #### Returns
 
@@ -138,23 +180,29 @@ Defined in: [themes/index.ts:144](https://github.com/patrickeaton/easy-cli/blob/
 
 ### getTable()
 
-> **getTable**(`columns`, `totalWidth`): [`ThemedTable`](ThemedTable.md)\<`any`\>
+> **getTable**\<`TItem`\>(`columns`?, `totalWidth`?): [`ThemedTable`](ThemedTable.md)\<`TItem`\>
 
-Defined in: [themes/index.ts:128](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/index.ts#L128)
+Defined in: [themes/index.ts:232](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/index.ts#L232)
+
+Gets a table with the theme
+
+#### Type Parameters
+
+• **TItem** *extends* `Record`\<`string`, `any`\> = `any`[]
 
 #### Parameters
 
-##### columns
+##### columns?
 
-[`ThemedTableColumn`](../type-aliases/ThemedTableColumn.md)\<`any`\>[] = `[]`
+[`ThemedTableColumn`](../type-aliases/ThemedTableColumn.md)\<`TItem`\>[] = `[]`
 
-##### totalWidth
+##### totalWidth?
 
 `number` = `120`
 
 #### Returns
 
-[`ThemedTable`](ThemedTable.md)\<`any`\>
+[`ThemedTable`](ThemedTable.md)\<`TItem`\>
 
 ***
 
@@ -162,7 +210,9 @@ Defined in: [themes/index.ts:128](https://github.com/patrickeaton/easy-cli/blob/
 
 > **setNamedDisplayOption**(`name`, `options`): [`EasyCLITheme`](EasyCLITheme.md)
 
-Defined in: [themes/index.ts:116](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/index.ts#L116)
+Defined in: [themes/index.ts:193](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/index.ts#L193)
+
+Sets the named display options for the theme
 
 #### Parameters
 
@@ -172,7 +222,7 @@ Defined in: [themes/index.ts:116](https://github.com/patrickeaton/easy-cli/blob/
 
 ##### options
 
-`StringDisplayOptions`
+[`StringDisplayOptions`](../interfaces/StringDisplayOptions.md)
 
 #### Returns
 
@@ -184,7 +234,9 @@ Defined in: [themes/index.ts:116](https://github.com/patrickeaton/easy-cli/blob/
 
 > **setVerbosity**(`verbosity`): [`EasyCLITheme`](EasyCLITheme.md)
 
-Defined in: [themes/index.ts:111](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/index.ts#L111)
+Defined in: [themes/index.ts:180](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/index.ts#L180)
+
+Sets the verbosity level of the theme
 
 #### Parameters
 

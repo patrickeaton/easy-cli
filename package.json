@@ -18,7 +18,7 @@
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
     "test-config": "yarn --cwd=$INIT_CWD ts-node-script ./scripts/test-load-config.ts",
-    "docs": "typedoc --plugin typedoc-plugin-markdown src"
+    "docs": "typedoc"
   },
   "dependencies": {
     "@types/cli-progress": "^3.11.6",

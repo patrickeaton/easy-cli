@@ -6,9 +6,11 @@
 
 # Function: promptNumber()
 
-> **promptNumber**(`prompt`, `__namedParameters`): `Promise`\<`any`\>
+> **promptNumber**(`prompt`, `options`): `Promise`\<`any`\>
 
-Defined in: [prompts/prompt-number.ts:13](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/prompts/prompt-number.ts#L13)
+Defined in: [prompts/prompt-number.ts:33](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/prompts/prompt-number.ts#L33)
+
+Prompts the user to enter a number.
 
 ## Parameters
 
@@ -16,10 +18,16 @@ Defined in: [prompts/prompt-number.ts:13](https://github.com/patrickeaton/easy-c
 
 `string`
 
-### \_\_namedParameters
+The prompt to display to the user
 
-`Options` = `{}`
+### options
+
+[`PromptNumberOptions`](../type-aliases/PromptNumberOptions.md) = `{}`
+
+The options for the prompt
 
 ## Returns
 
 `Promise`\<`any`\>
+
+The number the user entered

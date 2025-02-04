@@ -6,9 +6,11 @@
 
 # Function: promptChoice()
 
-> **promptChoice**(`prompt`, `choices`, `__namedParameters`): `Promise`\<`any`\>
+> **promptChoice**(`prompt`, `choices`, `options`): `Promise`\<`any`\>
 
-Defined in: [prompts/prompt-choice.ts:13](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/prompts/prompt-choice.ts#L13)
+Defined in: [prompts/prompt-choice.ts:34](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/prompts/prompt-choice.ts#L34)
+
+Prompts the user to select a choice from a list of choices, if the input is invalid, it will prompt the user again for a valid input
 
 ## Parameters
 
@@ -16,14 +18,22 @@ Defined in: [prompts/prompt-choice.ts:13](https://github.com/patrickeaton/easy-c
 
 `string`
 
+The prompt to display to the user
+
 ### choices
 
 `string`[]
 
-### \_\_namedParameters
+The choices to display to the user
 
-`Options` = `{}`
+### options
+
+[`PromptChoiceOptions`](../type-aliases/PromptChoiceOptions.md) = `{}`
+
+The options for the prompt
 
 ## Returns
 
 `Promise`\<`any`\>
+
+The choice the user selected

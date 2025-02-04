@@ -8,4 +8,6 @@
 
 > **NamedDisplayOptions**: `"log"` \| `"error"` \| `"warn"` \| `"info"` \| `"success"` \| `"default"` \| `string`
 
-Defined in: [themes/index.ts:30](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/index.ts#L30)
+Defined in: [themes/index.ts:48](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/index.ts#L48)
+
+Named display options

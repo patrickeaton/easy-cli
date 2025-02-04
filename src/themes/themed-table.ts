@@ -1,6 +1,19 @@
 import Table from 'cli-table';
 import { DisplayOptions, EasyCLITheme } from '.';
 
+/**
+ * A column in a themed table
+ *
+ * @template TItem
+ * @typedef ThemedTableColumn
+ *
+ * @property {string} name The name of the column
+ * @property {(item: TItem) => string} data A function that returns the value to display
+ * @property {DisplayOptions | ((item: TItem) => DisplayOptions)} [style] The style for the column
+ * @property {DisplayOptions} [headerStyle] The style for the header
+ * @property {number} [width] The width of the column
+ * @property {'left' | 'middle' | 'right'} [align] The alignment of the column
+ */
 export type ThemedTableColumn<TItem = Record<string, any>> = {
   name: string;
   data: (item: TItem) => string; // A function that returns the value to display.
@@ -10,12 +23,47 @@ export type ThemedTableColumn<TItem = Record<string, any>> = {
   align?: 'left' | 'middle' | 'right';
 };
 
+/**
+ * Options for the themed table
+ *
+ * @template TItem
+ * @typedef ThemedTableOptions
+ * @type {object}
+ *
+ * @property {EasyCLITheme} theme The theme to use
+ * @property {ThemedTableColumn<TItem>[]} columns The columns for the table
+ * @property {number} [totalWidth=120] The total width of the table
+ */
 export type ThemedTableOptions<TItem = Record<string, any>> = {
   theme: EasyCLITheme;
   columns: ThemedTableColumn<TItem>[];
   totalWidth?: number;
 };
 
+/**
+ * A themed table that extends a cli-table
+ * @template TItem
+ * @class ThemedTable
+ *
+ * @param {ThemedTableOptions<TItem>} options The options for the themed table
+ *
+ * @example
+ * ```typescript
+ * const theme = new EasyCLITheme();
+ * const table = new ThemedTable({
+ *   theme,
+ *   columns: [
+ *     { name: 'Name', data: item => item.name },
+ *     { name: 'Age', data: item => item.age },
+ *   ],
+ * });
+ *
+ * table.render([
+ *   { name: 'Alice', age: 25 },
+ *   { name: 'Bob', age: 30 },
+ * ]);
+ *
+ */
 export class ThemedTable<TItem extends Record<string, any>> {
   private theme: EasyCLITheme;
   private columns: ThemedTableColumn<TItem>[];
@@ -27,6 +75,11 @@ export class ThemedTable<TItem extends Record<string, any>> {
     this.totalWidth = totalWidth;
   }
 
+  /**
+   * Calculate the remaining default column width
+   * @private
+   * @returns {number} The remaining default column width
+   */
   private calculateRemaingingDefaultColumnWidth() {
     type Acc = { width: number; columns: number };
     const { width, columns } = this.columns.reduce(
@@ -44,6 +97,10 @@ export class ThemedTable<TItem extends Record<string, any>> {
     return Math.floor(width / columns);
   }
 
+  /**
+   * Render the table
+   * @param {TItem[]} items The items to render
+   */
   render(items: TItem[]) {
     const defaultWidth = this.calculateRemaingingDefaultColumnWidth();
     const table = new Table({

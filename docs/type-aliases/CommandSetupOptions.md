@@ -8,13 +8,19 @@
 
 > **CommandSetupOptions**\<`TGlobalParams`, `TParams`\>: `object`
 
-Defined in: [commands/index.ts:20](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/commands/index.ts#L20)
+Defined in: [commands/index.ts:44](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/commands/index.ts#L44)
+
+Optional Arguments for setting up a command.
 
 ## Type Parameters
 
 • **TGlobalParams**
 
+The global params for the CLI
+
 • **TParams**
+
+The params for the command
 
 ## Type declaration
 

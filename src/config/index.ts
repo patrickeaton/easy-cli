@@ -3,15 +3,48 @@ import os from 'os';
 import appRootPath from 'app-root-path';
 import fs, { mkdirSync } from 'fs';
 
-type ValidExtensions = 'json' | 'js' | 'ts'; // | 'yaml' | 'yml';
+/**
+ * The valid file extensions for configuration files.
+ *
+ * Supports JSON, JavaScript, and TypeScript files.
+ *
+ * TODO: Add support for YAML files.
+ *
+ * @typedef {'json' | 'js' | 'ts'} ValidExtensions
+ */
+export type ValidExtensions = 'json' | 'js' | 'ts'; // | 'yaml' | 'yml';
 
-type ConfigFileRecursionBehaviour =
+/**
+ * The behaviour to use when handling recursive configuration files.
+ *
+ * @typedef {'no_recursion' | 'prefer_highest' | 'prefer_lowest' | 'merge_highest_first' | 'merge_lowest_first'} ConfigFileRecursionBehaviour
+ *
+ * @example
+ * no_recursion - Only look in the current directory for the configuration file.
+ * prefer_highest - Look in the current directory and all parent directories, and use the configuration file found in the highest directory.
+ * prefer_lowest - Look in the current directory and all parent directories, and use the configuration file found in the lowest directory.
+ * merge_highest_first - Look in the current directory and all parent directories, and merge the configuration files found in the highest directories first.
+ * merge_lowest_first - Look in the current directory and all parent directories, and merge the configuration files found in the lowest directories first.
+ */
+export type ConfigFileRecursionBehaviour =
   | 'no_recursion'
   | 'prefer_highest'
   | 'prefer_lowest'
   | 'merge_highest_first'
   | 'merge_lowest_first';
 
+/**
+ * The parameters to use when loading a configuration file.
+ *
+ * @typedef {Object} ConfigFileParams
+ * @property {string} filename The base filename to look for, without the extension.
+ * @property {ValidExtensions[]} extensions What file extensions to look for, in order of preference
+ * @property {ConfigFileRecursionBehaviour} [recursion] How to handle recursive config files
+ * @property {'cwd' | 'home' | 'app-root'} [root] Where to start looking for the config file
+ * @property {string} [path] The path to search for the config file
+ * @property {boolean} [requirePath] Whether or not to require the path to exist
+ * @property {boolean} [failOnMissing] Whether or not to fail if the file is missing
+ */
 export type ConfigFileParams = {
   filename: string; // THe base filename to look for, without the extension.
   extensions: ValidExtensions[]; // What file extensions to look for, in order of preference
@@ -20,9 +53,12 @@ export type ConfigFileParams = {
   path?: string; // The path to search for the config file
   requirePath?: boolean; // Whether or not to require the path to exist
   failOnMissing?: boolean; // Whether or not to fail if the file is missing
-  validator?: any; // TODO: ADD ZOD VALIDATOR
+  // validator?: any; // TODO: ADD ZOD VALIDATOR
 };
 
+/**
+ * A class to handle loading and saving configuration files.
+ */
 export class EasyCLIConfigFile {
   private filename: string;
   private extensions: ValidExtensions[];
@@ -31,6 +67,11 @@ export class EasyCLIConfigFile {
   private path: string;
   private failOnMissing: boolean;
 
+  /**
+   * Create a new configuration file handler.
+   *
+   * @param {ConfigFileParams} params The parameters to use when loading the configuration file
+   */
   constructor({
     filename,
     extensions = ['ts', 'js', 'json'],
@@ -140,6 +181,12 @@ export class EasyCLIConfigFile {
     return configs;
   }
 
+  /**
+   * Load a configuration object from the given path.
+   *
+   * @param path The path to load the configuration from
+   * @returns The loaded configuration object
+   */
   private loadConfigurationFromPath<TConfig extends Record<string, any>>(
     path: string
   ): TConfig {
@@ -178,6 +225,11 @@ export class EasyCLIConfigFile {
     return {} as TConfig;
   }
 
+  /**
+   * Generate the base path to use when looking for configuration files.
+   *
+   * @returns The base path to use when looking for configuration files
+   */
   private getBasePath(): string {
     switch (this.root) {
       case 'home':
@@ -190,6 +242,12 @@ export class EasyCLIConfigFile {
     }
   }
 
+  /**
+   * Find the configuration file to use.
+   *
+   * @param filePath An optional file path to use instead of the default otherwise it will scan using the given rules.s
+   * @returns
+   */
   private findConfigurationFile(filePath: string | null = null): string {
     if (filePath) {
       return filePath;
@@ -202,6 +260,12 @@ export class EasyCLIConfigFile {
     );
   }
 
+  /**
+   * Load a configuration file for the given path.
+   *
+   * @param path An optional path override to use when loading the configuration file, otherwise it will use the default path.
+   * @returns
+   */
   public load<TConfig extends Record<string, any>>(
     path: string | null = null
   ): TConfig {
@@ -210,6 +274,12 @@ export class EasyCLIConfigFile {
     return this.loadConfigurationFromPath<TConfig>(this.getBasePath());
   }
 
+  /**
+   * Load a configuration file from a specific path instead of using the default path.s
+   *
+   * @param path A specific path to load the configuration from
+   * @returns The configuration object loaded from the path
+   */
   private loadSpecificConfiguration<TConfig extends Record<string, any>>(
     path: string
   ) {
@@ -224,12 +294,24 @@ export class EasyCLIConfigFile {
     return {} as TConfig;
   }
 
+  /**
+   * Check if a configuration file exists.
+   *
+   * @param filePath An optional file path to use instead of the default otherwise it will scan using the given rules.
+   * @returns boolean Whether or not the configuration file exists
+   */
   public fileExists(filePath: string | null = null): boolean {
     const resolvedPath = this.findConfigurationFile(filePath);
 
     return fs.existsSync(resolvedPath);
   }
 
+  /**
+   * Save a configuration object to a file.
+   *
+   * @param config The configuration object to save
+   * @param filePath The file path to save the configuration to
+   */
   public async save<TConfig extends Record<string, any>>(
     config: TConfig,
     filePath: string | null = null

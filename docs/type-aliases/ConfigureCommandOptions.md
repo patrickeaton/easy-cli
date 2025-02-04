@@ -8,7 +8,9 @@
 
 > **ConfigureCommandOptions**\<`TGlobalParams`, `TParams`\>: [`CommandSetupOptions`](CommandSetupOptions.md)\<`TGlobalParams`, `TParams`\> & `object`
 
-Defined in: [commands/configure.ts:6](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/commands/configure.ts#L6)
+Defined in: [commands/configure.ts:14](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/commands/configure.ts#L14)
+
+Options for the configure command
 
 ## Type declaration
 
@@ -34,4 +36,8 @@ Defined in: [commands/configure.ts:6](https://github.com/patrickeaton/easy-cli/b
 
 • **TGlobalParams**
 
+The global params for the CLI
+
 • **TParams**
+
+The params for the command

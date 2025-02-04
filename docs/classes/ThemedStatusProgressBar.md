@@ -6,11 +6,48 @@
 
 # Class: ThemedStatusProgressBar
 
-Defined in: [themes/progress/progress-with-status.ts:44](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/progress-with-status.ts#L44)
+Defined in: [themes/progress/progress-with-status.ts:95](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/progress-with-status.ts#L95)
+
+A themed status progress bar that shows the progress of a task while also showing the current status of the task
+
+ *  ThemedStatusProgressBar
+
+## Param
+
+The theme to use
+
+## Param
+
+The name of the progress bar
+
+## Param
+
+The display options for the progress bar
+
+## Param
+
+The options for the progress bar
+
+## Example
+
+```typescript
+const theme = new EasyCLITheme();
+const progressBar = new ThemedStatusProgressBar(theme, 'Task', 'Task in progress', {
+ showCurrentRecord: true,
+});
+
+const bar = progressBar.start(0, 100);
+
+// Update the progress bar
+progressBar.update(50, { current: 'Processing record XXX', success: 10, warn: 5, error: 0 });
+
+// Stop the progress bar
+bar.stop();
+```
 
 ## Extends
 
-- [`ThemedProgressBar`](ThemedProgressBar.md)\<[`ThemedStatusProgressBarOptions`](../type-aliases/ThemedStatusProgressBarOptions.md)\>
+- [`ThemedProgressBar`](ThemedProgressBar.md)\<[`ThemedStatusProgressBarOptions`](../interfaces/ThemedStatusProgressBarOptions.md)\>
 
 ## Constructors
 
@@ -18,7 +55,7 @@ Defined in: [themes/progress/progress-with-status.ts:44](https://github.com/patr
 
 > **new ThemedStatusProgressBar**(`theme`, `name`, `displayOptions`, `progressBarOptions`): [`ThemedStatusProgressBar`](ThemedStatusProgressBar.md)
 
-Defined in: [themes/progress/progress-with-status.ts:45](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/progress-with-status.ts#L45)
+Defined in: [themes/progress/progress-with-status.ts:96](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/progress-with-status.ts#L96)
 
 #### Parameters
 
@@ -36,7 +73,7 @@ Defined in: [themes/progress/progress-with-status.ts:45](https://github.com/patr
 
 ##### progressBarOptions
 
-[`ThemedStatusProgressBarOptions`](../type-aliases/ThemedStatusProgressBarOptions.md) = `DEFAULT_STATUS_PROGRESS_BAR_OPTIONS`
+[`ThemedStatusProgressBarOptions`](../interfaces/ThemedStatusProgressBarOptions.md) = `DEFAULT_STATUS_PROGRESS_BAR_OPTIONS`
 
 #### Returns
 
@@ -52,7 +89,7 @@ Defined in: [themes/progress/progress-with-status.ts:45](https://github.com/patr
 
 > `protected` **displayOptions**: [`DisplayOptions`](../type-aliases/DisplayOptions.md)
 
-Defined in: [themes/progress/base.ts:42](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L42)
+Defined in: [themes/progress/base.ts:70](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L70)
 
 #### Inherited from
 
@@ -64,7 +101,7 @@ Defined in: [themes/progress/base.ts:42](https://github.com/patrickeaton/easy-cl
 
 > `protected` **name**: `string`
 
-Defined in: [themes/progress/base.ts:40](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L40)
+Defined in: [themes/progress/base.ts:68](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L68)
 
 #### Inherited from
 
@@ -76,7 +113,7 @@ Defined in: [themes/progress/base.ts:40](https://github.com/patrickeaton/easy-cl
 
 > `protected` **progressBar**: `null` \| `SingleBar`
 
-Defined in: [themes/progress/base.ts:43](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L43)
+Defined in: [themes/progress/base.ts:71](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L71)
 
 #### Inherited from
 
@@ -86,9 +123,9 @@ Defined in: [themes/progress/base.ts:43](https://github.com/patrickeaton/easy-cl
 
 ### progressBarOptions
 
-> `protected` **progressBarOptions**: [`ThemedStatusProgressBarOptions`](../type-aliases/ThemedStatusProgressBarOptions.md)
+> `protected` **progressBarOptions**: [`ThemedStatusProgressBarOptions`](../interfaces/ThemedStatusProgressBarOptions.md)
 
-Defined in: [themes/progress/base.ts:44](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L44)
+Defined in: [themes/progress/base.ts:72](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L72)
 
 #### Inherited from
 
@@ -100,7 +137,7 @@ Defined in: [themes/progress/base.ts:44](https://github.com/patrickeaton/easy-cl
 
 > `protected` **theme**: [`EasyCLITheme`](EasyCLITheme.md)
 
-Defined in: [themes/progress/base.ts:41](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L41)
+Defined in: [themes/progress/base.ts:69](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L69)
 
 #### Inherited from
 
@@ -112,11 +149,15 @@ Defined in: [themes/progress/base.ts:41](https://github.com/patrickeaton/easy-cl
 
 > `protected` **getOptions**(): `Options`
 
-Defined in: [themes/progress/progress-with-status.ts:57](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/progress-with-status.ts#L57)
+Defined in: [themes/progress/progress-with-status.ts:108](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/progress-with-status.ts#L108)
+
+An internal method to get the options for the progress bar
 
 #### Returns
 
 `Options`
+
+The options for the progress bar
 
 #### Overrides
 
@@ -128,13 +169,17 @@ Defined in: [themes/progress/progress-with-status.ts:57](https://github.com/patr
 
 > **increment**(`payload`): `void`
 
-Defined in: [themes/progress/progress-with-status.ts:101](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/progress-with-status.ts#L101)
+Defined in: [themes/progress/progress-with-status.ts:170](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/progress-with-status.ts#L170)
+
+Increments the progress bar
 
 #### Parameters
 
 ##### payload
 
-[`StatusPayload`](../type-aliases/StatusPayload.md)
+[`StatusPayload`](../interfaces/StatusPayload.md)
+
+The payload for the status bar
 
 #### Returns
 
@@ -146,7 +191,9 @@ Defined in: [themes/progress/progress-with-status.ts:101](https://github.com/pat
 
 > **start**(`initial`, `total`): `SingleBar`
 
-Defined in: [themes/progress/progress-with-status.ts:93](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/progress-with-status.ts#L93)
+Defined in: [themes/progress/progress-with-status.ts:151](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/progress-with-status.ts#L151)
+
+Starts the progress bar
 
 #### Parameters
 
@@ -154,13 +201,19 @@ Defined in: [themes/progress/progress-with-status.ts:93](https://github.com/patr
 
 `number`
 
+The initial value for the progress bar
+
 ##### total
 
 `number`
 
+The total value for the progress bar
+
 #### Returns
 
 `SingleBar`
+
+an instance of the progress bar
 
 #### Overrides
 
@@ -172,7 +225,9 @@ Defined in: [themes/progress/progress-with-status.ts:93](https://github.com/patr
 
 > **stop**(): `void`
 
-Defined in: [themes/progress/base.ts:138](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/base.ts#L138)
+Defined in: [themes/progress/base.ts:183](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/base.ts#L183)
+
+Stops the progress bar
 
 #### Returns
 
@@ -188,7 +243,9 @@ Defined in: [themes/progress/base.ts:138](https://github.com/patrickeaton/easy-c
 
 > **update**(`progress`, `payload`): `void`
 
-Defined in: [themes/progress/progress-with-status.ts:97](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/themes/progress/progress-with-status.ts#L97)
+Defined in: [themes/progress/progress-with-status.ts:161](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/themes/progress/progress-with-status.ts#L161)
+
+Updates the progress bar
 
 #### Parameters
 
@@ -196,9 +253,13 @@ Defined in: [themes/progress/progress-with-status.ts:97](https://github.com/patr
 
 `number`
 
+The current progress value
+
 ##### payload
 
-[`StatusPayload`](../type-aliases/StatusPayload.md)
+[`StatusPayload`](../interfaces/StatusPayload.md)
+
+The payload for the status bar
 
 #### Returns
 

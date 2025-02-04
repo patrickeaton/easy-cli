@@ -8,11 +8,15 @@
 
 > **EasyCLIConfig**\<`TGloablParams`\>: `object`
 
-Defined in: [index.ts:6](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/index.ts#L6)
+Defined in: [index.ts:18](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/index.ts#L18)
+
+The configuration for the EasyCLI
 
 ## Type Parameters
 
 • **TGloablParams**
+
+The global params for the CLI
 
 ## Type declaration
 

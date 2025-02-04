@@ -6,9 +6,11 @@
 
 # Function: promptMultipleChoice()
 
-> **promptMultipleChoice**(`prompt`, `choices`, `__namedParameters`): `Promise`\<`any`\>
+> **promptMultipleChoice**(`prompt`, `choices`, `options`): `Promise`\<`any`\>
 
-Defined in: [prompts/prompt-multiple-choice.ts:14](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/prompts/prompt-multiple-choice.ts#L14)
+Defined in: [prompts/prompt-multiple-choice.ts:35](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/prompts/prompt-multiple-choice.ts#L35)
+
+Prompts the user to select multiple choices from a list of choices, if the input is invalid, it will prompt the user again for a valid input
 
 ## Parameters
 
@@ -16,14 +18,22 @@ Defined in: [prompts/prompt-multiple-choice.ts:14](https://github.com/patrickeat
 
 `string`
 
+The prompt to display to the user
+
 ### choices
 
 `string`[]
 
-### \_\_namedParameters
+The choices to display to the user
 
-`Options` = `{}`
+### options
+
+[`PromptMultipleChoiceOptions`](../type-aliases/PromptMultipleChoiceOptions.md) = `{}`
+
+The options for the prompt
 
 ## Returns
 
 `Promise`\<`any`\>
+
+The validated choices the user selected

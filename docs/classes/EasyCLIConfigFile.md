@@ -6,21 +6,27 @@
 
 # Class: EasyCLIConfigFile
 
-Defined in: [config/index.ts:26](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/config/index.ts#L26)
+Defined in: [config/index.ts:62](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/config/index.ts#L62)
+
+A class to handle loading and saving configuration files.
 
 ## Constructors
 
 ### new EasyCLIConfigFile()
 
-> **new EasyCLIConfigFile**(`__namedParameters`): [`EasyCLIConfigFile`](EasyCLIConfigFile.md)
+> **new EasyCLIConfigFile**(`params`): [`EasyCLIConfigFile`](EasyCLIConfigFile.md)
 
-Defined in: [config/index.ts:34](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/config/index.ts#L34)
+Defined in: [config/index.ts:75](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/config/index.ts#L75)
+
+Create a new configuration file handler.
 
 #### Parameters
 
-##### \_\_namedParameters
+##### params
 
 [`ConfigFileParams`](../type-aliases/ConfigFileParams.md)
+
+The parameters to use when loading the configuration file
 
 #### Returns
 
@@ -32,11 +38,15 @@ Defined in: [config/index.ts:34](https://github.com/patrickeaton/easy-cli/blob/a
 
 > **fileExists**(`filePath`): `boolean`
 
-Defined in: [config/index.ts:227](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/config/index.ts#L227)
+Defined in: [config/index.ts:303](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/config/index.ts#L303)
+
+Check if a configuration file exists.
 
 #### Parameters
 
 ##### filePath
+
+An optional file path to use instead of the default otherwise it will scan using the given rules.
 
 `null` | `string`
 
@@ -44,13 +54,17 @@ Defined in: [config/index.ts:227](https://github.com/patrickeaton/easy-cli/blob/
 
 `boolean`
 
+boolean Whether or not the configuration file exists
+
 ***
 
 ### load()
 
 > **load**\<`TConfig`\>(`path`): `TConfig`
 
-Defined in: [config/index.ts:205](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/config/index.ts#L205)
+Defined in: [config/index.ts:269](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/config/index.ts#L269)
+
+Load a configuration file for the given path.
 
 #### Type Parameters
 
@@ -59,6 +73,8 @@ Defined in: [config/index.ts:205](https://github.com/patrickeaton/easy-cli/blob/
 #### Parameters
 
 ##### path
+
+An optional path override to use when loading the configuration file, otherwise it will use the default path.
 
 `null` | `string`
 
@@ -72,7 +88,9 @@ Defined in: [config/index.ts:205](https://github.com/patrickeaton/easy-cli/blob/
 
 > **save**\<`TConfig`\>(`config`, `filePath`): `Promise`\<`void`\>
 
-Defined in: [config/index.ts:233](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/config/index.ts#L233)
+Defined in: [config/index.ts:315](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/config/index.ts#L315)
+
+Save a configuration object to a file.
 
 #### Type Parameters
 
@@ -84,7 +102,11 @@ Defined in: [config/index.ts:233](https://github.com/patrickeaton/easy-cli/blob/
 
 `TConfig`
 
+The configuration object to save
+
 ##### filePath
+
+The file path to save the configuration to
 
 `null` | `string`
 

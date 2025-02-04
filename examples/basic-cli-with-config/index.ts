@@ -20,7 +20,7 @@ const config = new EasyCLIConfigFile({
 });
 
 app.setTheme(theme);
-app.setConfig(config);
+app.setConfigFile(config);
 
 /**
  * This command will configure the configuration file.

@@ -8,7 +8,9 @@
 
 > **CsvFieldMapping**\<`TType`\>: `object`
 
-Defined in: [helpers/csv-file-helper.ts:7](https://github.com/patrickeaton/easy-cli/blob/ab5cb143feca4db651c6301eb08aa7237cd71b79/src/helpers/csv-file-helper.ts#L7)
+Defined in: [helpers/csv-file-helper.ts:15](https://github.com/patrickeaton/easy-cli/blob/74d97c3fa8c354b7b3193533a1494ff778ae7a99/src/helpers/csv-file-helper.ts#L15)
+
+A mapping for a CSV field to a field in an object.
 
 ## Type Parameters
 
@@ -32,9 +34,9 @@ Defined in: [helpers/csv-file-helper.ts:7](https://github.com/patrickeaton/easy-
 
 > **required**: `boolean`
 
-### transform()
+### transform()?
 
-> **transform**: (`value`) => `any` \| `Promise`\<`any`\>
+> `optional` **transform**: (`value`) => `any` \| `Promise`\<`any`\>
 
 #### Parameters
 
