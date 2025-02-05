@@ -1,15 +1,9 @@
-**easy-cli**
-
-***
-
-# easy-cli
-
 ## Modules
 
 | Module | Description |
 | ------ | ------ |
-| [class](class.md) | - |
-| [config](config.md) | - |
-| [helpers](helpers.md) | - |
-| [prompts](prompts.md) | - |
-| [themes](themes.md) | - |
+| [app](app.md) | This module contains the EasyCLI class which is the main class for the EasyCLI library. |
+| [config](config.md) | This module contains configuration management for the Easy CLI Library |
+| [helpers](helpers.md) | This module contains helpers for the EasyCLI library. |
+| [prompts](prompts.md) | This module contains prompts for the EasyCLI library. |
+| [themes](themes.md) | This module contains theming for the EasyCLI library. |

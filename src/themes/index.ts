@@ -1,3 +1,5 @@
+/** @packageDocumentation This module contains theming for the EasyCLI library. */
+
 import chalk, { Chalk } from 'chalk';
 import { EasyCLILogger } from '../logger';
 import { ThemedTable, ThemedTableColumn } from './themed-table';

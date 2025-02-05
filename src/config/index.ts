@@ -1,3 +1,5 @@
+/** @packageDocumentation This module contains configuration management for the Easy CLI Library */
+
 import path from 'path';
 import os from 'os';
 import appRootPath from 'app-root-path';

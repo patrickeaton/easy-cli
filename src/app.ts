@@ -1,3 +1,5 @@
+/** @packageDocumentation This module contains the EasyCLI class which is the main class for the EasyCLI library. */
+
 import yargs from 'yargs';
 import { CommandOption, CommandOptionObject, EasyCLICommand } from './commands';
 import { EasyCLITheme } from './themes';
@@ -24,7 +26,7 @@ export type EasyCLIConfig<TGloablParams> = {
 
 /**
  * The EasyCLI class
- * 
+ *
  * @class EasyCLI
  * @template TGlobalParams The global params for the CLI
  *

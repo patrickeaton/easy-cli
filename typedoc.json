@@ -15,12 +15,16 @@
   "outputFileStrategy": "modules",
   "groupOrder": ["Classes", "Functions", "*"],
   "entryPoints": [
-    "src/class.ts",
+    "src/app.ts",
     "src/helpers/index.ts",
     "src/themes/index.ts",
     "src/prompts/index.ts",
     "src/config/index.ts"
   ],
+  "name": "easy-cli",
+  "hidePageHeader": true,
+  "hidePageTitle": true,
+  "hideGroupHeadings": true,
   "tableColumnSettings": {
     "hideDefaults": false,
     "hideInherited": false,

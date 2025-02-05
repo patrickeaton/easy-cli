@@ -1,3 +1,4 @@
+/** @packageDocumentation This module contains the code for commands for the easy CLI Library */
 import { EasyCLITheme } from '../themes';
 import { Options, PositionalOptions, CommandModule } from 'yargs';
 

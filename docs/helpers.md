@@ -1,47 +1,41 @@
-[**easy-cli**](README.md)
-
-***
-
 [easy-cli](README.md) / helpers
 
-# helpers
+This module contains helpers for the EasyCLI library.
 
-## Classes
+## CSVMapper\<TObject, TFileObject\>
 
-### CSVMapper\<TObject, TFileObject\>
+Defined in: [helpers/csv-file-helper.ts:133](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/helpers/csv-file-helper.ts#L133)
 
-Defined in: [helpers/csv-file-helper.ts:133](https://github.com/patrickeaton/easy-cli/blob/9266145e24dbd218747463d681a3dacb9acaa222/src/helpers/csv-file-helper.ts#L133)
-
-#### Type Parameters
+### Type Parameters
 
 | Type Parameter | Default type |
 | ------ | ------ |
 | `TObject` *extends* `Record`\<`string`, `any`\> | `Record`\<`string`, `any`\> |
 | `TFileObject` *extends* `Record`\<`string`, `any`\> | `Record`\<`string`, `any`\> |
 
-#### Constructors
+### Constructors
 
-##### new CSVMapper()
+#### new CSVMapper()
 
 ```ts
 new CSVMapper<TObject, TFileObject>(options: CsvMapperOptions<TObject>): CSVMapper<TObject, TFileObject>
 ```
 
-Defined in: [helpers/csv-file-helper.ts:183](https://github.com/patrickeaton/easy-cli/blob/9266145e24dbd218747463d681a3dacb9acaa222/src/helpers/csv-file-helper.ts#L183)
+Defined in: [helpers/csv-file-helper.ts:183](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/helpers/csv-file-helper.ts#L183)
 
 Create a new CSV Mapper.
 
-###### Parameters
+##### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `options` | [`CsvMapperOptions`](helpers.md#csvmapperoptionstobject)\<`TObject`\> | The options for the CSV Mapper. |
 
-###### Returns
+##### Returns
 
 [`CSVMapper`](helpers.md#csvmappertobject-tfileobject)\<`TObject`, `TFileObject`\>
 
-###### Example
+##### Example
 
 ```ts
 const csvProcessor = new CSVMapper({
@@ -76,47 +70,47 @@ interactive: true,
 });
 ```
 
-#### Methods
+### Methods
 
-##### processFile()
+#### processFile()
 
 ```ts
 processFile(path: string): Promise<[string, any][]>
 ```
 
-Defined in: [helpers/csv-file-helper.ts:258](https://github.com/patrickeaton/easy-cli/blob/9266145e24dbd218747463d681a3dacb9acaa222/src/helpers/csv-file-helper.ts#L258)
+Defined in: [helpers/csv-file-helper.ts:258](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/helpers/csv-file-helper.ts#L258)
 
 Process a CSV file and return the data as an array of transformed objects.
 
-###### Parameters
+##### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `path` | `string` | The path to the CSV file to process |
 
-###### Returns
+##### Returns
 
 `Promise`\<\[`string`, `any`\][]\>
 
 The data from the CSV file as an array of transformed objects
 
-## Interfaces
+***
 
-### CsvFieldMapping\<TType\>
+## CsvFieldMapping\<TType\>
 
-Defined in: [helpers/csv-file-helper.ts:18](https://github.com/patrickeaton/easy-cli/blob/9266145e24dbd218747463d681a3dacb9acaa222/src/helpers/csv-file-helper.ts#L18)
+Defined in: [helpers/csv-file-helper.ts:18](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/helpers/csv-file-helper.ts#L18)
 
 A mapping for a CSV field to a field in an object.
 
  CsvFieldMapping
 
-#### Type Parameters
+### Type Parameters
 
 | Type Parameter | Default type |
 | ------ | ------ |
 | `TType` | `any` |
 
-#### Properties
+### Properties
 
 | Property | Type | Description |
 | ------ | ------ | ------ |
@@ -128,15 +122,15 @@ A mapping for a CSV field to a field in an object.
 
 ***
 
-### CsvFieldMappings\<TObject\>
+## CsvFieldMappings\<TObject\>
 
-Defined in: [helpers/csv-file-helper.ts:37](https://github.com/patrickeaton/easy-cli/blob/9266145e24dbd218747463d681a3dacb9acaa222/src/helpers/csv-file-helper.ts#L37)
+Defined in: [helpers/csv-file-helper.ts:37](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/helpers/csv-file-helper.ts#L37)
 
 A mapping of fields in an object to their CSV field mappings.
 
  CsvFieldMappings
 
-#### Type Parameters
+### Type Parameters
 
 | Type Parameter | Description |
 | ------ | ------ |
@@ -144,21 +138,21 @@ A mapping of fields in an object to their CSV field mappings.
 
 ***
 
-### CsvMapperOptions\<TObject\>
+## CsvMapperOptions\<TObject\>
 
-Defined in: [helpers/csv-file-helper.ts:78](https://github.com/patrickeaton/easy-cli/blob/9266145e24dbd218747463d681a3dacb9acaa222/src/helpers/csv-file-helper.ts#L78)
+Defined in: [helpers/csv-file-helper.ts:78](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/helpers/csv-file-helper.ts#L78)
 
 The settings for the CSV Mapper instance.
 
  CsvMapperOptions
 
-#### Type Parameters
+### Type Parameters
 
 | Type Parameter |
 | ------ |
 | `TObject` *extends* `Record`\<`string`, `any`\> |
 
-#### Properties
+### Properties
 
 | Property | Type | Description |
 | ------ | ------ | ------ |
@@ -170,15 +164,15 @@ The settings for the CSV Mapper instance.
 
 ***
 
-### ObjectDataMapper\<TObject, TFileObject\>
+## ObjectDataMapper\<TObject, TFileObject\>
 
-Defined in: [helpers/csv-file-helper.ts:62](https://github.com/patrickeaton/easy-cli/blob/9266145e24dbd218747463d681a3dacb9acaa222/src/helpers/csv-file-helper.ts#L62)
+Defined in: [helpers/csv-file-helper.ts:62](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/helpers/csv-file-helper.ts#L62)
 
 A mapping of CSV columns to their object fields that they map to.
 
  ObjectDataMapper
 
-#### Example
+### Example
 
 ```
 {
@@ -188,7 +182,7 @@ A mapping of CSV columns to their object fields that they map to.
 }
 ```
 
-#### Type Parameters
+### Type Parameters
 
 | Type Parameter | Description |
 | ------ | ------ |
