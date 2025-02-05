@@ -6,6 +6,10 @@ import yargsInteractive from 'yargs-interactive';
 
 /**
  * A command positional option that can be passed to a command with the option to prompt the user for the value.
+ * @interface CommandOption
+ *
+ * @extends Options
+ * @property {string} [prompt='never'] When to prompt the user for the value
  */
 export type CommandOption = Options & {
   prompt?: 'always' | 'missing' | 'never';
@@ -13,6 +17,10 @@ export type CommandOption = Options & {
 
 /**
  * A command argument (flag) that can be passed to a command with the option to prompt the user for the value.
+ * @interface CommandArgument
+ *
+ * @extends PositionalOptionss
+ * @property {string} [prompt='never'] When to prompt the user for the value
  */
 export type CommandArgument = PositionalOptions & {
   prompt?: 'always' | 'missing' | 'never';
@@ -20,6 +28,12 @@ export type CommandArgument = PositionalOptions & {
 
 /**
  * A record of flags/postional options for a command.
+ * @interface CommandOptionObject
+ *
+ * @template TParams The params for the command
+ * @template TGlobalParams The global params for the CLI
+ *
+ * @property {CommandOption | CommandArgument} [key] The flag or argument to add to the command
  */
 export type CommandOptionObject<TParams, TGlobalParams> = Record<
   (keyof TGlobalParams & TParams) | string,
@@ -28,6 +42,8 @@ export type CommandOptionObject<TParams, TGlobalParams> = Record<
 
 /**
  * Optional Arguments for setting up a command.
+ *
+ * @interface CommandSetupOptions
  *
  * @template TGlobalParams The global params for the CLI
  * @template TParams The params for the command

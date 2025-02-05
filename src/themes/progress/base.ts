@@ -3,7 +3,7 @@ import { Options, SingleBar } from 'cli-progress';
 
 /**
  * Options for the progress bar
- * @typedef ThemedProgressBarOptions
+ * @interface ThemedProgressBarOptions
  * @type {object}
  *
  * @property {DisplayOptions} [barDisplayOptions] The display options for the progress bar
@@ -15,7 +15,6 @@ import { Options, SingleBar } from 'cli-progress';
  * @property {DisplayOptions} [timeLeftDisplayOptions] The display options for the time left
  * @property {boolean} [showCompleted=true] Whether to show the completed count
  * @property {DisplayOptions} [completedDisplayOptions] The display options for the completed count
- *
  */
 export type ThemedProgressBarOptions = {
   barDisplayOptions?: DisplayOptions;
@@ -31,6 +30,7 @@ export type ThemedProgressBarOptions = {
 
 /**
  * Default options for the progress bar
+ * @hidden
  */
 export const DEFAULT_PROGRESS_BAR_OPTIONS: ThemedProgressBarOptions = {
   // Default options for the progress bar

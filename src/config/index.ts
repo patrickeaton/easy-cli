@@ -36,7 +36,8 @@ export type ConfigFileRecursionBehaviour =
 /**
  * The parameters to use when loading a configuration file.
  *
- * @typedef {Object} ConfigFileParams
+ * @interface {Object} ConfigFileParams
+ *
  * @property {string} filename The base filename to look for, without the extension.
  * @property {ValidExtensions[]} extensions What file extensions to look for, in order of preference
  * @property {ConfigFileRecursionBehaviour} [recursion] How to handle recursive config files
@@ -58,6 +59,17 @@ export type ConfigFileParams = {
 
 /**
  * A class to handle loading and saving configuration files.
+ * @example
+ * ```typescript
+ * const config = new EasyCLIConfigFile({
+ *   filename: 'config',
+ *   extensions: ['json', 'js', 'ts'],
+ *   recursion: 'prefer_highest',
+ *   root: 'cwd',
+ * });
+ *
+ * const configuration = config.load();
+ * ```
  */
 export class EasyCLIConfigFile {
   private filename: string;

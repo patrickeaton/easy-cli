@@ -5,7 +5,7 @@ import { DisplayOptions, EasyCLITheme } from '.';
  * A column in a themed table
  *
  * @template TItem
- * @typedef ThemedTableColumn
+ * @interface ThemedTableColumn
  *
  * @property {string} name The name of the column
  * @property {(item: TItem) => string} data A function that returns the value to display
@@ -27,7 +27,7 @@ export type ThemedTableColumn<TItem = Record<string, any>> = {
  * Options for the themed table
  *
  * @template TItem
- * @typedef ThemedTableOptions
+ * @interface ThemedTableOptions
  * @type {object}
  *
  * @property {EasyCLITheme} theme The theme to use

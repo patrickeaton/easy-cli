@@ -5,7 +5,7 @@ import { DisplayOptions, EasyCLITheme } from '../themes';
 /**
  * Options for the promptConfirm function
  * 
- * @typedef PromptConfirmOptions
+ * @interface PromptConfirmOptions
  * @type {object}
  * 
  * @property {boolean} [defaultOption=false] The default option to use
@@ -25,6 +25,23 @@ export type PromptConfirmOptions = {
  * @param {PromptConfirmOptions} options The options for the prompt
  * 
  * @returns {Promise<boolean>} The choice the user selected
+ * 
+ * @example
+ * ```typescript
+ * // Prompt the user to confirm a prompt
+ * const choice = await promptConfirm('Are you sure?');
+ * console.log(choice);
+ * 
+ * // Prompt the user to confirm a prompt with a default option
+ * const choice = await promptConfirm('Are you sure?', { defaultOption: true });
+ * console.log(choice);
+ * 
+ * // Prompt the user to confirm a prompt using a custom theme
+ * const choice = await promptConfirm('Are you sure?', {
+ *  theme: new EasyCLITheme(),
+ *  promptTheme: 'info',
+ * });
+ * ```
  */
 export const promptConfirm = async (
   prompt: string,

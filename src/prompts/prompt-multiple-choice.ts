@@ -6,7 +6,7 @@ import sripeAnsi from 'strip-ansi';
 /**
  * Options for the promptMultipleChoice function
  *
- * @typedef PromptMultipleChoiceOptions
+ * @interface PromptMultipleChoiceOptions
  * @type {object}
  *
  * @property {string[]} [defaultSelected=[]] The default selected options
@@ -31,6 +31,38 @@ export type PromptMultipleChoiceOptions = {
  * @param {PromptMultipleChoiceOptions} options  The options for the prompt
  *
  * @returns {Promise<string[]>} The validated choices the user selected
+ *
+ * @example
+ * ```typescript
+ * // Prompt the user to select a choice
+ * const choices = await promptMultipleChoice('Select a choice', ['A', 'B', 'C']);
+ * console.log(choices);
+ *
+ * // Prompt the user to select multiple choices with a default selection
+ * const choices = await promptMultipleChoice('Select a choice', ['A', 'B', 'C'], {
+ *  defaultSelected: ['A', 'B'],
+ * validator: (input) => input.length > 0,
+ * validationErrorMessage: 'You must select at least one choice',
+ * });
+ * console.log(choices);
+ *
+ * // Prompt the user to select a choice using a custom theme
+ * const choices = await promptMultipleChoice('Select a choice', ['A', 'B', 'C'], {
+ * theme: new EasyCLITheme(),
+ * promptTheme: 'info',
+ * });
+ * console.log(choices);
+ *
+ * // Prompt the user to select a choice using a custom displaying the choices with a theme
+ * const theme = new EasyCLITheme();
+ * const choices = await promptMultipleChoice('Select a choice', [
+ *   theme.formattedString('A', 'info'),
+ *   theme.formattedString('B', 'warn'),
+ *   theme.formattedString('C', 'error')
+ * ]);
+ * console.log(choices);
+ * ```
+ *
  */
 export const promptMultipleChoice = async (
   prompt: string,

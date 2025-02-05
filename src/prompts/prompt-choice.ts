@@ -4,10 +4,10 @@ import { DisplayOptions, EasyCLITheme } from '../themes';
 
 /**
  * Options for the promptChoice function
- * 
- * @typedef PromptChoiceOptions
+ *
+ * @interface PromptChoiceOptions
  * @type {object}
- * 
+ *
  * @property {string | null} [defaultOption=null] The default option to use ()
  * @property {(input: string) => boolean} [validator=() => true] A function to validate the input
  * @property {string} [validationErrorMessage='Invalid input'] The error message to display if the input is invalid
@@ -24,12 +24,40 @@ export type PromptChoiceOptions = {
 
 /**
  * Prompts the user to select a choice from a list of choices, if the input is invalid, it will prompt the user again for a valid input
- * 
+ *
  * @param {string} prompt The prompt to display to the user
  * @param {string[]} choices The choices to display to the user
  * @param {PromptChoiceOptions} options The options for the prompt
- * 
+ *
  * @returns {Promise<string>} The choice the user selected
+ *
+ * @example
+ * ```typescript
+ * // Prompt the user to select a choice
+ * const choice = await promptChoice('Select a choice', ['A', 'B', 'C']);
+ * console.log(choice);
+ *
+ * // Prompt the user to select a choice with a default option
+ * const choice = await promptChoice('Select a choice', ['A', 'B', 'C'], { defaultOption: 'A' });
+ *  console.log(choice);
+ *
+ * // Prompt the user to select a choice using a custom theme
+ * const choice = await promptChoice('Select a choice', ['A', 'B', 'C'], {
+ * theme: new EasyCLITheme(),
+ * promptTheme: 'info',
+ * });
+ * console.log(choice);
+ * 
+ * // Prompt the user to select a choice using a custom displaying the choices with a theme
+ * const theme = new EasyCLITheme();
+ * const choice = await promptChoice('Select a choice', [
+ *  theme.formattedString('A', 'info'),
+ *  theme.formattedString('B', 'warn'),
+ *  theme.formattedString('C', 'error'),
+ * ]);
+ * console.log(choice);
+ * ```
+ *
  */
 export const promptChoice = async (
   prompt: string,

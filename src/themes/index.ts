@@ -13,7 +13,7 @@ import {
 
 /**
  * Options for displaying a string
-  * @interface StringDisplayOptions
+ * @interface StringDisplayOptions
  * @property {boolean} [bold] Whether to bold the string
  * @property {boolean} [italic] Whether to italicize the string
  * @property {boolean} [underline] Whether to underline the string
@@ -33,9 +33,10 @@ export type StringDisplayOptions = {
 };
 
 /**
- * Options for displaying a string
-  *
- * Can be a string, a StringDisplayOptions object, or an array of strings and StringDisplayOptions objects
+ * Options for displaying a string. Can be a string, a StringDisplayOptions object, or an array of strings and StringDisplayOptions objects.
+ * @typedef DisplayOptions
+ *
+ * @type {string | StringDisplayOptions | (string | StringDisplayOptions)[]}
  */
 export type DisplayOptions =
   | string
@@ -44,7 +45,8 @@ export type DisplayOptions =
 
 /**
  * Named display options
-  */
+ * @enum
+ */
 export type NamedDisplayOptions =
   | 'log'
   | 'error'
@@ -57,7 +59,8 @@ export type NamedDisplayOptions =
 /**
  * A theme for the CLI, that allows for customizing the look and feel of the CLI, generating logs, tables, spinners, and progress bars.
  *
-  * @class EasyCLITheme
+ * @class EasyCLITheme
+ *
  * @property {number} verbosity The verbosity level of the theme
  * @property {Record<NamedDisplayOptions, StringDisplayOptions>} namedDisplayOptions The named display options for the theme
  * @property {EasyCLITheme} setVerbosity Sets the verbosity level of the theme
@@ -67,6 +70,7 @@ export type NamedDisplayOptions =
  * @property {ThemedSpinner} getSpinner Gets a spinner with the theme
  * @property {ThemedSimpleProgressBar} getSimpleProgressBar Gets a simple progress bar with the theme
  * @property {ThemedStatusProgressBar} getStatusProgressBar Gets a status progress bar with the theme
+ *
  * @example
  * ```typescript
  * const theme = new EasyCLITheme();
@@ -222,7 +226,7 @@ export class EasyCLITheme {
    *  { name: 'Name', data: item => item.name },
    *  { name: 'Age', data: item => item.age },
    * ]);
-   * 
+   *
    * table.render([
    *  { name: 'Alice', age: 25 },
    *  { name: 'Bob', age: 30 },

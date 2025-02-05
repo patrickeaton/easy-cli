@@ -22,6 +22,7 @@ export type ThemedSimpleProgressBarOptions = ThemedProgressBarOptions & {
 
 /**
  * Default options for the ThemedSimpleProgressBar
+ * @hidden
  */
 const DEFAULT_SIMPLE_PROGRESS_BAR_OPTIONS: ThemedSimpleProgressBarOptions = {
   ...DEFAULT_PROGRESS_BAR_OPTIONS,

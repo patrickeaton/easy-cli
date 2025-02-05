@@ -33,6 +33,7 @@ export type ThemedStatusProgressBarOptions = ThemedProgressBarOptions & {
 
 /**
  * Default options for the ThemedStatusProgressBar
+ * @hidden
  */
 const DEFAULT_STATUS_PROGRESS_BAR_OPTIONS: ThemedStatusProgressBarOptions = {
   ...DEFAULT_PROGRESS_BAR_OPTIONS,
@@ -54,7 +55,7 @@ const DEFAULT_STATUS_PROGRESS_BAR_OPTIONS: ThemedStatusProgressBarOptions = {
 /**
  * Payload for the status bar
  *
-  * @interface StatusPayload
+ * @interface StatusPayload
  * @property {string} current The current status
  * @property {number} [success] The success count
  * @property {number} [warn] The warn count

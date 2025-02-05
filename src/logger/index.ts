@@ -3,8 +3,8 @@ import { DisplayOptions, EasyCLITheme } from '../themes';
 /**
  * Supported log types
  * @typedef {'log' | 'info' | 'warn' | 'error' | 'success'} SupportedLogType
+ * 
  * @type {string}
- * @readonly
  */
 export type SupportedLogType = 'log' | 'info' | 'warn' | 'error' | 'success';
 

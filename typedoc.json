@@ -1,9 +1,33 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": ["./src"],
   "out": "./docs",
+  "readme": "none",
   "exclude": ["**/node_modules/**/*", "**/dist/**/*"],
   "plugin": ["typedoc-plugin-markdown"],
   "tsconfig": "./tsconfig.build.json",
-  
+  "useCodeBlocks": true,
+  "parametersFormat": "table",
+  "indexFormat": "table",
+  "typeDeclarationFormat": "table",
+  "propertyMembersFormat": "table",
+  "interfacePropertiesFormat": "table",
+  "expandParameters": true,
+  "outputFileStrategy": "modules",
+  "groupOrder": ["Classes", "Functions", "*"],
+  "entryPoints": [
+    "src/class.ts",
+    "src/helpers/index.ts",
+    "src/themes/index.ts",
+    "src/prompts/index.ts",
+    "src/config/index.ts"
+  ],
+  "tableColumnSettings": {
+    "hideDefaults": false,
+    "hideInherited": false,
+    "hideModifiers": false,
+    "hideOverrides": false,
+    "hideSources": true,
+    "hideValues": false,
+    "leftAlignHeaders": false
+  }
 }

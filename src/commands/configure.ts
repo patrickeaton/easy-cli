@@ -5,10 +5,14 @@ import { EasyCLITheme } from '../themes';
 
 /**
  * Options for the configure command
+ * @interface ConfigureCommandOptions
+ * 
  * @template TGlobalParams The global params for the CLI
  * @template TParams The params for the command
+ * 
  * @property {string[]} globalKeysToUse What key(s) are you setting?
  * @property {(params: TGlobalParams & TParams) => any} transformer How to transform the params before saving
+ * 
  * @extends CommandSetupOptions
  */
 export type ConfigureCommandOptions<TGlobalParams, TParams> =

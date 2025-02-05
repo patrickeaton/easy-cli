@@ -4,10 +4,10 @@ import { DisplayOptions, EasyCLITheme } from '../themes';
 
 /**
  * Options for the promptNumber function
- * 
- * @typedef PromptNumberOptions
+ *
+ * @interface PromptNumberOptions
  * @type {object}
- * 
+ *
  * @property {number | null} [value=null] The default value to use
  * @property {(input: number) => boolean} [validator=() => true] A function to validate the input
  * @property {string} [validationErrorMessage='Invalid input'] The error message to display if the input is invalid
@@ -24,11 +24,33 @@ export type PromptNumberOptions = {
 
 /**
  * Prompts the user to enter a number.
- * 
+ *
  * @param {string} prompt The prompt to display to the user
  * @param {PromptNumberOptions} options The options for the prompt
- * 
+ *
  * @returns {Promise<number>} The number the user entered
+ *
+ * @example
+ * ```typescript
+ * // Prompt the user to enter a number
+ * const number = await promptNumber('Enter a number');
+ * console.log(number);
+ *
+ * // Prompt the user to enter a number between 1 and 10
+ * const number = await promptNumber('Enter a number between 1 and 10', {
+ *   validator: (input) => input >= 1 && input <= 10,
+ *   validationErrorMessage: 'Number must be between 1 and 10',
+ * });
+ * console.log(number);
+ *
+ * // Prompt the user to enter a number using a custom theme
+ * const number = await promptNumber('Enter a number', {
+ *   theme: new EasyCLITheme(),
+ *   promptTheme: 'info',
+ * });
+ * console.log(number);
+ * ```
+ *
  */
 export const promptNumber = async (
   prompt: string,

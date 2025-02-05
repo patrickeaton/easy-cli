@@ -5,13 +5,17 @@ import { EasyCLITheme } from '../themes';
 
 /**
  * Options for the init command
+ * @interface InitCommandOptions
+ *
  * @template TGlobalParams The global params for the CLI
  * @template TParams The params for the command
+ *
  * @property {boolean} failOnExists Should the command fail if the config file already exists?
  * @property {string[]} globalKeysToUse What key(s) are you setting?
  * @property {Partial<TGlobalParams & TParams>} defaults The default values to use
  * @property {(params: TGlobalParams & TParams) => any} transformer How to transform the params before saving
  * @property {string} configFlag The name of the variable to use for the config file
+ *
  * @extends CommandSetupOptions
  */
 export type InitCommandOptions<TGlobalParams, TParams> = CommandSetupOptions<
@@ -27,11 +31,12 @@ export type InitCommandOptions<TGlobalParams, TParams> = CommandSetupOptions<
 
 /**
  * A command to add an init command to the CLI that will save the configuration
- * 
+ *
  * @template TParams The params for the command
  * @template TGloablParams The global params for the CLI
- * @extends EasyCLICommand
  * 
+ * @extends EasyCLICommand
+ *
  * @example
  * ```typescript
  * new EasyCLIInitCommand(config, 'init', {
@@ -51,6 +56,13 @@ export class EasyCLIInitCommand<TParams, TGloablParams> extends EasyCLICommand<
   TParams,
   TGloablParams
 > {
+
+  /**
+   * Creates a new init command
+   * @param {EasyCLIConfigFile} config The configuration file to use to save the config
+   * @param {string} [name='init'] The name of the command
+   * @param {InitCommandOptions<TGloablParams, TParams>} [options={}] The options for the command
+   */
   constructor(
     config: EasyCLIConfigFile,
     name: string = 'init',

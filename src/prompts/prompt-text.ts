@@ -5,7 +5,7 @@ import { DisplayOptions, EasyCLITheme } from '../themes';
 /**
  * Options for the promptTextInput function
  *
- * @typedef PromptTextOptions
+ * @interface PromptTextOptions
  * @type {object}
  *
  * @property {'input' | 'password' | 'editor'} [type='input'] The type of input to use. 'input' is a normal text input, 'password' is hidden whilst typing, 'editor' opens up an editor
@@ -29,7 +29,38 @@ export type PromptTextOptions = {
  *
  * @param {string} prompt The prompt to display to the user
  * @param {PromptTextOptions} options The options for the prompt
+ *
  * @returns {Promise<string>} The validated text the user entered
+ *
+ * @example
+ * ```typescript
+ * // Prompt the user to enter some text
+ * const text = await promptTextInput('Enter some text');
+ * console.log(text);
+ *
+ * // Prompt the user to enter a password
+ * const password = await promptTextInput('Enter a password', { type: 'password' });
+ * console.log(password);
+ *
+ * // Prompt the user to enter some text using an editor
+ * const editor = await promptTextInput('Enter some text', { type: 'editor' });
+ * console.log(editor);
+ *
+ * // Prompt the user to enter some text longer than 5 characters
+ * const text = await promptTextInput('Enter some text', {
+ *  validator: (input) => input.length > 5,
+ *  validationErrorMessage: 'Text must be longer than 5 characters',
+ * });
+ * console.log(text);
+ *
+ * // Prompt the user to enter some text using a custom theme
+ * const text = await promptTextInput('Enter some text', {
+ * theme: new EasyCLITheme(),
+ *   promptTheme: 'info',
+ * });
+ * console.log(text);
+ * ```
+ *
  */
 export const promptTextInput = async (
   prompt: string,

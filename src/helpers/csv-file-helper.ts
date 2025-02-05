@@ -6,6 +6,9 @@ import csv from 'csv-parser';
 
 /**
  * A mapping for a CSV field to a field in an object.
+ *
+ * @interface CsvFieldMapping
+ *
  * @property aliases The aliases for the field in the CSV.
  * @property required If the field is required or not.
  * @property transform The function to transform the value from the CSV. (Default: value => value)
@@ -22,6 +25,14 @@ export type CsvFieldMapping<TType = any> = {
 
 /**
  * A mapping of fields in an object to their CSV field mappings.
+ *
+ * @interface CsvFieldMappings
+ *
+ * @template TObject The object type to map to.
+ *
+ * @property {keyof TObject} The name of the field in the object.
+ * @property {CsvFieldMapping<TObject[keyof TObject]>} The rules for mapping the field.
+ *
  */
 export type CsvFieldMappings<TObject> = Record<
   keyof TObject,
@@ -30,6 +41,23 @@ export type CsvFieldMappings<TObject> = Record<
 
 /**
  * A mapping of CSV columns to their object fields that they map to.
+ *
+ * @interface ObjectDataMapper
+ *
+ * @template TObject The output object type.
+ * @template TFileObject The CSV file object type.
+ *
+ * @property {keyof TFileObject} The column in the CSV file.
+ * @property {keyof TObject[]} The fields in the object that the column maps to.
+ *
+ * @example
+ * ```
+ * {
+ * 'Username': ['username'],
+ * 'Identifier': ['id'],
+ * 'First name': ['firstName', 'firstInital'],
+ * }
+ * ```
  */
 export type ObjectDataMapper<TObject, TFileObject> = Record<
   keyof TFileObject,
@@ -37,13 +65,15 @@ export type ObjectDataMapper<TObject, TFileObject> = Record<
 >;
 
 /**
- * Options for the CSV Mapper.
+ * The settings for the CSV Mapper instance.
  *
- * @property mappings The field mappings for the CSV file.
- * @property interactive If it should interactively ask for other field mappings. (Default: false)
- * @property discardOriginalFields If it should discard any fields that are not mapped or not. If false, will store them with their name from the CSV. (Default: true)
- * @property theme The theme to use for the prompts.
- * @property validate If it should validate the data against the mappings. (Default: true)
+ * @interface CsvMapperOptions
+ *
+ * @property {CsvFieldMappings<TObject>} mappings The field mappings for the CSV file.
+ * @property {boolean} interactive If it should interactively ask for other field mappings. (Default: false)
+ * @property {boolean} discardOriginalFields If it should discard any fields that are not mapped or not. If false, will store them with their name from the CSV. (Default: true)
+ * @property {EasyCLITheme} theme The theme to use for the prompts.
+ * @property {boolean} validate If it should validate the data against the mappings. (Default: true)
  */
 export type CsvMapperOptions<TObject extends Record<string, any>> = {
   // If it should interactively ask for other field mappings. (Default: false)
@@ -58,7 +88,47 @@ export type CsvMapperOptions<TObject extends Record<string, any>> = {
 
 /*
  * A class to map CSV files to objects.
- * @group helpers 
+ *
+ * @template TObject The object type to map to.
+ * @template TFileObject The CSV file object type.
+ *
+ * @class CSVMapper
+ *
+ * @example
+ * ```typescript
+ * const csvProcessor = new CSVMapper({
+ *   mappings: {
+ *     username: {
+ *       aliases: ['Username'],
+ *       required: true,
+ *       transform: value => value,
+ *     },
+ *     id: {
+ *       aliases: ['Identifier'],
+ *       required: true,
+ *       transform: value => parseInt(value),
+ *     },
+ *     lastName: {
+ *       aliases: [],
+ *       required: true,
+ *       transform: value => value,
+ *     },
+ *     firstName: {
+ *       aliases: ['First name', 'First Name'],
+ *       required: true,
+ *       transform: value => value,
+ *     },
+ *     firstInital: {
+ *       aliases: ['First name', 'First Name'],
+ *       required: true,
+ *       transform: value => value[0],
+ *     },
+ *   },
+ *   interactive: true,
+ * });
+ *
+ * const data = await csvProcessor.processFile('./username.csv');
+ * ```
  */
 export class CSVMapper<
   TObject extends Record<string, any> = Record<string, any>,

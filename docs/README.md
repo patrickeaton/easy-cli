@@ -2,12 +2,14 @@
 
 ***
 
-# Easy CLI
+# easy-cli
 
-A complete framework for building CLI applications in Javascript/Typescript. 
+## Modules
 
-## Mission
-
-There are a lot of powerful tools for building CLIs, but I often found that I was consistently reusing the same packages and writing the same code multiple times. This combines the power of yargs, with interactive prompts, theming, managing configuration files and various helpers. 
-
-## Examples
+| Module | Description |
+| ------ | ------ |
+| [class](class.md) | - |
+| [config](config.md) | - |
+| [helpers](helpers.md) | - |
+| [prompts](prompts.md) | - |
+| [themes](themes.md) | - |
