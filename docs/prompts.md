@@ -1,21 +1,20 @@
 [easy-cli](README.md) / prompts
 
+# prompts
+
 This module contains prompts for the EasyCLI library.
 
-## promptChoice()
+## Functions
 
-```ts
-function promptChoice(
-   prompt: string, 
-   choices: string[], 
-options: PromptChoiceOptions): Promise<any>
-```
+### promptChoice()
 
-Defined in: [prompts/prompt-choice.ts:62](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/prompts/prompt-choice.ts#L62)
+> **promptChoice**(`prompt`, `choices`, `options`): `Promise`\<`any`\>
+
+Defined in: [prompts/prompt-choice.ts:62](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-choice.ts#L62)
 
 Prompts the user to select a choice from a list of choices, if the input is invalid, it will prompt the user again for a valid input
 
-### Parameters
+#### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
@@ -23,13 +22,13 @@ Prompts the user to select a choice from a list of choices, if the input is inva
 | `choices` | `string`[] | The choices to display to the user |
 | `options` | [`PromptChoiceOptions`](prompts.md#promptchoiceoptions) | The options for the prompt |
 
-### Returns
+#### Returns
 
 `Promise`\<`any`\>
 
 The choice the user selected
 
-### Example
+#### Example
 
 ```typescript
 // Prompt the user to select a choice
@@ -59,30 +58,28 @@ console.log(choice);
 
 ***
 
-## promptConfirm()
+### promptConfirm()
 
-```ts
-function promptConfirm(prompt: string, options: PromptConfirmOptions): Promise<any>
-```
+> **promptConfirm**(`prompt`, `options`): `Promise`\<`any`\>
 
-Defined in: [prompts/prompt-confirm.ts:46](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/prompts/prompt-confirm.ts#L46)
+Defined in: [prompts/prompt-confirm.ts:46](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-confirm.ts#L46)
 
 Prompts the user to confirm a prompt.
 
-### Parameters
+#### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `prompt` | `string` | The prompt to display to the user |
 | `options` | [`PromptConfirmOptions`](prompts.md#promptconfirmoptions) | The options for the prompt |
 
-### Returns
+#### Returns
 
 `Promise`\<`any`\>
 
 The choice the user selected
 
-### Example
+#### Example
 
 ```typescript
 // Prompt the user to confirm a prompt
@@ -102,20 +99,15 @@ const choice = await promptConfirm('Are you sure?', {
 
 ***
 
-## promptMultipleChoice()
+### promptMultipleChoice()
 
-```ts
-function promptMultipleChoice(
-   prompt: string, 
-   choices: string[], 
-options: PromptMultipleChoiceOptions): Promise<any>
-```
+> **promptMultipleChoice**(`prompt`, `choices`, `options`): `Promise`\<`any`\>
 
-Defined in: [prompts/prompt-multiple-choice.ts:67](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/prompts/prompt-multiple-choice.ts#L67)
+Defined in: [prompts/prompt-multiple-choice.ts:67](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-multiple-choice.ts#L67)
 
 Prompts the user to select multiple choices from a list of choices, if the input is invalid, it will prompt the user again for a valid input
 
-### Parameters
+#### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
@@ -123,13 +115,13 @@ Prompts the user to select multiple choices from a list of choices, if the input
 | `choices` | `string`[] | The choices to display to the user |
 | `options` | [`PromptMultipleChoiceOptions`](prompts.md#promptmultiplechoiceoptions) | The options for the prompt |
 
-### Returns
+#### Returns
 
 `Promise`\<`any`\>
 
 The validated choices the user selected
 
-### Example
+#### Example
 
 ```typescript
 // Prompt the user to select a choice
@@ -163,30 +155,28 @@ console.log(choices);
 
 ***
 
-## promptNumber()
+### promptNumber()
 
-```ts
-function promptNumber(prompt: string, options: PromptNumberOptions): Promise<any>
-```
+> **promptNumber**(`prompt`, `options`): `Promise`\<`any`\>
 
-Defined in: [prompts/prompt-number.ts:55](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/prompts/prompt-number.ts#L55)
+Defined in: [prompts/prompt-number.ts:55](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-number.ts#L55)
 
 Prompts the user to enter a number.
 
-### Parameters
+#### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `prompt` | `string` | The prompt to display to the user |
 | `options` | [`PromptNumberOptions`](prompts.md#promptnumberoptions) | The options for the prompt |
 
-### Returns
+#### Returns
 
 `Promise`\<`any`\>
 
 The number the user entered
 
-### Example
+#### Example
 
 ```typescript
 // Prompt the user to enter a number
@@ -210,30 +200,28 @@ console.log(number);
 
 ***
 
-## promptTextInput()
+### promptTextInput()
 
-```ts
-function promptTextInput(prompt: string, options: PromptTextOptions): Promise<any>
-```
+> **promptTextInput**(`prompt`, `options`): `Promise`\<`any`\>
 
-Defined in: [prompts/prompt-text.ts:65](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/prompts/prompt-text.ts#L65)
+Defined in: [prompts/prompt-text.ts:65](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-text.ts#L65)
 
 Prompts the user to enter text.
 
-### Parameters
+#### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `prompt` | `string` | The prompt to display to the user |
 | `options` | [`PromptTextOptions`](prompts.md#prompttextoptions) | The options for the prompt |
 
-### Returns
+#### Returns
 
 `Promise`\<`any`\>
 
 The validated text the user entered
 
-### Example
+#### Example
 
 ```typescript
 // Prompt the user to enter some text
@@ -263,17 +251,17 @@ theme: new EasyCLITheme(),
 console.log(text);
 ```
 
-***
+## Interfaces
 
-## PromptChoiceOptions
+### PromptChoiceOptions
 
-Defined in: [prompts/prompt-choice.ts:17](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/prompts/prompt-choice.ts#L17)
+Defined in: [prompts/prompt-choice.ts:17](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-choice.ts#L17)
 
 Options for the promptChoice function
 
  PromptChoiceOptions
 
-### Properties
+#### Properties
 
 | Property | Type | Description |
 | ------ | ------ | ------ |
@@ -285,15 +273,15 @@ Options for the promptChoice function
 
 ***
 
-## PromptConfirmOptions
+### PromptConfirmOptions
 
-Defined in: [prompts/prompt-confirm.ts:15](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/prompts/prompt-confirm.ts#L15)
+Defined in: [prompts/prompt-confirm.ts:15](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-confirm.ts#L15)
 
 Options for the promptConfirm function
 
  PromptConfirmOptions
 
-### Properties
+#### Properties
 
 | Property | Type | Description |
 | ------ | ------ | ------ |
@@ -303,15 +291,15 @@ Options for the promptConfirm function
 
 ***
 
-## PromptMultipleChoiceOptions
+### PromptMultipleChoiceOptions
 
-Defined in: [prompts/prompt-multiple-choice.ts:18](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/prompts/prompt-multiple-choice.ts#L18)
+Defined in: [prompts/prompt-multiple-choice.ts:18](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-multiple-choice.ts#L18)
 
 Options for the promptMultipleChoice function
 
  PromptMultipleChoiceOptions
 
-### Properties
+#### Properties
 
 | Property | Type | Description |
 | ------ | ------ | ------ |
@@ -323,15 +311,15 @@ Options for the promptMultipleChoice function
 
 ***
 
-## PromptNumberOptions
+### PromptNumberOptions
 
-Defined in: [prompts/prompt-number.ts:17](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/prompts/prompt-number.ts#L17)
+Defined in: [prompts/prompt-number.ts:17](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-number.ts#L17)
 
 Options for the promptNumber function
 
  PromptNumberOptions
 
-### Properties
+#### Properties
 
 | Property | Type | Description |
 | ------ | ------ | ------ |
@@ -343,15 +331,15 @@ Options for the promptNumber function
 
 ***
 
-## PromptTextOptions
+### PromptTextOptions
 
-Defined in: [prompts/prompt-text.ts:18](https://github.com/patrickeaton/easy-cli/blob/dbfc4c7269c8cf3d4229dd8dabebbf5a35f3e0b6/src/prompts/prompt-text.ts#L18)
+Defined in: [prompts/prompt-text.ts:18](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-text.ts#L18)
 
 Options for the promptTextInput function
 
  PromptTextOptions
 
-### Properties
+#### Properties
 
 | Property | Type | Description |
 | ------ | ------ | ------ |

@@ -1,3 +1,5 @@
+# easy-cli
+
 ## Modules
 
 | Module | Description |
