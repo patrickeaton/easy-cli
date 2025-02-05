@@ -8,7 +8,7 @@ This module contains configuration management for the Easy CLI Library
 
 ### EasyCLIConfigFile
 
-Defined in: [config/index.ts:76](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/config/index.ts#L76)
+Defined in: [config/index.ts:76](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/config/index.ts#L76)
 
 A class to handle loading and saving configuration files.
 
@@ -31,7 +31,7 @@ const configuration = config.load();
 
 > **new EasyCLIConfigFile**(`params`): [`EasyCLIConfigFile`](config.md#easycliconfigfile)
 
-Defined in: [config/index.ts:89](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/config/index.ts#L89)
+Defined in: [config/index.ts:89](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/config/index.ts#L89)
 
 Create a new configuration file handler.
 
@@ -47,31 +47,11 @@ Create a new configuration file handler.
 
 #### Methods
 
-##### fileExists()
-
-> **fileExists**(`filePath`): `boolean`
-
-Defined in: [config/index.ts:317](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/config/index.ts#L317)
-
-Check if a configuration file exists.
-
-###### Parameters
-
-| Parameter | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| `filePath` | `null` \| `string` | `null` | An optional file path to use instead of the default otherwise it will scan using the given rules. |
-
-###### Returns
-
-`boolean`
-
-boolean Whether or not the configuration file exists
-
 ##### load()
 
 > **load**\<`TConfig`\>(`path`): `TConfig`
 
-Defined in: [config/index.ts:283](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/config/index.ts#L283)
+Defined in: [config/index.ts:283](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/config/index.ts#L283)
 
 Load a configuration file for the given path.
 
@@ -91,11 +71,31 @@ Load a configuration file for the given path.
 
 `TConfig`
 
+##### fileExists()
+
+> **fileExists**(`filePath`): `boolean`
+
+Defined in: [config/index.ts:317](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/config/index.ts#L317)
+
+Check if a configuration file exists.
+
+###### Parameters
+
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `filePath` | `null` \| `string` | `null` | An optional file path to use instead of the default otherwise it will scan using the given rules. |
+
+###### Returns
+
+`boolean`
+
+boolean Whether or not the configuration file exists
+
 ##### save()
 
 > **save**\<`TConfig`\>(`config`, `filePath`): `Promise`\<`void`\>
 
-Defined in: [config/index.ts:329](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/config/index.ts#L329)
+Defined in: [config/index.ts:329](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/config/index.ts#L329)
 
 Save a configuration object to a file.
 
@@ -120,7 +120,7 @@ Save a configuration object to a file.
 
 ### ConfigFileParams
 
-Defined in: [config/index.ts:51](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/config/index.ts#L51)
+Defined in: [config/index.ts:51](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/config/index.ts#L51)
 
 The parameters to use when loading a configuration file.
 
@@ -128,23 +128,37 @@ The parameters to use when loading a configuration file.
 
 #### Properties
 
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| <a id="extensions"></a> `extensions` | [`ValidExtensions`](config.md#validextensions)[] | What file extensions to look for, in order of preference |
-| <a id="failonmissing"></a> `failOnMissing?` | `boolean` | Whether or not to fail if the file is missing |
-| <a id="filename"></a> `filename` | `string` | The base filename to look for, without the extension. |
-| <a id="path"></a> `path?` | `string` | The path to search for the config file |
-| <a id="recursion"></a> `recursion?` | [`ConfigFileRecursionBehaviour`](config.md#configfilerecursionbehaviour) | How to handle recursive config files |
-| <a id="requirepath"></a> `requirePath?` | `boolean` | Whether or not to require the path to exist |
-| <a id="root"></a> `root?` | `"home"` \| `"cwd"` \| `"app-root"` | Where to start looking for the config file |
+| Property | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| <a id="filename"></a> `filename` | `string` | The base filename to look for, without the extension. | [config/index.ts:52](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/config/index.ts#L52) |
+| <a id="extensions"></a> `extensions` | [`ValidExtensions`](config.md#validextensions)[] | What file extensions to look for, in order of preference | [config/index.ts:53](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/config/index.ts#L53) |
+| <a id="recursion"></a> `recursion?` | [`ConfigFileRecursionBehaviour`](config.md#configfilerecursionbehaviour) | How to handle recursive config files | [config/index.ts:54](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/config/index.ts#L54) |
+| <a id="root"></a> `root?` | `"home"` \| `"cwd"` \| `"app-root"` | Where to start looking for the config file | [config/index.ts:55](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/config/index.ts#L55) |
+| <a id="path"></a> `path?` | `string` | The path to search for the config file | [config/index.ts:56](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/config/index.ts#L56) |
+| <a id="requirepath"></a> `requirePath?` | `boolean` | Whether or not to require the path to exist | [config/index.ts:57](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/config/index.ts#L57) |
+| <a id="failonmissing"></a> `failOnMissing?` | `boolean` | Whether or not to fail if the file is missing | [config/index.ts:58](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/config/index.ts#L58) |
 
 ## Type Aliases
+
+### ValidExtensions
+
+> **ValidExtensions**: `"json"` \| `"js"` \| `"ts"`
+
+Defined in: [config/index.ts:17](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/config/index.ts#L17)
+
+The valid file extensions for configuration files.
+
+Supports JSON, JavaScript, and TypeScript files.
+
+TODO: Add support for YAML files.
+
+***
 
 ### ConfigFileRecursionBehaviour
 
 > **ConfigFileRecursionBehaviour**: `"no_recursion"` \| `"prefer_highest"` \| `"prefer_lowest"` \| `"merge_highest_first"` \| `"merge_lowest_first"`
 
-Defined in: [config/index.ts:31](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/config/index.ts#L31)
+Defined in: [config/index.ts:31](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/config/index.ts#L31)
 
 The behaviour to use when handling recursive configuration files.
 
@@ -157,17 +171,3 @@ prefer_lowest - Look in the current directory and all parent directories, and us
 merge_highest_first - Look in the current directory and all parent directories, and merge the configuration files found in the highest directories first.
 merge_lowest_first - Look in the current directory and all parent directories, and merge the configuration files found in the lowest directories first.
 ```
-
-***
-
-### ValidExtensions
-
-> **ValidExtensions**: `"json"` \| `"js"` \| `"ts"`
-
-Defined in: [config/index.ts:17](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/config/index.ts#L17)
-
-The valid file extensions for configuration files.
-
-Supports JSON, JavaScript, and TypeScript files.
-
-TODO: Add support for YAML files.

@@ -1,7 +1,7 @@
 /** @packageDocumentation This module contains theming for the EasyCLI library. */
 
 import chalk, { Chalk } from 'chalk';
-import { EasyCLILogger } from '../logger';
+import { EasyCLILogger } from './logger';
 import { ThemedTable, ThemedTableColumn } from './themed-table';
 import { ThemedSpinner } from './themed-spinner';
 import {
@@ -310,6 +310,8 @@ export class EasyCLITheme {
   }
 }
 
+export * from './logger';
+export * from './progress';
 export * from './themed-table';
 export * from './themed-spinner';
-export * from './progress';
+

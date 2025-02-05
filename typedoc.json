@@ -14,21 +14,23 @@
   "expandParameters": false,
   "outputFileStrategy": "modules",
   "groupOrder": ["Classes", "Functions", "*"],
+  "sort": ["source-order", "alphabetical"],
   "entryPoints": [
     "src/app.ts",
+    "src/config/index.ts",
+    "src/commands/index.ts",
     "src/helpers/index.ts",
     "src/themes/index.ts",
-    "src/prompts/index.ts",
-    "src/config/index.ts"
+    "src/prompts/index.ts"
   ],
   "name": "easy-cli",
   "hidePageHeader": true,
   "tableColumnSettings": {
     "hideDefaults": false,
-    "hideInherited": false,
+    "hideInherited": true,
     "hideModifiers": false,
-    "hideOverrides": false,
-    "hideSources": true,
+    "hideOverrides": true,
+    "hideSources": false,
     "hideValues": false,
     "leftAlignHeaders": false
   }

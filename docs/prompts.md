@@ -10,7 +10,7 @@ This module contains prompts for the EasyCLI library.
 
 > **promptChoice**(`prompt`, `choices`, `options`): `Promise`\<`any`\>
 
-Defined in: [prompts/prompt-choice.ts:62](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-choice.ts#L62)
+Defined in: [prompts/prompt-choice.ts:62](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-choice.ts#L62)
 
 Prompts the user to select a choice from a list of choices, if the input is invalid, it will prompt the user again for a valid input
 
@@ -62,7 +62,7 @@ console.log(choice);
 
 > **promptConfirm**(`prompt`, `options`): `Promise`\<`any`\>
 
-Defined in: [prompts/prompt-confirm.ts:46](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-confirm.ts#L46)
+Defined in: [prompts/prompt-confirm.ts:46](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-confirm.ts#L46)
 
 Prompts the user to confirm a prompt.
 
@@ -103,7 +103,7 @@ const choice = await promptConfirm('Are you sure?', {
 
 > **promptMultipleChoice**(`prompt`, `choices`, `options`): `Promise`\<`any`\>
 
-Defined in: [prompts/prompt-multiple-choice.ts:67](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-multiple-choice.ts#L67)
+Defined in: [prompts/prompt-multiple-choice.ts:67](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-multiple-choice.ts#L67)
 
 Prompts the user to select multiple choices from a list of choices, if the input is invalid, it will prompt the user again for a valid input
 
@@ -159,7 +159,7 @@ console.log(choices);
 
 > **promptNumber**(`prompt`, `options`): `Promise`\<`any`\>
 
-Defined in: [prompts/prompt-number.ts:55](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-number.ts#L55)
+Defined in: [prompts/prompt-number.ts:55](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-number.ts#L55)
 
 Prompts the user to enter a number.
 
@@ -204,7 +204,7 @@ console.log(number);
 
 > **promptTextInput**(`prompt`, `options`): `Promise`\<`any`\>
 
-Defined in: [prompts/prompt-text.ts:65](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-text.ts#L65)
+Defined in: [prompts/prompt-text.ts:65](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-text.ts#L65)
 
 Prompts the user to enter text.
 
@@ -255,7 +255,7 @@ console.log(text);
 
 ### PromptChoiceOptions
 
-Defined in: [prompts/prompt-choice.ts:17](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-choice.ts#L17)
+Defined in: [prompts/prompt-choice.ts:17](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-choice.ts#L17)
 
 Options for the promptChoice function
 
@@ -263,19 +263,19 @@ Options for the promptChoice function
 
 #### Properties
 
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| <a id="defaultoption"></a> `defaultOption?` | `null` \| `string` | The default option to use () |
-| <a id="prompttheme"></a> `promptTheme?` | [`DisplayOptions`](themes.md#displayoptions-3) | The theme to use for the prompt |
-| <a id="theme"></a> `theme?` | `null` \| [`EasyCLITheme`](themes.md#easyclitheme) | The theme to use |
-| <a id="validationerrormessage"></a> `validationErrorMessage?` | `string` | The error message to display if the input is invalid |
-| <a id="validator"></a> `validator?` | (`input`: `string`) => `boolean` | A function to validate the input |
+| Property | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| <a id="defaultoption"></a> `defaultOption?` | `null` \| `string` | The default option to use () | [prompts/prompt-choice.ts:18](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-choice.ts#L18) |
+| <a id="validator"></a> `validator?` | (`input`: `string`) => `boolean` | A function to validate the input | [prompts/prompt-choice.ts:19](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-choice.ts#L19) |
+| <a id="validationerrormessage"></a> `validationErrorMessage?` | `string` | The error message to display if the input is invalid | [prompts/prompt-choice.ts:20](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-choice.ts#L20) |
+| <a id="theme"></a> `theme?` | `null` \| [`EasyCLITheme`](themes.md#easyclitheme) | The theme to use | [prompts/prompt-choice.ts:21](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-choice.ts#L21) |
+| <a id="prompttheme"></a> `promptTheme?` | [`DisplayOptions`](themes.md#displayoptions-3) | The theme to use for the prompt | [prompts/prompt-choice.ts:22](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-choice.ts#L22) |
 
 ***
 
 ### PromptConfirmOptions
 
-Defined in: [prompts/prompt-confirm.ts:15](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-confirm.ts#L15)
+Defined in: [prompts/prompt-confirm.ts:15](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-confirm.ts#L15)
 
 Options for the promptConfirm function
 
@@ -283,17 +283,17 @@ Options for the promptConfirm function
 
 #### Properties
 
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| <a id="defaultoption-1"></a> `defaultOption?` | `boolean` | The default option to use |
-| <a id="prompttheme-1"></a> `promptTheme?` | [`DisplayOptions`](themes.md#displayoptions-3) | The theme to use for the prompt |
-| <a id="theme-1"></a> `theme?` | `null` \| [`EasyCLITheme`](themes.md#easyclitheme) | The theme to use |
+| Property | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| <a id="defaultoption-1"></a> `defaultOption?` | `boolean` | The default option to use | [prompts/prompt-confirm.ts:16](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-confirm.ts#L16) |
+| <a id="theme-1"></a> `theme?` | `null` \| [`EasyCLITheme`](themes.md#easyclitheme) | The theme to use | [prompts/prompt-confirm.ts:17](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-confirm.ts#L17) |
+| <a id="prompttheme-1"></a> `promptTheme?` | [`DisplayOptions`](themes.md#displayoptions-3) | The theme to use for the prompt | [prompts/prompt-confirm.ts:18](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-confirm.ts#L18) |
 
 ***
 
 ### PromptMultipleChoiceOptions
 
-Defined in: [prompts/prompt-multiple-choice.ts:18](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-multiple-choice.ts#L18)
+Defined in: [prompts/prompt-multiple-choice.ts:18](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-multiple-choice.ts#L18)
 
 Options for the promptMultipleChoice function
 
@@ -301,19 +301,19 @@ Options for the promptMultipleChoice function
 
 #### Properties
 
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| <a id="defaultselected"></a> `defaultSelected?` | `string`[] | The default selected options |
-| <a id="prompttheme-2"></a> `promptTheme?` | [`DisplayOptions`](themes.md#displayoptions-3) | The theme to use for the prompt |
-| <a id="theme-2"></a> `theme?` | `null` \| [`EasyCLITheme`](themes.md#easyclitheme) | The theme to use |
-| <a id="validationerrormessage-1"></a> `validationErrorMessage?` | `string` | The error message to display if the input is invalid |
-| <a id="validator-1"></a> `validator?` | (`input`: `string`[]) => `boolean` | A function to validate the input |
+| Property | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| <a id="defaultselected"></a> `defaultSelected?` | `string`[] | The default selected options | [prompts/prompt-multiple-choice.ts:19](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-multiple-choice.ts#L19) |
+| <a id="validator-1"></a> `validator?` | (`input`: `string`[]) => `boolean` | A function to validate the input | [prompts/prompt-multiple-choice.ts:20](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-multiple-choice.ts#L20) |
+| <a id="validationerrormessage-1"></a> `validationErrorMessage?` | `string` | The error message to display if the input is invalid | [prompts/prompt-multiple-choice.ts:21](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-multiple-choice.ts#L21) |
+| <a id="theme-2"></a> `theme?` | `null` \| [`EasyCLITheme`](themes.md#easyclitheme) | The theme to use | [prompts/prompt-multiple-choice.ts:22](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-multiple-choice.ts#L22) |
+| <a id="prompttheme-2"></a> `promptTheme?` | [`DisplayOptions`](themes.md#displayoptions-3) | The theme to use for the prompt | [prompts/prompt-multiple-choice.ts:23](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-multiple-choice.ts#L23) |
 
 ***
 
 ### PromptNumberOptions
 
-Defined in: [prompts/prompt-number.ts:17](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-number.ts#L17)
+Defined in: [prompts/prompt-number.ts:17](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-number.ts#L17)
 
 Options for the promptNumber function
 
@@ -321,19 +321,19 @@ Options for the promptNumber function
 
 #### Properties
 
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| <a id="prompttheme-3"></a> `promptTheme?` | [`DisplayOptions`](themes.md#displayoptions-3) | The theme to use for the prompt |
-| <a id="theme-3"></a> `theme?` | `null` \| [`EasyCLITheme`](themes.md#easyclitheme) | The theme to use |
-| <a id="validationerrormessage-2"></a> `validationErrorMessage?` | `string` | The error message to display if the input is invalid |
-| <a id="validator-2"></a> `validator?` | (`input`: `number`) => `boolean` | A function to validate the input |
-| <a id="value"></a> `value?` | `null` \| `number` | The default value to use |
+| Property | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| <a id="value"></a> `value?` | `null` \| `number` | The default value to use | [prompts/prompt-number.ts:18](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-number.ts#L18) |
+| <a id="validator-2"></a> `validator?` | (`input`: `number`) => `boolean` | A function to validate the input | [prompts/prompt-number.ts:19](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-number.ts#L19) |
+| <a id="validationerrormessage-2"></a> `validationErrorMessage?` | `string` | The error message to display if the input is invalid | [prompts/prompt-number.ts:20](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-number.ts#L20) |
+| <a id="theme-3"></a> `theme?` | `null` \| [`EasyCLITheme`](themes.md#easyclitheme) | The theme to use | [prompts/prompt-number.ts:21](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-number.ts#L21) |
+| <a id="prompttheme-3"></a> `promptTheme?` | [`DisplayOptions`](themes.md#displayoptions-3) | The theme to use for the prompt | [prompts/prompt-number.ts:22](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-number.ts#L22) |
 
 ***
 
 ### PromptTextOptions
 
-Defined in: [prompts/prompt-text.ts:18](https://github.com/patrickeaton/easy-cli/blob/928069631a16c15732a47790d029e4cb5eb95deb/src/prompts/prompt-text.ts#L18)
+Defined in: [prompts/prompt-text.ts:18](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-text.ts#L18)
 
 Options for the promptTextInput function
 
@@ -341,11 +341,11 @@ Options for the promptTextInput function
 
 #### Properties
 
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| <a id="defaulttext"></a> `defaultText?` | `string` | The default text to use |
-| <a id="prompttheme-4"></a> `promptTheme?` | [`DisplayOptions`](themes.md#displayoptions-3) | The theme to use for the prompt |
-| <a id="theme-4"></a> `theme?` | `null` \| [`EasyCLITheme`](themes.md#easyclitheme) | The theme to use |
-| <a id="type"></a> `type?` | `"input"` \| `"password"` \| `"editor"` | The type of input to use. 'input' is a normal text input, 'password' is hidden whilst typing, 'editor' opens up an editor |
-| <a id="validationerrormessage-3"></a> `validationErrorMessage?` | `string` | The error message to display if the input is invalid |
-| <a id="validator-3"></a> `validator?` | (`input`: `string`) => `boolean` | A function to validate the input |
+| Property | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| <a id="type"></a> `type?` | `"input"` \| `"password"` \| `"editor"` | The type of input to use. 'input' is a normal text input, 'password' is hidden whilst typing, 'editor' opens up an editor | [prompts/prompt-text.ts:19](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-text.ts#L19) |
+| <a id="defaulttext"></a> `defaultText?` | `string` | The default text to use | [prompts/prompt-text.ts:20](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-text.ts#L20) |
+| <a id="validator-3"></a> `validator?` | (`input`: `string`) => `boolean` | A function to validate the input | [prompts/prompt-text.ts:21](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-text.ts#L21) |
+| <a id="validationerrormessage-3"></a> `validationErrorMessage?` | `string` | The error message to display if the input is invalid | [prompts/prompt-text.ts:22](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-text.ts#L22) |
+| <a id="theme-4"></a> `theme?` | `null` \| [`EasyCLITheme`](themes.md#easyclitheme) | The theme to use | [prompts/prompt-text.ts:23](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-text.ts#L23) |
+| <a id="prompttheme-4"></a> `promptTheme?` | [`DisplayOptions`](themes.md#displayoptions-3) | The theme to use for the prompt | [prompts/prompt-text.ts:24](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/prompts/prompt-text.ts#L24) |
