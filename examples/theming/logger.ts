@@ -25,16 +25,14 @@ const main = async () => {
     }
   );
 
-  // logger.log('Log', { a: 'a', b: 'b' });
-  // logger.info('Info', 'info');
-  // logger.warn('Warn', 'warning');
-  // logger.error('Error', 'error');
+  logger.log('Log', { a: 'a', b: 'b' });
+  logger.info('Info', 'info');
+  logger.warn('Warn', 'warning');
+  logger.error('Error', 'error');
 
-  // logger.info('Info Force').force();
+  logger.info('Info Force').force();
 
-  // console.log(logger.getExecutionLogs());
-
-  // Removes circular references so it's safe to log
+  console.log(logger.getExecutionLogs());
 };
 
 main()

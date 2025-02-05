@@ -50,6 +50,7 @@ const initCommand = new EasyCLIInitCommand(config, 'init', {
     env: 'dev',
     name: 'my-app',
   },
+  // Prompts are shown displayed to the user when the command is run.
   prompts: {
     env: {
       describe: 'What environent are you setting?',
@@ -66,13 +67,14 @@ const command = new EasyCLICommand(
   (params, theme) => theme?.getLogger().log(params),
   {
     description: 'Set a config variable',
-    aliases: [],
+    // Args are the positional arguments that the command accepts.
     args: {
       key: {
         describe: 'What key(s) are you setting?',
         type: 'string',
       },
     },
+    // Prompts are shown displayed to the user when the command is run.
     prompts: {
       value: {
         describe: 'the value to set',

@@ -1,5 +1,4 @@
-import { CSVMapper } from '../../src/helpers/csv-file-helper';
-import { EasyCLITheme } from '../../src/themes';
+import { CSVMapper, EasyCLITheme } from '../../src';
 
 const main = async () => {
   const theme = new EasyCLITheme(3);

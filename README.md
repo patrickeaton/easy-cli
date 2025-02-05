@@ -45,6 +45,8 @@ app.setTheme(theme).handleVerbosityFlag().addCommand(myCommand).execute();
 Support for theming for command line applications, it includes support for verbosity, themed text display, spinners, and progress bars.
 
 ```typescript
+import { EasyCLITheme } from 'easy-cli';
+
 const theme = new EasyCLITheme(
   0, // Set the verbosity level to 0
   {
@@ -147,6 +149,8 @@ Helper functions that are useful for CLI's. ie. Managing CSVs
 [Docs](https://github.com/patrickeaton/easy-cli/blob/main/docs/helpers.md)
 
 ```typescript
+import { CSVMapper } from 'easy-cli/helpers';
+
 const csvMapper = new CSVMapper({
 mappings: {
  username: {
@@ -190,6 +194,9 @@ const parsed = await csvMapper.processFile('./example.csv');
 Easily create managed commands that can handle interactive prompts. Can be used with EasyCLI or directly with yargs
 
 ```typescript
+import { EasyCLICommand, EasyCLI } from 'easy-cli';
+import yargs from 'yargs';
+
 const command = new EasyCLICommand(
   'do',
   (params, theme) => {
