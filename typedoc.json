@@ -17,13 +17,13 @@
   "sort": ["source-order", "alphabetical"],
   "entryPoints": [
     "src/app.ts",
-    "src/config/index.ts",
+    "src/config-files/index.ts",
     "src/commands/index.ts",
     "src/helpers/index.ts",
     "src/themes/index.ts",
     "src/prompts/index.ts"
   ],
-  "name": "easy-cli",
+  "name": "Easy CLI",
   "hidePageHeader": true,
   "tableColumnSettings": {
     "hideDefaults": false,

@@ -1,8 +1,8 @@
-[easy-cli](README.md) / prompts
+[Easy CLI](README.md) / prompts
 
 # prompts
 
-This module contains prompts for the EasyCLI library.
+Simple functions to be able to prompt your users for a response.
 
 ## Functions
 

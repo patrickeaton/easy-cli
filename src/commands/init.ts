@@ -1,6 +1,6 @@
 import { command } from 'yargs';
-import { CommandSetupOptions, EasyCLICommand } from '.';
-import { EasyCLIConfigFile } from '../config';
+import { CommandSetupOptions, EasyCLICommand } from './command';
+import { EasyCLIConfigFile } from '../config-files';
 import { EasyCLITheme } from '../themes';
 
 /**
@@ -17,6 +17,17 @@ import { EasyCLITheme } from '../themes';
  * @property {string} configFlag The name of the variable to use for the config file
  *
  * @extends CommandSetupOptions
+ * 
+ * @example
+ * ```typescript
+ * {
+ * failOnExists?: boolean; // Should the command fail if the config file already exists?
+ * globalKeysToUse?: string[]; // What key(s) are you setting?
+ * defaults?: Partial<TGlobalParams & TParams>; // The default values to use
+ * transformer?: (params: TGlobalParams & TParams) => any; // How to transform the params before saving
+ * configFlag?: string; // The name of the variable to use for the config file
+ * }
+ * ```
  */
 export type InitCommandOptions<TGlobalParams, TParams> = CommandSetupOptions<
   TGlobalParams,

@@ -1,4 +1,4 @@
-/** @packageDocumentation This module contains theming for the EasyCLI library. */
+/** @packageDocumentation Support for theming for command line applications, it includes support for verbosity, themed text display, spinners, and progress bars. */
 
 import chalk, { Chalk } from 'chalk';
 import { EasyCLILogger } from './logger';
@@ -22,6 +22,21 @@ import {
  * @property {boolean} [strikethrough] Whether to strikethrough the string
  * @property {string} [color] The color of the string (hex), support for other formats is planned
  * @property {string} [bgColor] The background color of the string (hex), support for other formats is planned
+ *
+ * @example
+ * ```typescript
+ * // Bold Red Text
+ * const options: StringDisplayOptions = {
+ *  bold: true,
+ *  color: '#FF5555',
+ * };
+ *
+ * // Italicized Blue Text
+ * const options: StringDisplayOptions = {
+ *   italic: true,
+ *   color: '#5555FF',
+ * };
+ * ```
  */
 export type StringDisplayOptions = {
   bold?: boolean;
@@ -75,7 +90,14 @@ export type NamedDisplayOptions =
  *
  * @example
  * ```typescript
- * const theme = new EasyCLITheme();
+ * const theme = new EasyCLITheme(
+ *  0, // Set the verbosity level to 0
+ *  {
+ *   log: { color: '#F5F5F5' }, // Update the log color
+ *   error: { color: '#FF5555', bold: true }, // Update the error color and make it bold
+ *   custom: { color: '#55FF55' }, // Add a custom named display option
+ *  }
+ * );
  * const logger = theme.getLogger();
  * logger.log('Hello, world!');
  * ```
@@ -114,9 +136,12 @@ export class EasyCLITheme {
   }
 
   /**
-   * An internal method to merge display options
-   * @param options The display options to merge
-   * @returns A single display options object
+   * An internal method to merge display options, allowing for multiple display options to be combined
+   * ie. ['info', { bold: true }] => { color: '#F5F5F5', bold: true }
+   * 
+   * @param {DisplayOptions} options The display options to merge
+   * 
+   * @returns {StringDisplayOptions} A single display options object
    */
   private mergeDisplayOptions(options: DisplayOptions): StringDisplayOptions {
     // If it's a string, we can just return the named display options
@@ -153,6 +178,7 @@ export class EasyCLITheme {
    *
    * @param {string} string The string to format
    * @param {DisplayOptions} options The display options to use
+   * 
    * @returns {string} The formatted string
    *
    * @example
@@ -181,7 +207,8 @@ export class EasyCLITheme {
    * Sets the verbosity level of the theme
    *
    * @param {number} verbosity The verbosity level to set
-   * @returns {EasyCLITheme} The theme with the verbosity level
+   * 
+   * @returns {EasyCLITheme} The theme with the verbosity level, useful for optional chaining
    */
   setVerbosity(verbosity: number): EasyCLITheme {
     this.verbosity = verbosity;
@@ -210,16 +237,17 @@ export class EasyCLITheme {
    * @returns {EasyCLILogger} The logger with the theme
    */
   getLogger() {
-    return new EasyCLILogger({ theme: this, verbosity: this.verbosity }); // TODO: Add verbosity and other options
+    return new EasyCLILogger({ theme: this, verbosity: this.verbosity }); // TODO: Considering generating a singleton logger
   }
 
   /**
    * Gets a themed table using this theme
+   * @template TItem The datatype for the items in the table.
    *
    * @param {ThemedTableColumn<TItem>[]} [columns=[]] The columns for the table
    * @param {number} [totalWidth=120] The total width of the table
    *
-   * @returns {ThemedTable} The themed table instance
+   * @returns {ThemedTable<TItem>} The themed table instance
    *
    * @example
    * ```typescript
@@ -238,7 +266,7 @@ export class EasyCLITheme {
   getTable<TItem extends Record<string, any> = any[]>(
     columns: ThemedTableColumn<TItem>[] = [],
     totalWidth: number = 120
-  ) {
+  ): ThemedTable<TItem> {
     return new ThemedTable<TItem>({ theme: this, columns, totalWidth }); // TODO: Add verbosity and other options
   }
 
@@ -314,4 +342,3 @@ export * from './logger';
 export * from './progress';
 export * from './themed-table';
 export * from './themed-spinner';
-

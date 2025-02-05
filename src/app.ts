@@ -1,14 +1,18 @@
-/** @packageDocumentation This module contains the EasyCLI class which is the main class for the EasyCLI library. */
+/**
+ * @packageDocumentation A framework for building CLI applications that are robust and easy to maintain. Supports theming, configuration files, interactive prompts, and more. 
+ * @module easy-cli
+ */
 
 import yargs from 'yargs';
-import { CommandOption, CommandOptionObject, EasyCLICommand } from './commands';
+import { CommandOption, CommandOptionObject, EasyCLICommand } from './commands/command';
 import { EasyCLITheme } from './themes';
-import { EasyCLIConfigFile } from './config';
+import { EasyCLIConfigFile } from './config-files';
 
 /**
  * @interface EasyCLIConfig
  * The configuration for the EasyCLI
- * @template TGloablParams The global params for the CLI
+ *
+ * @template TGloablParams An object representing the global params for the CLI
  *
  * @property {string} [executionName] The name to display in the help menu and error messages for the CLI
  * @property {string} [defaultCommand] The default command to run if no command is provided (defaults to 'help')
@@ -131,6 +135,8 @@ export class EasyCLI<TGlobalParams> {
   /**
    * Adds a command to the CLI
    *
+   * @template TParams The params that this command accepts.
+   * 
    * @param {EasyCLICommand} command The command to add
    *
    * @returns {EasyCLI} The EasyCLI instance
@@ -142,8 +148,8 @@ export class EasyCLI<TGlobalParams> {
    * cli.addCommand(command);
    * ```
    */
-  public addCommand<TParams>(
-    command: EasyCLICommand<{}, TGlobalParams>
+  public addCommand<TParams = Record<string, any>>(
+    command: EasyCLICommand<TParams, TGlobalParams>
   ): EasyCLI<TGlobalParams> {
     this.commands.push(command);
     return this;

@@ -1,7 +1,7 @@
 {
   "name": "easy-cli",
   "version": "1.0.0",
-  "description": "Tools and helpers for making building and managing CLIs as easy as possible. Built on top of yargs and yargs-interactive to help streamline building CLIs",
+  "description": "A framework for building CLI applications that are robust and easy to maintain. Supports theming, configuration files, interactive prompts, and more.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
@@ -18,7 +18,8 @@
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
     "test-config": "yarn --cwd=$INIT_CWD ts-node-script ./scripts/test-load-config.ts",
-    "docs": "typedoc"
+    "docs": "typedoc",
+    "prepare": "husky"
   },
   "dependencies": {
     "@types/cli-progress": "^3.11.6",
@@ -32,7 +33,6 @@
     "strip-ansi": "^6.0.0",
     "typescript": "^5.3.3",
     "yaml": "^2.7.0",
-    "yargonaut": "^1.1.4",
     "yargs": "^17.7.2",
     "yargs-interactive": "^3.0.1"
   },
@@ -42,11 +42,33 @@
     "@types/cli-table": "^0.3.4",
     "@types/node": "^20.11.5",
     "@types/yargs": "^17.0.32",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
     "rollup": "^4.9.5",
     "rollup-plugin-cleandir": "^3.0.0",
     "rollup-plugin-typescript2": "^0.36.0",
     "ts-node": "^10.9.2",
     "typedoc": "^0.27.6",
     "typedoc-plugin-markdown": "^4.4.1"
-  }
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "keywords": [
+    "cli",
+    "command-line",
+    "command-line-interface",
+    "easy-cli",
+    "cli-framework",
+    "cli-app",
+    "cli-application",
+    "cli-tool",
+    "cli-tools",
+    "yargs",
+    "yargs-interactive",
+    "cli-progress",
+    "cli-table",
+    "ora",
+    "chalk"
+  ]
 }

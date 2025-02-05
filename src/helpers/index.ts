@@ -1,2 +1,3 @@
-/** @packageDocumentation This module contains helpers for the EasyCLI library. */
-export * from './csv-file-helper';
+/** @packageDocumentation Helper functions that are useful for CLI's. ie. Managing CSVs */
+
+export * from './csv-file-mapper';

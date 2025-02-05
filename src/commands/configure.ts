@@ -1,19 +1,38 @@
 import { command } from 'yargs';
-import { CommandSetupOptions, EasyCLICommand } from '.';
-import { EasyCLIConfigFile } from '../config';
+import { CommandSetupOptions, EasyCLICommand } from './command';
+import { EasyCLIConfigFile } from '../config-files';
 import { EasyCLITheme } from '../themes';
 
 /**
  * Options for the configure command
  * @interface ConfigureCommandOptions
- * 
+ *
  * @template TGlobalParams The global params for the CLI
  * @template TParams The params for the command
- * 
+ *
  * @property {string[]} globalKeysToUse What key(s) are you setting?
  * @property {(params: TGlobalParams & TParams) => any} transformer How to transform the params before saving
- * 
+ *
  * @extends CommandSetupOptions
+ *
+ * @example
+ * ```typescript
+ * {
+ *  globalKeysToUse?: string[]; // What key(s) are you setting?
+ *  transformer?: (params: TGlobalParams & TParams) => any; // How to transform the params before saving
+ *  alias?: string; // The alias for the command
+ *  prompts?: {
+ *   // Prompts to ask the user for an input for the env key
+ *   env: {
+ *    describe: 'What environeent are you setting?',
+ *    type: 'string',
+ *    prompt: 'always',
+ *    demandOption: true,
+ *   },
+ *   ...
+ *  },
+ * }
+ * ```
  */
 export type ConfigureCommandOptions<TGlobalParams, TParams> =
   CommandSetupOptions<TGlobalParams, TParams> & {
@@ -23,31 +42,42 @@ export type ConfigureCommandOptions<TGlobalParams, TParams> =
 
 /**
  * A command to add a configure command to the CLI that will save the configuration
- * 
+ *
  * @template TParams The params for the command
  * @template TGloablParams The global params for the CLI
  * @extends EasyCLICommand
- * 
+ *
  * @example
  * ```typescript
  * new EasyCLIConfigureCommand(config, 'configure', {
- *  globalKeysToUse: ['verbose'],
+ *  globalKeysToUse: ['verbose'], // Use the verbose key
+ *  aliases: ['config', 'cfg', 'setup'] // Alias the command to 'config', 'cfg', and 'setup'
  *  prompts: {
+ *    // Prompts to ask the user for an input for the env key
  *    env: {
  *     describe: 'What environeent are you setting?',
  *     type: 'string',
  *     prompt: 'always',
  *     demandOption: true,
  *   },
+ *  ...
  *  },
- *  });
+ *  flags: {
+ *  // Add a flag to the command
+ *   profile: {
+ *     type: 'string',
+ *     describe: 'The profile to use',
+ *     demandOption: false, // Make the flag optional
+ *     default: 'my-profile', // Set a default value
+ *   }
+ *  },
+ * });
  * ```
  */
 export class EasyCLIConfigureCommand<
   TParams,
   TGloablParams
 > extends EasyCLICommand<TParams, TGloablParams> {
-
   /**
    * Creates a new configure command
    * @param {EasyCLIConfigFile} config The configuration file to use

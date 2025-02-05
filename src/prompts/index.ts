@@ -1,4 +1,4 @@
-/** @packageDocumentation This module contains prompts for the EasyCLI library. */
+/** @packageDocumentation Simple functions to be able to prompt your users for a response. */
 export * from './prompt-choice';
 export * from './prompt-confirm';
 export * from './prompt-multiple-choice';

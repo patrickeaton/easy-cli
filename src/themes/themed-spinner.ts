@@ -3,6 +3,7 @@ import ora, { Ora } from 'ora';
 
 /**
  * A class to handle themed spinners
+ * 
  * @class ThemedSpinner
  *
  * @param {EasyCLITheme} theme The theme to use
@@ -24,7 +25,7 @@ export class ThemedSpinner {
    * Creates an instance of ThemedSpinner
    * @param {EasyCLITheme} theme The theme to use
    * @param {DisplayOptions} displayOptions The display options for the spinner
-      */
+   */
   constructor(theme: EasyCLITheme | null, displayOptions: DisplayOptions) {
     this.theme = theme;
     this.displayOptions = displayOptions;
@@ -32,8 +33,10 @@ export class ThemedSpinner {
 
   /**
    * Starts the spinner
+   * 
    * @param {string} text The text to display
    * @param {Partial<Ora>} [options={}] The options for the spinner
+   * 
    * @returns {Ora} The spinner instance
    */
   public start(text: string, options: Partial<Ora> = {}): Ora {

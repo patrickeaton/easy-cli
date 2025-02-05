@@ -4,7 +4,7 @@ import { DisplayOptions, EasyCLITheme } from '.';
 /**
  * A column in a themed table
  *
- * @template TItem
+ * @template TItem The object type for the items in the table
  * @interface ThemedTableColumn
  *
  * @property {string} name The name of the column
@@ -13,6 +13,17 @@ import { DisplayOptions, EasyCLITheme } from '.';
  * @property {DisplayOptions} [headerStyle] The style for the header
  * @property {number} [width] The width of the column
  * @property {'left' | 'middle' | 'right'} [align] The alignment of the column
+ *
+ * @example
+ * ```typescript
+ * {
+ *   name: 'Name',
+ *   data: item => item.name
+ *   style: item => item.age > 30 ? 'warn' : 'default',
+ *   headerStyle: 'info',
+ *   width: 20,
+ * };
+ * ```
  */
 export type ThemedTableColumn<TItem = Record<string, any>> = {
   name: string;
@@ -33,6 +44,17 @@ export type ThemedTableColumn<TItem = Record<string, any>> = {
  * @property {EasyCLITheme} theme The theme to use
  * @property {ThemedTableColumn<TItem>[]} columns The columns for the table
  * @property {number} [totalWidth=120] The total width of the table
+ *
+ * @example
+ * ```typescript
+ * {
+ *  theme: new EasyCLITheme(),
+ *  columns: [
+ *    { name: 'Name', data: item => item.name },
+ *    { name: 'Age', data: item => item.age },
+ *  ],
+ * }
+ * ```
  */
 export type ThemedTableOptions<TItem = Record<string, any>> = {
   theme: EasyCLITheme;
@@ -98,7 +120,8 @@ export class ThemedTable<TItem extends Record<string, any>> {
   }
 
   /**
-   * Render the table
+   * Render the table to the console
+   * 
    * @param {TItem[]} items The items to render
    */
   render(items: TItem[]) {
