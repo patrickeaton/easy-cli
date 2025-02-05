@@ -8,7 +8,7 @@ This module contains the code for commands for the easy CLI Library
 
 ### EasyCLIConfigureCommand\<TParams, TGloablParams\>
 
-Defined in: [commands/configure.ts:46](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/configure.ts#L46)
+Defined in: [commands/configure.ts:46](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/configure.ts#L46)
 
 A command to add a configure command to the CLI that will save the configuration
 
@@ -45,7 +45,7 @@ new EasyCLIConfigureCommand(config, 'configure', {
 
 > **new EasyCLIConfigureCommand**\<`TParams`, `TGloablParams`\>(`config`, `name`?, `options`?): [`EasyCLIConfigureCommand`](commands.md#easycliconfigurecommandtparams-tgloablparams)\<`TParams`, `TGloablParams`\>
 
-Defined in: [commands/configure.ts:57](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/configure.ts#L57)
+Defined in: [commands/configure.ts:57](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/configure.ts#L57)
 
 Creates a new configure command
 
@@ -71,7 +71,7 @@ Creates a new configure command
 
 > **getNames**(): `string`[]
 
-Defined in: [commands/index.ts:148](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L148)
+Defined in: [commands/index.ts:148](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L148)
 
 ###### Returns
 
@@ -87,7 +87,7 @@ The names of the command and its aliases.
 
 > **getKeys**(): `string`[]
 
-Defined in: [commands/index.ts:155](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L155)
+Defined in: [commands/index.ts:155](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L155)
 
 ###### Returns
 
@@ -103,7 +103,7 @@ The keys for all command arguments, flags and prompts.
 
 > **skipConfigLoad**(): `boolean`
 
-Defined in: [commands/index.ts:166](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L166)
+Defined in: [commands/index.ts:166](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L166)
 
 ###### Returns
 
@@ -119,7 +119,7 @@ Whether the command should skip loading the configuration file.
 
 > **addFlag**(`key`, `config`): [`EasyCLIConfigureCommand`](commands.md#easycliconfigurecommandtparams-tgloablparams)\<`TParams`, `TGloablParams`\>
 
-Defined in: [commands/index.ts:178](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L178)
+Defined in: [commands/index.ts:178](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L178)
 
 Adds a flag to the command.
 
@@ -144,7 +144,7 @@ This command instance for optional chaining
 
 > **addPrompt**(`key`, `config`): [`EasyCLIConfigureCommand`](commands.md#easycliconfigurecommandtparams-tgloablparams)\<`TParams`, `TGloablParams`\>
 
-Defined in: [commands/index.ts:191](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L191)
+Defined in: [commands/index.ts:191](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L191)
 
 Adds a prompt to the command.
 
@@ -169,7 +169,7 @@ This command instance for optional chaining
 
 > **addArgument**(`key`, `config`): [`EasyCLIConfigureCommand`](commands.md#easycliconfigurecommandtparams-tgloablparams)\<`TParams`, `TGloablParams`\>
 
-Defined in: [commands/index.ts:204](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L204)
+Defined in: [commands/index.ts:204](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L204)
 
 Adds an argument to the command.
 
@@ -194,7 +194,7 @@ This command instance for optional chaining
 
 > **getDefaultArgv**(): `TParams`
 
-Defined in: [commands/index.ts:261](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L261)
+Defined in: [commands/index.ts:261](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L261)
 
 Returns the default values for the command arguments and flags.
 
@@ -212,7 +212,7 @@ The default values for the command arguments and flags
 
 > **convertToYargsCommand**(`theme`): `CommandModule`
 
-Defined in: [commands/index.ts:371](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L371)
+Defined in: [commands/index.ts:371](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L371)
 
 Converts the command to a yargs command.
 
@@ -236,7 +236,7 @@ The yargs command.
 
 > **run**(`params`, `theme`): `Promise`\<`void`\>
 
-Defined in: [commands/index.ts:411](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L411)
+Defined in: [commands/index.ts:411](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L411)
 
 Runs the command with the provided arguments.
 
@@ -259,7 +259,7 @@ Runs the command with the provided arguments.
 
 ### EasyCLICommand\<TParams, TGlobalParams\>
 
-Defined in: [commands/index.ts:98](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L98)
+Defined in: [commands/index.ts:98](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L98)
 
 A class that represents a command that can be run in the CLI.
 This class is a wrapper around yargs commands that allows for prompts and flags to be added to the command.
@@ -307,7 +307,7 @@ const command = new EasyCLICommand('do', (params, theme) => {
 
 > **new EasyCLICommand**\<`TParams`, `TGlobalParams`\>(`name`, `handler`, `options`): [`EasyCLICommand`](commands.md#easyclicommandtparams-tglobalparams)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/index.ts:120](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L120)
+Defined in: [commands/index.ts:120](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L120)
 
 ###### Parameters
 
@@ -327,7 +327,7 @@ Defined in: [commands/index.ts:120](https://github.com/patrickeaton/easy-cli/blo
 
 > **getNames**(): `string`[]
 
-Defined in: [commands/index.ts:148](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L148)
+Defined in: [commands/index.ts:148](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L148)
 
 ###### Returns
 
@@ -339,7 +339,7 @@ The names of the command and its aliases.
 
 > **getKeys**(): `string`[]
 
-Defined in: [commands/index.ts:155](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L155)
+Defined in: [commands/index.ts:155](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L155)
 
 ###### Returns
 
@@ -351,7 +351,7 @@ The keys for all command arguments, flags and prompts.
 
 > **skipConfigLoad**(): `boolean`
 
-Defined in: [commands/index.ts:166](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L166)
+Defined in: [commands/index.ts:166](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L166)
 
 ###### Returns
 
@@ -363,7 +363,7 @@ Whether the command should skip loading the configuration file.
 
 > **addFlag**(`key`, `config`): [`EasyCLICommand`](commands.md#easyclicommandtparams-tglobalparams)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/index.ts:178](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L178)
+Defined in: [commands/index.ts:178](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L178)
 
 Adds a flag to the command.
 
@@ -384,7 +384,7 @@ This command instance for optional chaining
 
 > **addPrompt**(`key`, `config`): [`EasyCLICommand`](commands.md#easyclicommandtparams-tglobalparams)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/index.ts:191](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L191)
+Defined in: [commands/index.ts:191](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L191)
 
 Adds a prompt to the command.
 
@@ -405,7 +405,7 @@ This command instance for optional chaining
 
 > **addArgument**(`key`, `config`): [`EasyCLICommand`](commands.md#easyclicommandtparams-tglobalparams)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/index.ts:204](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L204)
+Defined in: [commands/index.ts:204](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L204)
 
 Adds an argument to the command.
 
@@ -426,7 +426,7 @@ This command instance for optional chaining
 
 > **getDefaultArgv**(): `TParams`
 
-Defined in: [commands/index.ts:261](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L261)
+Defined in: [commands/index.ts:261](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L261)
 
 Returns the default values for the command arguments and flags.
 
@@ -440,7 +440,7 @@ The default values for the command arguments and flags
 
 > **convertToYargsCommand**(`theme`): `CommandModule`
 
-Defined in: [commands/index.ts:371](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L371)
+Defined in: [commands/index.ts:371](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L371)
 
 Converts the command to a yargs command.
 
@@ -460,7 +460,7 @@ The yargs command.
 
 > **run**(`params`, `theme`): `Promise`\<`void`\>
 
-Defined in: [commands/index.ts:411](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L411)
+Defined in: [commands/index.ts:411](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L411)
 
 Runs the command with the provided arguments.
 
@@ -479,7 +479,7 @@ Runs the command with the provided arguments.
 
 ### EasyCLIInitCommand\<TParams, TGloablParams\>
 
-Defined in: [commands/init.ts:55](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/init.ts#L55)
+Defined in: [commands/init.ts:55](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/init.ts#L55)
 
 A command to add an init command to the CLI that will save the configuration
 
@@ -516,7 +516,7 @@ new EasyCLIInitCommand(config, 'init', {
 
 > **new EasyCLIInitCommand**\<`TParams`, `TGloablParams`\>(`config`, `name`?, `options`?): [`EasyCLIInitCommand`](commands.md#easycliinitcommandtparams-tgloablparams)\<`TParams`, `TGloablParams`\>
 
-Defined in: [commands/init.ts:66](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/init.ts#L66)
+Defined in: [commands/init.ts:66](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/init.ts#L66)
 
 Creates a new init command
 
@@ -542,7 +542,7 @@ Creates a new init command
 
 > **getNames**(): `string`[]
 
-Defined in: [commands/index.ts:148](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L148)
+Defined in: [commands/index.ts:148](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L148)
 
 ###### Returns
 
@@ -558,7 +558,7 @@ The names of the command and its aliases.
 
 > **getKeys**(): `string`[]
 
-Defined in: [commands/index.ts:155](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L155)
+Defined in: [commands/index.ts:155](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L155)
 
 ###### Returns
 
@@ -574,7 +574,7 @@ The keys for all command arguments, flags and prompts.
 
 > **skipConfigLoad**(): `boolean`
 
-Defined in: [commands/index.ts:166](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L166)
+Defined in: [commands/index.ts:166](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L166)
 
 ###### Returns
 
@@ -590,7 +590,7 @@ Whether the command should skip loading the configuration file.
 
 > **addFlag**(`key`, `config`): [`EasyCLIInitCommand`](commands.md#easycliinitcommandtparams-tgloablparams)\<`TParams`, `TGloablParams`\>
 
-Defined in: [commands/index.ts:178](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L178)
+Defined in: [commands/index.ts:178](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L178)
 
 Adds a flag to the command.
 
@@ -615,7 +615,7 @@ This command instance for optional chaining
 
 > **addPrompt**(`key`, `config`): [`EasyCLIInitCommand`](commands.md#easycliinitcommandtparams-tgloablparams)\<`TParams`, `TGloablParams`\>
 
-Defined in: [commands/index.ts:191](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L191)
+Defined in: [commands/index.ts:191](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L191)
 
 Adds a prompt to the command.
 
@@ -640,7 +640,7 @@ This command instance for optional chaining
 
 > **addArgument**(`key`, `config`): [`EasyCLIInitCommand`](commands.md#easycliinitcommandtparams-tgloablparams)\<`TParams`, `TGloablParams`\>
 
-Defined in: [commands/index.ts:204](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L204)
+Defined in: [commands/index.ts:204](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L204)
 
 Adds an argument to the command.
 
@@ -665,7 +665,7 @@ This command instance for optional chaining
 
 > **getDefaultArgv**(): `TParams`
 
-Defined in: [commands/index.ts:261](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L261)
+Defined in: [commands/index.ts:261](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L261)
 
 Returns the default values for the command arguments and flags.
 
@@ -683,7 +683,7 @@ The default values for the command arguments and flags
 
 > **convertToYargsCommand**(`theme`): `CommandModule`
 
-Defined in: [commands/index.ts:371](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L371)
+Defined in: [commands/index.ts:371](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L371)
 
 Converts the command to a yargs command.
 
@@ -707,7 +707,7 @@ The yargs command.
 
 > **run**(`params`, `theme`): `Promise`\<`void`\>
 
-Defined in: [commands/index.ts:411](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L411)
+Defined in: [commands/index.ts:411](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L411)
 
 Runs the command with the provided arguments.
 
@@ -730,7 +730,7 @@ Runs the command with the provided arguments.
 
 ### ConfigureCommandOptions\<TGlobalParams, TParams\>
 
-Defined in: [commands/configure.ts:18](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/configure.ts#L18)
+Defined in: [commands/configure.ts:18](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/configure.ts#L18)
 
 Options for the configure command
  ConfigureCommandOptions
@@ -746,20 +746,20 @@ Options for the configure command
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="globalkeystouse"></a> `globalKeysToUse?` | `string`[] | What key(s) are you setting? | [commands/configure.ts:20](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/configure.ts#L20) |
-| <a id="transformer"></a> `transformer?` | (`params`: `TGlobalParams` & `TParams`) => `any` | How to transform the params before saving | [commands/configure.ts:21](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/configure.ts#L21) |
-| <a id="description"></a> `description?` | `string` | - | [commands/index.ts:62](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L62) |
-| <a id="aliases"></a> `aliases?` | `string`[] | - | [commands/index.ts:63](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L63) |
-| <a id="flags"></a> `flags?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | - | [commands/index.ts:64](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L64) |
-| <a id="prompts"></a> `prompts?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | - | [commands/index.ts:65](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L65) |
-| <a id="args"></a> `args?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | - | [commands/index.ts:66](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L66) |
-| <a id="skipconfig"></a> `skipConfig?` | `boolean` | - | [commands/index.ts:67](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L67) |
+| <a id="globalkeystouse"></a> `globalKeysToUse?` | `string`[] | What key(s) are you setting? | [commands/configure.ts:20](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/configure.ts#L20) |
+| <a id="transformer"></a> `transformer?` | (`params`: `TGlobalParams` & `TParams`) => `any` | How to transform the params before saving | [commands/configure.ts:21](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/configure.ts#L21) |
+| <a id="description"></a> `description?` | `string` | - | [commands/index.ts:62](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L62) |
+| <a id="aliases"></a> `aliases?` | `string`[] | - | [commands/index.ts:63](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L63) |
+| <a id="flags"></a> `flags?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | - | [commands/index.ts:64](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L64) |
+| <a id="prompts"></a> `prompts?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | - | [commands/index.ts:65](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L65) |
+| <a id="args"></a> `args?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | - | [commands/index.ts:66](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L66) |
+| <a id="skipconfig"></a> `skipConfig?` | `boolean` | - | [commands/index.ts:67](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L67) |
 
 ***
 
 ### CommandOption
 
-Defined in: [commands/index.ts:15](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L15)
+Defined in: [commands/index.ts:15](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L15)
 
 A command positional option that can be passed to a command with the option to prompt the user for the value.
  CommandOption
@@ -768,13 +768,13 @@ A command positional option that can be passed to a command with the option to p
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="prompt"></a> `prompt?` | `"always"` \| `"never"` \| `"missing"` | When to prompt the user for the value | [commands/index.ts:16](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L16) |
+| <a id="prompt"></a> `prompt?` | `"always"` \| `"never"` \| `"missing"` | When to prompt the user for the value | [commands/index.ts:16](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L16) |
 
 ***
 
 ### CommandArgument
 
-Defined in: [commands/index.ts:26](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L26)
+Defined in: [commands/index.ts:26](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L26)
 
 A command argument (flag) that can be passed to a command with the option to prompt the user for the value.
  CommandArgument
@@ -783,13 +783,13 @@ A command argument (flag) that can be passed to a command with the option to pro
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="prompt-1"></a> `prompt?` | `"always"` \| `"never"` \| `"missing"` | When to prompt the user for the value | [commands/index.ts:27](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L27) |
+| <a id="prompt-1"></a> `prompt?` | `"always"` \| `"never"` \| `"missing"` | When to prompt the user for the value | [commands/index.ts:27](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L27) |
 
 ***
 
 ### CommandOptionObject\<TParams, TGlobalParams\>
 
-Defined in: [commands/index.ts:39](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L39)
+Defined in: [commands/index.ts:39](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L39)
 
 A record of flags/postional options for a command.
  CommandOptionObject
@@ -809,7 +809,7 @@ A record of flags/postional options for a command.
 
 ### CommandSetupOptions\<TGlobalParams, TParams\>
 
-Defined in: [commands/index.ts:61](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L61)
+Defined in: [commands/index.ts:61](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L61)
 
 Optional Arguments for setting up a command.
 
@@ -826,18 +826,18 @@ Optional Arguments for setting up a command.
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="description-1"></a> `description?` | `string` | The description of the command | [commands/index.ts:62](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L62) |
-| <a id="aliases-1"></a> `aliases?` | `string`[] | The aliases for the command | [commands/index.ts:63](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L63) |
-| <a id="flags-1"></a> `flags?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | The flags for the command | [commands/index.ts:64](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L64) |
-| <a id="prompts-1"></a> `prompts?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | The prompts for the command | [commands/index.ts:65](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L65) |
-| <a id="args-1"></a> `args?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | The positional arguments for the command | [commands/index.ts:66](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L66) |
-| <a id="skipconfig-1"></a> `skipConfig?` | `boolean` | Should the command skip loading the configuration file | [commands/index.ts:67](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L67) |
+| <a id="description-1"></a> `description?` | `string` | The description of the command | [commands/index.ts:62](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L62) |
+| <a id="aliases-1"></a> `aliases?` | `string`[] | The aliases for the command | [commands/index.ts:63](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L63) |
+| <a id="flags-1"></a> `flags?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | The flags for the command | [commands/index.ts:64](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L64) |
+| <a id="prompts-1"></a> `prompts?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | The prompts for the command | [commands/index.ts:65](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L65) |
+| <a id="args-1"></a> `args?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | The positional arguments for the command | [commands/index.ts:66](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L66) |
+| <a id="skipconfig-1"></a> `skipConfig?` | `boolean` | Should the command skip loading the configuration file | [commands/index.ts:67](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L67) |
 
 ***
 
 ### InitCommandOptions\<TGlobalParams, TParams\>
 
-Defined in: [commands/init.ts:21](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/init.ts#L21)
+Defined in: [commands/init.ts:21](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/init.ts#L21)
 
 Options for the init command
  InitCommandOptions
@@ -853,14 +853,14 @@ Options for the init command
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="description-2"></a> `description?` | `string` | - | [commands/index.ts:62](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L62) |
-| <a id="aliases-2"></a> `aliases?` | `string`[] | - | [commands/index.ts:63](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L63) |
-| <a id="flags-2"></a> `flags?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | - | [commands/index.ts:64](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L64) |
-| <a id="prompts-2"></a> `prompts?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | - | [commands/index.ts:65](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L65) |
-| <a id="args-2"></a> `args?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | - | [commands/index.ts:66](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L66) |
-| <a id="skipconfig-2"></a> `skipConfig?` | `boolean` | - | [commands/index.ts:67](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/index.ts#L67) |
-| <a id="failonexists"></a> `failOnExists?` | `boolean` | Should the command fail if the config file already exists? | [commands/init.ts:25](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/init.ts#L25) |
-| <a id="globalkeystouse-1"></a> `globalKeysToUse?` | `string`[] | What key(s) are you setting? | [commands/init.ts:26](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/init.ts#L26) |
-| <a id="defaults"></a> `defaults?` | `Partial`\<`TGlobalParams` & `TParams`\> | The default values to use | [commands/init.ts:27](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/init.ts#L27) |
-| <a id="transformer-1"></a> `transformer?` | (`params`: `TGlobalParams` & `TParams`) => `any` | How to transform the params before saving | [commands/init.ts:28](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/init.ts#L28) |
-| <a id="configflag"></a> `configFlag?` | `string` | The name of the variable to use for the config file | [commands/init.ts:29](https://github.com/patrickeaton/easy-cli/blob/940567b21a2eafb91ed7a050d6cf45f5643ce4b0/src/commands/init.ts#L29) |
+| <a id="description-2"></a> `description?` | `string` | - | [commands/index.ts:62](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L62) |
+| <a id="aliases-2"></a> `aliases?` | `string`[] | - | [commands/index.ts:63](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L63) |
+| <a id="flags-2"></a> `flags?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | - | [commands/index.ts:64](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L64) |
+| <a id="prompts-2"></a> `prompts?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | - | [commands/index.ts:65](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L65) |
+| <a id="args-2"></a> `args?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<`TGlobalParams`, `TParams`\> | - | [commands/index.ts:66](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L66) |
+| <a id="skipconfig-2"></a> `skipConfig?` | `boolean` | - | [commands/index.ts:67](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/index.ts#L67) |
+| <a id="failonexists"></a> `failOnExists?` | `boolean` | Should the command fail if the config file already exists? | [commands/init.ts:25](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/init.ts#L25) |
+| <a id="globalkeystouse-1"></a> `globalKeysToUse?` | `string`[] | What key(s) are you setting? | [commands/init.ts:26](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/init.ts#L26) |
+| <a id="defaults"></a> `defaults?` | `Partial`\<`TGlobalParams` & `TParams`\> | The default values to use | [commands/init.ts:27](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/init.ts#L27) |
+| <a id="transformer-1"></a> `transformer?` | (`params`: `TGlobalParams` & `TParams`) => `any` | How to transform the params before saving | [commands/init.ts:28](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/init.ts#L28) |
+| <a id="configflag"></a> `configFlag?` | `string` | The name of the variable to use for the config file | [commands/init.ts:29](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/init.ts#L29) |

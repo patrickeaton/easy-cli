@@ -33,5 +33,6 @@
     "hideSources": false,
     "hideValues": false,
     "leftAlignHeaders": false
-  }
+  },
+  "gitRevision": "master",
 }

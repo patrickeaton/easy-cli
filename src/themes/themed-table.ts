@@ -62,7 +62,7 @@ export type ThemedTableOptions<TItem = Record<string, any>> = {
  *   { name: 'Alice', age: 25 },
  *   { name: 'Bob', age: 30 },
  * ]);
- *
+ *```
  */
 export class ThemedTable<TItem extends Record<string, any>> {
   private theme: EasyCLITheme;

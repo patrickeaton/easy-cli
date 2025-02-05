@@ -9,7 +9,7 @@ import {
 /**
  * Options for a ThemedSimpleProgressBar that extends a ThemedProgressBar
  *
-  * @interface ThemedSimpleProgressBarOptions
+ * @interface ThemedSimpleProgressBarOptions
  * @extends {ThemedProgressBarOptions}
  *
  * @property {boolean} [showCurrentRecord] Whether to show the current record
@@ -50,6 +50,7 @@ const DEFAULT_SIMPLE_PROGRESS_BAR_OPTIONS: ThemedSimpleProgressBarOptions = {
  *  showCurrentRecord: true,
  *  currentRecordDisplayOptions: 'info',
  * });
+ * ```
  */
 export class ThemedSimpleProgressBar extends ThemedProgressBar<ThemedSimpleProgressBarOptions> {
   constructor(

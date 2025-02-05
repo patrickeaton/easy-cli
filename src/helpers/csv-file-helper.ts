@@ -51,7 +51,7 @@ export type CsvFieldMappings<TObject> = Record<
  * @property {keyof TObject[]} The fields in the object that the column maps to.
  *
  * @example
- * ```
+ * ```typescript
  * {
  * 'Username': ['username'],
  * 'Identifier': ['id'],
