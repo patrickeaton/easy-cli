@@ -13,6 +13,17 @@ import { DisplayOptions, EasyCLITheme } from '../themes';
  * @property {string} [validationErrorMessage='Invalid input'] The error message to display if the input is invalid
  * @property {EasyCLITheme} [theme=null] The theme to use
  * @property {DisplayOptions} [promptTheme='default'] The theme to use for the prompt
+ *
+ * @example
+ * ```typescript
+ * {
+ *  value: 10,
+ *  validator: input => input >= 0,
+ *  validationErrorMessage: 'Number must be greater than or equal to 0',
+ *  theme: new EasyCLITheme(),
+ *  promptTheme: 'info',
+ * }
+ * ```
  */
 export type PromptNumberOptions = {
   value?: number | null;

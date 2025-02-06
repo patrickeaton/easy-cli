@@ -276,6 +276,12 @@ export class CSVMapper<
    * @throws {Error} If there are validation errors in the CSV file and the validate option is set to true.
    *
    * @returns {Promise<TObject[]>} The data from the CSV file as an array of transformed objects
+   *
+   * @example
+   * ```typescript
+   * const csvProcessor = new CSVMapper({...});
+   * const data = await csvProcessor.processFile('./username.csv');
+   * ```
    */
   public processFile = async (path: string): Promise<TObject[]> => {
     const csvData: TFileObject[] = await this.readFile(path);

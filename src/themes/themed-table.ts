@@ -123,6 +123,14 @@ export class ThemedTable<TItem extends Record<string, any>> {
    * Render the table to the console
    *
    * @param {TItem[]} items The items to render
+   * 
+   * @example
+   * ```typescript
+   * table.render([
+   *  { name: 'Alice', age: 25 },
+   *  { name: 'Bob', age: 30 },
+   * ]);
+   * ```
    */
   render(items: TItem[]) {
     const defaultWidth = this.calculateRemaingingDefaultColumnWidth();

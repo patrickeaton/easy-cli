@@ -127,7 +127,7 @@ export type CommandSetupOptions<TGlobalParams, TParams> = {
  */
 export class EasyCLICommand<
   TParams extends Record<string, any> = Record<string, any>,
-  TGlobalParams extends Record<string, any>  = Record<string, any>
+  TGlobalParams extends Record<string, any> = Record<string, any>
 > {
   private name: string;
   private aliases: string[];
@@ -175,21 +175,34 @@ export class EasyCLICommand<
 
   /**
    * @returns The names of the command and its aliases, this is used by EasyCLI to register the command with yargs and determine which command to run.
+   *
+   * @example
+   * ```typescript
+   * command.getNames(); // ['do', 'd']
+   * ```
    */
   public getNames(): string[] {
     return [this.name, ...this.aliases];
   }
 
+  /**
+   * @returns The name of the command, this is used by EasyCLI to register the command with yargs and determine which command to run.
+   *
+   * @example
+   * ```typescript
+   * command.getName(); // 'do'
+   * ```
+   */
   public getName(): string {
     return this.name;
   }
-
-  public getDescription(): string {
-    return this.description ?? '';
-  }
-
   /**
    * @returns The keys for all command arguments, flags and prompts. This is used by EasyCLI to determine which keys this command uses.
+   *
+   * @example
+   * ```typescript
+   * command.getKeys(); // ['key', 'value', 'verbose']
+   * ```
    */
   public getKeys(): string[] {
     return [
@@ -201,6 +214,11 @@ export class EasyCLICommand<
 
   /**
    * @returns Whether the command should skip loading the configuration file. This is used by EasyCLI to determine if the command should load the configuration file.
+   *
+   * @example
+   * ```typescript
+   * command.skipConfigLoad(); // false
+   * ```
    */
   public skipConfigLoad(): boolean {
     return this.skipConfig;
@@ -338,6 +356,11 @@ export class EasyCLICommand<
    * Returns the default values for the command arguments and flags, this is used by EasyCLI to determine the default values for the command and whether the config file values should be used to override the defaults.
    *
    * @returns The default values for the command arguments and flags
+   *
+   * @example
+   * ```typescript
+   * command.getDefaultArgv(); // { key: undefined, value: undefined, verbose: 0 }
+   * ```
    */
   public getDefaultArgv(): TParams {
     const args = Object.keys(this.args).reduce((acc, key) => {
@@ -522,6 +545,13 @@ export class EasyCLICommand<
    *
    * @param params The parameters to run the command with.
    * @param theme The theme to use for formatting strings.
+   *
+   * @returns The result of the command handler.
+   *
+   * @example
+   * ```typescript
+   *  command.run({ key: 'value' }, theme);
+   * ```
    */
   public async run(
     params: TParams & TGlobalParams,

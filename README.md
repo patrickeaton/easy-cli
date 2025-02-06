@@ -19,16 +19,14 @@ It is designed to be used as a whole, but each component can be included indepen
 
 ## EasyCLI
 
+EasyCLI is designed as a total framework for building awesome command-line applications. This is the core class that can help manage a lot of common use-cases with minimal configuration! Handle interactive prompts, theming, saving configuration files, interacting with csv's and more with only a few lines of code.
+
 [Docs](https://github.com/patrickeaton/easy-cli/blob/main/docs/easy-cli.md)
-
-The core framework for building CLI applications that are robust and easy to maintain.
-
-Supports themes, configuration files, interactive prompts, and more.
 
 #### Examples
 
 [Basic](https://github.com/patrickeaton/easy-cli/blob/main/examples/basic-cli-with-config/index.ts) |
-[Advanced](https://github.com/patrickeaton/easy-cli/blob/main/examples/golf/index.ts)
+[Advanced](https://github.com/patrickeaton/easy-cli/blob/main/examples/advanced-cli/index.ts)
 
 ```typescript
 import { EasyCLI, EasyCLICommand, EasyCLITheme } from 'easy-cli';
@@ -58,7 +56,7 @@ Themes are designed to provide, a way to make your app feel distinct and handle 
 [Logger](https://github.com/patrickeaton/easy-cli/blob/main/examples/themes/logger.ts) |
 [Spinner](https://github.com/patrickeaton/easy-cli/blob/main/examples/themes/spinner.ts) |
 [Progress (Simple)](https://github.com/patrickeaton/easy-cli/blob/main/examples/themes/progress-simple.ts) |
-[Progress (Status)](https://github.com/patrickeaton/easy-cli/blob/main/examples/themes/progress-with-status.ts) |
+[Progress (Status)](https://github.com/patrickeaton/easy-cli/blob/main/examples/themes/progress-status.ts) |
 [Table](https://github.com/patrickeaton/easy-cli/blob/main/examples/themes/table.ts)
 
 ```typescript
@@ -107,9 +105,9 @@ const configuration = config.load();
 
 ## Commands
 
-[Docs](https://github.com/patrickeaton/easy-cli/blob/main/docs/commands.md)
-
 Easy CLI Commands are built on top of `yargs` and `yargs-interactive` to be able to manage flags, args and add prompts! Prompts are interactive elements that request input from the user and can make the app easier to use! Prompts can also interact with existing flags, so you're only prompting inputs when the user hasn't already provided it.
+
+[Docs](https://github.com/patrickeaton/easy-cli/blob/main/docs/commands.md)
 
 #### Examples
 
@@ -142,9 +140,9 @@ yargs.command(command.convertToYargsCommand());
 
 ## Prompts
 
-[Docs](https://github.com/patrickeaton/easy-cli/blob/main/docs/prompts.md)
-
 These are standalone Prompt functions that allow you to request input from a user, without needing it to be set in the command! They are great if you need the user to confirm something, add some additional data, or if there was invalid information passed in via the command, you can prompt the user to re-enter without ending the runtime.
+
+[Docs](https://github.com/patrickeaton/easy-cli/blob/main/docs/prompts.md)
 
 #### Examples
 
@@ -203,7 +201,7 @@ console.log(editor);
 
 ## Helpers
 
-Helper functions that are useful for CLI's. ie. Managing CSVs
+These helper functions are designed to make life easiser when interacting with CSVs, these are a common format to use with a CLI to pass in bulk amounts of data but can be difficult to manage and transform to get the most out of them.
 
 [Docs](https://github.com/patrickeaton/easy-cli/blob/main/docs/helpers.md)
 

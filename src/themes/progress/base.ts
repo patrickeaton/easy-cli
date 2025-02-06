@@ -61,6 +61,21 @@ export const DEFAULT_PROGRESS_BAR_OPTIONS: ThemedProgressBarOptions = {
  * @param {string} name The name of the progress bar
  * @param {DisplayOptions} displayOptions The display options for the progress bar
  * @param {ThemedProgressBarOptions} [progressBarOptions=DEFAULT_PROGRESS_BAR_OPTIONS] The options for the progress bar
+ *
+ * @example
+ * ```typescript
+ * const progressBar = new ThemedProgressBar(theme, 'progress', displayOptions, {
+ *   showPercentage: true,
+ *   percentageDisplayOptions: 'info',
+ *   showTimeElapsed: true,
+ *   timeElapsedDisplayOptions: 'info',
+ *   showTimeLeft: true,
+ *   timeLeftDisplayOptions: 'info',
+ *   showCompleted: true,
+ *   completedDisplayOptions: 'info',
+ * });
+ * ```
+ *
  */
 export class ThemedProgressBar<
   T extends ThemedProgressBarOptions = ThemedProgressBarOptions
@@ -71,6 +86,22 @@ export class ThemedProgressBar<
   protected progressBar: SingleBar | null;
   protected progressBarOptions: T;
 
+  /**
+   * Creates an instance of ThemedProgressBar
+   *
+   * @param {EasyCLITheme} theme The theme to use
+   * @param {string} name The name of the progress bar
+   * @param {DisplayOptions} displayOptions The display options for the progress bar
+   * @param {ThemedProgressBarOptions} [progressBarOptions=DEFAULT_PROGRESS_BAR_OPTIONS] The options for the progress bar
+   *
+   * @example
+   * ```typescript
+   * const progressBar = new ThemedProgressBar(theme, 'progress', displayOptions, {
+   *  showPercentage: true,
+   *  percentageDisplayOptions: 'info',
+   * });
+   * ```
+   */
   constructor(
     theme: EasyCLITheme,
     name: string,
@@ -161,7 +192,14 @@ export class ThemedProgressBar<
    * @param {number} total The total number of items to process
    * @param {Record<string, any>} payload The payload to pass to the progress bar
    * @param {Options} options A set of options for the progress bar
-   * @returns
+   *
+   * @returns {SingleBar} The progress bar
+   *
+   * @example
+   * ```typescript
+   *  progressBar.start(0, 100);
+   * ```
+   *
    */
   public start(
     initial: number,
@@ -179,6 +217,11 @@ export class ThemedProgressBar<
 
   /**
    * Stops the progress bar
+   *
+   * @example
+   * ```typescript
+   * progressBar.stop();
+   * ```
    */
   public stop() {
     this.progressBar?.stop();

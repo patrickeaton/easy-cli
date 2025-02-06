@@ -29,7 +29,6 @@ export class CsvFile<TFileObject> {
    * ```typescript
    * const csvFile = new CsvFile('data.csv');
    * const data = await csvFile.read();
-   * console.log(data);
    * ```
    */
   public read = async (): Promise<TFileObject[]> =>

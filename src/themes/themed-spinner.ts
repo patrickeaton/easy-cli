@@ -38,6 +38,11 @@ export class ThemedSpinner {
    * @param {Partial<Ora>} [options={}] The options for the spinner
    * 
    * @returns {Ora} The spinner instance
+   * 
+   * @example
+   * ```typescript
+   * spinner.start('Loading...');
+   * ```
    */
   public start(text: string, options: Partial<Ora> = {}): Ora {
     this.spinner = ora({
@@ -50,6 +55,11 @@ export class ThemedSpinner {
 
   /**
    * Stops the spinner
+   * 
+   * @example
+   * ```typescript
+   * spinner.stop();
+   * ```
    */
   public stop() {
     this.spinner?.stop();

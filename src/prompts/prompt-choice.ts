@@ -13,6 +13,17 @@ import { DisplayOptions, EasyCLITheme } from '../themes';
  * @property {string} [validationErrorMessage='Invalid input'] The error message to display if the input is invalid
  * @property {EasyCLITheme} [theme=null] The theme to use
  * @property {DisplayOptions} [promptTheme='default'] The theme to use for the prompt
+ *
+ * @example
+ * ```typescript
+ * {
+ * defaultOption: 'A',
+ * validator: input => input === 'A',
+ * validationErrorMessage: 'Invalid input',
+ * theme: new EasyCLITheme(),
+ * promptTheme: 'info',
+ * }
+ * ```
  */
 export type PromptChoiceOptions = {
   defaultOption?: string | null;
@@ -47,7 +58,7 @@ export type PromptChoiceOptions = {
  * promptTheme: 'info',
  * });
  * console.log(choice);
- * 
+ *
  * // Prompt the user to select a choice using a custom displaying the choices with a theme
  * const theme = new EasyCLITheme();
  * const choice = await promptChoice('Select a choice', [

@@ -89,6 +89,11 @@ export class ThemedSimpleProgressBar extends ThemedProgressBar<ThemedSimpleProgr
    * @param {number} initial The initial value
    * @param {number} total The total value
    * @returns {SingleBar} The progress bar
+   * 
+   * @example
+   * ```typescript
+   * progressBar.start(0, 100);
+   * ```
    */
   public start(initial: number, total: number): SingleBar {
     return super.start(initial, total, {}, this.getOptions());
@@ -99,6 +104,11 @@ export class ThemedSimpleProgressBar extends ThemedProgressBar<ThemedSimpleProgr
    *
    * @param {number} progress The current progress
    * @param {string} [current=''] The current record
+   * 
+   * @example
+   * ```typescript
+   * progressBar.update(50, 'Record 1');
+   * ```
    */
   public update(progress: number, current: string = '') {
     this.progressBar?.update(progress, {
@@ -110,6 +120,11 @@ export class ThemedSimpleProgressBar extends ThemedProgressBar<ThemedSimpleProgr
    * Increments the progress bar by one.
    *
    * @param {string} [current=''] The current record
+   * 
+   * @example
+   * ```typescript
+   * progressBar.increment('Record 1');
+   * ```
    */
   public increment(current: string = '') {
     this.progressBar?.increment({ current });

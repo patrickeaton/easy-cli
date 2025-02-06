@@ -137,7 +137,7 @@ export class EasyCLIConfigFile<
    * Merge a list of configuration objects into a single object.
    *
    * @param {TConfig[]} configs A sorted list of configuration objects to merge
-   * 
+   *
    * @returns {TConfig} The merged configuration object
    */
   private mergeConfigurationSets<TConfig extends Record<string, any>>(
@@ -227,7 +227,7 @@ export class EasyCLIConfigFile<
    * Load a configuration object from the given path.
    *
    * @param path The path to load the configuration from
-   * 
+   *
    * @returns {TConfig} The loaded configuration object
    */
   private loadConfigurationFromPath(path: string): TConfig {
@@ -385,11 +385,24 @@ export class EasyCLIConfigFile<
    * @param {string} filePath The file path to save the configuration to
    *
    * @returns {Promise<void>}
+   *
+   * @example
+   * ```typescript
+   * const config = new EasyCLIConfigFile({
+   * filename: 'config',
+   * extensions: ['json', 'js', 'ts'],
+   * recursion: 'prefer_highest',
+   * root: 'cwd',
+   * });
+   *
+   * // Save the configuration file
+   * await config.save({
+   * var1: 'value1',
+   * var2: 'value2',
+   * });
+   * ```
    */
-  public async save(
-    config: TConfig,
-    filePath?: string
-  ): Promise<void> {
+  public async save(config: TConfig, filePath?: string): Promise<void> {
     if (!this.filename)
       throw new Error('No filename provided in config file params');
 

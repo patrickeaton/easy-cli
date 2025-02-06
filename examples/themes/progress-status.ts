@@ -5,7 +5,6 @@ const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const main = async () => {
   const theme = new EasyCLITheme(3);
 
-
   const progressBar = theme.getStatusProgressBar('Records Processed');
 
   // Generate an array of 100 items

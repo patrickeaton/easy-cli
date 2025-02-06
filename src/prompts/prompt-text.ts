@@ -14,6 +14,18 @@ import { DisplayOptions, EasyCLITheme } from '../themes';
  * @property {string} [validationErrorMessage='Invalid input'] The error message to display if the input is invalid
  * @property {EasyCLITheme} [theme=null] The theme to use
  * @property {DisplayOptions} [promptTheme='default'] The theme to use for the prompt
+ *
+ * @example
+ * ```typescript
+ * {
+ * type: 'input',
+ * defaultText: '',
+ * validator: (input: string) => true,
+ * validationErrorMessage: 'Invalid input',
+ * theme: null,
+ * promptTheme: 'default',
+ * }
+ * ```
  */
 export type PromptTextOptions = {
   type?: 'input' | 'password' | 'editor';

@@ -91,8 +91,14 @@ export class EasyCLILoggerResponse {
   ) {}
 
   /**
-   * Forces the log to be output
-   * This is useful if you want to output a log even if the verbosity is too low
+   * Forces the log to be output. This is useful if you want to output a log even if the verbosity is too low.
+   *
+   * @example
+   * ```typescript
+   * const logger = new EasyCLILogger({ theme: new EasyCLITheme(), verbosity: 0 });
+   * logger.log('Hello, world!'); // Won't be logged because verbosity is 0
+   * logger.log('Hello, world!').force(); // Will be logged
+   * ```
    */
   public force = () => {
     if (this.logged) return; // Already logged
@@ -264,6 +270,7 @@ export class EasyCLILogger {
    *Writes a warning to the console depending on the verbosity level, using the log display options.
    *
    * @param {unknown[]} args - The arguments to log
+   * 
    * @returns {EasyCLILoggerResponse} - The response from the logger
    * @example
    * ```typescript
@@ -278,6 +285,7 @@ export class EasyCLILogger {
    * Writes an info message to the console depending on the verbosity level, using the log display options.
    *
    * @param {unknown[]} args - The arguments to log
+   * 
    * @returns {EasyCLILoggerResponse} - The response from the logger
    *
    * @example
@@ -293,6 +301,7 @@ export class EasyCLILogger {
    * Writes an error to the console depending on the verbosity level, using the log display options.
    *
    * @param {unknown[]} args - The arguments to log
+   * 
    * @returns {EasyCLILoggerResponse} - The response from the logger
    *
    * @example
@@ -308,6 +317,7 @@ export class EasyCLILogger {
    * Writes a success to the console depending on the verbosity level, using the log display options.
    *
    * @param {unknown[]} args - The arguments to log
+   * 
    * @returns {EasyCLILoggerResponse} - The response from the logger
    *
    * @example

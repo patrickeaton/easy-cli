@@ -305,6 +305,14 @@ export class EasyCLI<
    * Run the CLI with the provided arguments.
    *
    * @param {((app: typeof yargs) => typeof yargs) | null} [callback=null] A callback to add additional configuration to the CLI via yargs
+   * 
+   * @returns {Promise<void>} A promise that resolves when the CLI has finished executing
+   * 
+   * @example
+   * ```typescript
+   * const cli = new EasyCLI(...);
+   * cli.execute();
+   * ```
    */
   public async execute(
     callback: ((app: typeof yargs) => typeof yargs) | null = null

@@ -9,7 +9,7 @@ import {
 /**
  * Options for a ThemedStatusProgressBar that extends a ThemedProgressBar
  *
-  * @interface ThemedStatusProgressBarOptions
+ * @interface ThemedStatusProgressBarOptions
  * @extends {ThemedProgressBarOptions}
  * @property {boolean} [showCurrentRecord] Whether to show the current record
  * @property {DisplayOptions} [currentRecordDisplayOptions] Display options for the current record
@@ -71,7 +71,7 @@ export type StatusPayload = {
 /**
  * A themed status progress bar that shows the progress of a task while also showing the current status of the task
  *
-  * @class ThemedStatusProgressBar
+ * @class ThemedStatusProgressBar
  * @extends {ThemedProgressBar<ThemedStatusProgressBarOptions>}
  * @param {EasyCLITheme} theme The theme to use
  * @param {string} name The name of the progress bar
@@ -147,7 +147,13 @@ export class ThemedStatusProgressBar extends ThemedProgressBar<ThemedStatusProgr
    *
    * @param initial The initial value for the progress bar
    * @param total The total value for the progress bar
+   *
    * @returns an instance of the progress bar
+   *
+   * @example
+   * ```typescript
+   * progressBar.start(0, 100);
+   * ```
    */
   public start(initial: number, total: number): SingleBar {
     return super.start(initial, total, {}, this.getOptions());
@@ -158,6 +164,11 @@ export class ThemedStatusProgressBar extends ThemedProgressBar<ThemedStatusProgr
    *
    * @param {number} progress The current progress value
    * @param {StatusPayload} payload The payload for the status bar
+   *
+   * @example
+   * ```typescript
+   * progressBar.update(50, { current: 'Processing record XXX', success: 10, warn: 5, error: 0 });
+   * ```
    */
   public update(progress: number, payload: StatusPayload) {
     this.progressBar?.update(progress, payload);
@@ -165,8 +176,13 @@ export class ThemedStatusProgressBar extends ThemedProgressBar<ThemedStatusProgr
 
   /**
    * Increments the progress bar
-   *  
+   *
    * @param {StatusPayload} payload The payload for the status bar
+   *
+   * @example
+   * ```typescript
+   * progressBar.increment({ current: 'Processing record XXX', success: 10, warn: 5, error: 0 });
+   * ```
    */
   public increment(payload: StatusPayload) {
     this.progressBar?.increment(payload);
