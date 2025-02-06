@@ -17,7 +17,6 @@
   "private": false,
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
-    "test-config": "yarn --cwd=$INIT_CWD ts-node-script ./scripts/test-load-config.ts",
     "docs": "typedoc",
     "prepare": "husky"
   },

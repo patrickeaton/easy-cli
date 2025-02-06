@@ -1,6 +1,5 @@
-
 import { EasyCLITheme } from '../themes';
-import { Options, PositionalOptions, CommandModule } from 'yargs';
+import { Options, PositionalOptions, CommandModule, Choices } from 'yargs';
 
 // @ts-ignore Untyped Module
 import yargsInteractive from 'yargs-interactive';
@@ -127,8 +126,8 @@ export type CommandSetupOptions<TGlobalParams, TParams> = {
  * ```
  */
 export class EasyCLICommand<
-  TParams = Record<string, any>,
-  TGlobalParams = Record<string, any>
+  TParams extends Record<string, any> = Record<string, any>,
+  TGlobalParams extends Record<string, any>  = Record<string, any>
 > {
   private name: string;
   private aliases: string[];
@@ -138,7 +137,7 @@ export class EasyCLICommand<
   private prompts: CommandOptionObject<TGlobalParams, TParams>;
   private args: CommandOptionObject<TGlobalParams, TParams>;
   private handler: (
-    params: TParams & TGlobalParams,
+    params: TGlobalParams & TParams,
     theme: EasyCLITheme | null
   ) => void;
 
@@ -162,7 +161,7 @@ export class EasyCLICommand<
       prompts = {} as CommandOptionObject<TGlobalParams, TParams>,
       args = {} as CommandOptionObject<TGlobalParams, TParams>,
       skipConfig = false,
-    }: CommandSetupOptions<TGlobalParams, TParams>
+    }: CommandSetupOptions<TGlobalParams, TParams> = {}
   ) {
     this.name = name;
     this.handler = handler;
@@ -179,6 +178,14 @@ export class EasyCLICommand<
    */
   public getNames(): string[] {
     return [this.name, ...this.aliases];
+  }
+
+  public getName(): string {
+    return this.name;
+  }
+
+  public getDescription(): string {
+    return this.description ?? '';
   }
 
   /**
@@ -359,7 +366,19 @@ export class EasyCLICommand<
   private preparePrompts(argv: TParams & TGlobalParams): {
     [key: string]: CommandOption;
   } {
-    const convertYargsTypeToInteractiveTypes = (type: string) => {
+    const convertYargsTypeToInteractiveTypes = (
+      type: string,
+      choices?: Choices,
+      array?: boolean
+    ) => {
+      if (choices && !array) {
+        return 'list';
+      }
+
+      if (choices && array) {
+        return 'checkbox';
+      }
+
       switch (type) {
         case 'string':
           return 'input';
@@ -404,7 +423,11 @@ export class EasyCLICommand<
         .reduce((acc, [key, { prompt = 'never', ...config }]) => {
           acc[key as keyof TParams & TGlobalParams] = {
             ...config,
-            type: convertYargsTypeToInteractiveTypes(config?.type ?? 'string'),
+            type: convertYargsTypeToInteractiveTypes(
+              config?.type ?? 'string',
+              config?.choices,
+              config?.array
+            ),
             name: key,
             message: config.describe,
             prompt: 'always',
@@ -460,6 +483,7 @@ export class EasyCLICommand<
    * ```
    */
   public convertToYargsCommand(
+    isDefault: boolean = false,
     theme: EasyCLITheme | null = null
   ): CommandModule {
     const flags = this.prepareFlags();
@@ -476,7 +500,7 @@ export class EasyCLICommand<
     const command = `${this.name} ${positionals}`.trim();
 
     return {
-      command: command,
+      command: isDefault ? ['$0', command] : command,
       aliases: this.aliases,
       describe: this.description,
       builder: yargs => {
@@ -514,5 +538,3 @@ export class EasyCLICommand<
     );
   }
 }
-
-

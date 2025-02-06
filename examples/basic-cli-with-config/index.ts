@@ -5,7 +5,7 @@ import {
   EasyCLIConfigFile,
   EasyCLIConfigureCommand,
   EasyCLIInitCommand,
-} from '../../src';
+} from 'easy-cli';
 
 // Create a new EasyCLI instance
 const app = new EasyCLI({
@@ -30,7 +30,7 @@ const configCommand = new EasyCLIConfigureCommand(config, 'configure', {
   globalKeysToUse: ['verbose'],
   prompts: {
     env: {
-      describe: 'What environeent are you setting?',
+      describe: 'What environent are you setting?',
       type: 'string',
       prompt: 'always',
       demandOption: true,

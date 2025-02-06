@@ -1,19 +1,15 @@
-import { EasyCLITheme } from '../../src/themes';
+import { EasyCLITheme } from 'easy-cli/themes';
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const main = async () => {
   const theme = new EasyCLITheme(3);
 
-  // const spinner = theme.getSpinner('success');
-  // spinner.start('Loading...');
-  // await sleep(1000);
-  // spinner.stop();
-
   const progressBar = theme.getSimpleProgressBar('Records Processed', 'warn', {
     barDisplayOptions: 'success',
   });
 
+  // Generate an array of 20 items
   const arr = [...Array(20).keys()];
 
   progressBar.start(1, arr.length);

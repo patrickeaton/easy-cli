@@ -37,15 +37,15 @@ export type ConfigFileRecursionBehaviour =
 
 /**
  * The root to use when looking for configuration files.
- * @typedef {'cwd' | 'home' | 'app-root'} ConfigFileRoot
+ * @typedef {'cwd' | 'home' | 'project_root'} ConfigFileRoot
  *
  * @example
  * cwd - Look in the current working directory for the configuration file.
  * home - Look in the user's home directory for the configuration file.
- * app-root - Look in the root directory of the application for the configuration file.
+ * project_root - Look in the root directory of the application for the configuration file.
  *
  */
-export type ConfigFileRoot = 'cwd' | 'home' | 'app-root';
+export type ConfigFileRoot = 'cwd' | 'home' | 'project_root';
 
 /**
  * The parameters to use when loading a configuration file.
@@ -275,7 +275,7 @@ export class EasyCLIConfigFile<
     switch (this.root) {
       case 'home':
         return os.homedir();
-      case 'app-root':
+      case 'project_root':
         return appRootPath.toString();
       case 'cwd':
       default:

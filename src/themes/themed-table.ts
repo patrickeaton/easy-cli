@@ -27,7 +27,7 @@ import { DisplayOptions, EasyCLITheme } from '.';
  */
 export type ThemedTableColumn<TItem = Record<string, any>> = {
   name: string;
-  data: (item: TItem) => string; // A function that returns the value to display.
+  data: (item: TItem) => string | number; // A function that returns the value to display.
   style?: DisplayOptions | ((item: TItem) => DisplayOptions); // Use the function to conditionally format the item.
   headerStyle?: DisplayOptions;
   width?: number;
@@ -121,7 +121,7 @@ export class ThemedTable<TItem extends Record<string, any>> {
 
   /**
    * Render the table to the console
-   * 
+   *
    * @param {TItem[]} items The items to render
    */
   render(items: TItem[]) {
@@ -144,7 +144,7 @@ export class ThemedTable<TItem extends Record<string, any>> {
             typeof column.style === 'function'
               ? column.style(item)
               : column.style;
-          return this.theme.formattedString(data, style ?? 'default');
+          return this.theme.formattedString(`${data}`, style ?? 'default');
         })
       );
     });

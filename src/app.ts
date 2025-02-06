@@ -1,10 +1,14 @@
 /**
- * @packageDocumentation A framework for building CLI applications that are robust and easy to maintain. Supports theming, configuration files, interactive prompts, and more. 
+ * @packageDocumentation A framework for building CLI applications that are robust and easy to maintain. Supports theming, configuration files, interactive prompts, and more.
  * @module easy-cli
  */
 
 import yargs from 'yargs';
-import { CommandOption, CommandOptionObject, EasyCLICommand } from './commands/command';
+import {
+  CommandOption,
+  CommandOptionObject,
+  EasyCLICommand,
+} from './commands/command';
 import { EasyCLITheme } from './themes';
 import { EasyCLIConfigFile } from './config-files';
 
@@ -12,18 +16,20 @@ import { EasyCLIConfigFile } from './config-files';
  * @interface EasyCLIConfig
  * The configuration for the EasyCLI
  *
- * @template TGloablParams An object representing the global params for the CLI
+ * @template TGlobalParams An object representing the global params for the CLI
  *
  * @property {string} [executionName] The name to display in the help menu and error messages for the CLI
  * @property {string} [defaultCommand] The default command to run if no command is provided (defaults to 'help')
  * @property {EasyCLICommand[]} [commands] The commands to add to the CLI
  * @property {CommandOptionObject} [globalFlags] The global flags to add to the CLI
  */
-export type EasyCLIConfig<TGloablParams> = {
+export type EasyCLIConfig<
+  TGlobalParams extends Record<string, any> = Record<string, any>
+> = {
   executionName?: string; // The name to display in the help menu and error messages for the CLI
   defaultCommand?: string; // The default command to run if no command is provided (defaults to 'help')
-  commands?: EasyCLICommand<any, TGloablParams>[];
-  globalFlags?: CommandOptionObject<{}, TGloablParams>;
+  commands?: EasyCLICommand<any, TGlobalParams>[];
+  globalFlags?: CommandOptionObject<{}, TGlobalParams>;
 };
 
 /**
@@ -46,7 +52,9 @@ export type EasyCLIConfig<TGloablParams> = {
  * cli.execute();
  * ```
  */
-export class EasyCLI<TGlobalParams> {
+export class EasyCLI<
+  TGlobalParams extends Record<string, any> = Record<string, any>
+> {
   private executionName: string = '';
   private defaultCommand: string = 'help';
   private commands: EasyCLICommand<any, TGlobalParams>[] = [];
@@ -65,6 +73,7 @@ export class EasyCLI<TGlobalParams> {
   constructor(config: EasyCLIConfig<TGlobalParams> = {}) {
     this.executionName = config?.executionName ?? '';
     this.commands = config?.commands ?? [];
+    this.defaultCommand = config?.defaultCommand ?? 'help';
     this.globalFlags =
       config?.globalFlags ?? ({} as CommandOptionObject<{}, TGlobalParams>);
   }
@@ -136,7 +145,7 @@ export class EasyCLI<TGlobalParams> {
    * Adds a command to the CLI
    *
    * @template TParams The params that this command accepts.
-   * 
+   *
    * @param {EasyCLICommand} command The command to add
    *
    * @returns {EasyCLI} The EasyCLI instance
@@ -148,7 +157,7 @@ export class EasyCLI<TGlobalParams> {
    * cli.addCommand(command);
    * ```
    */
-  public addCommand<TParams = Record<string, any>>(
+  public addCommand<TParams extends Record<string, any> = Record<string, any>>(
     command: EasyCLICommand<TParams, TGlobalParams>
   ): EasyCLI<TGlobalParams> {
     this.commands.push(command);
@@ -311,12 +320,15 @@ export class EasyCLI<TGlobalParams> {
 
     // Add the commands
     this.commands.forEach(command => {
-      app.command(command.convertToYargsCommand(this.theme));
+      app.command(
+        command.convertToYargsCommand(
+          command.getName() === this.defaultCommand, // If this is the default command it needs to add $0 to the command
+          this.theme // Pass the theme to the command
+        )
+      );
     });
 
-    if (this.defaultCommand) {
-      app.help().wrap(72);
-    }
+    app.help().wrap(72);
 
     const middleware = [];
     middleware.push(this.configMiddleware());

@@ -1,5 +1,5 @@
-import { EasyCLITheme } from '../../src/themes';
-import { ThemedTable } from '../../src/themes/themed-table';
+import { EasyCLITheme } from 'easy-cli/themes';
+import { ThemedTable } from 'easy-cli/themes/themed-table';
 
 const main = async () => {
   const theme = new EasyCLITheme(3);

@@ -1,4 +1,4 @@
-import { CSVMapper, EasyCLITheme } from '../../src';
+import { CSVMapper, EasyCLITheme } from 'easy-cli';
 
 const main = async () => {
   const theme = new EasyCLITheme(3);

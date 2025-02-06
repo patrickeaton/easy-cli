@@ -1,7 +1,10 @@
-import { EasyCLI, EasyCLICommand, EasyCLITheme } from 'easy-cli';
+import { EasyCLI, EasyCLICommand } from 'easy-cli';
+import { EasyCLIConfigFile } from 'easy-cli/config-files';
 
-// Create a new theme
-const theme = new EasyCLITheme();
+const config = new EasyCLIConfigFile({
+  filename: 'easy-cli.config',
+  extensions: ['json'],
+});
 
 // An example command that will log the value of the `do` command, depending on the verbose flag. log is only shown if verbose is greater than 1.s
 const command = new EasyCLICommand(
@@ -32,7 +35,8 @@ const command = new EasyCLICommand(
 new EasyCLI({
   executionName: 'easy-cli',
 })
-  .setTheme(theme) // Set the theme
+  .setConfigFile(config) // Set the config file
+  .handleConfigFileFlag() // Have EasyCLI handle the config file flag addding --config to provide a custom config file
   .handleVerboseFlag() // Have EasyCLI handle the verbose flag as -v, -vv, -vvv OR --verbose 1, --verbose 2, --verbose 3
-  .addCommand(command) // Add the custom command
-  .execute((yargs: any) => yargs.wrap(null)); // Execute the app, with a callback to interact with yargs.
+  .addCommand(command) // Add the custom command, `do` where the flags and args will be loaded from ./easy-cli.config.json
+  .execute(); // Execute the command

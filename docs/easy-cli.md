@@ -8,7 +8,7 @@ A framework for building CLI applications that are robust and easy to maintain. 
 
 ### EasyCLI\<TGlobalParams\>
 
-Defined in: [app.ts:49](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L49)
+Defined in: [app.ts:55](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L55)
 
 EasyCLI
 The primary class for composing and running an EasyCLI application.
@@ -30,9 +30,9 @@ cli.execute();
 
 #### Type Parameters
 
-| Type Parameter | Description |
-| ------ | ------ |
-| `TGlobalParams` | The global params for the CLI |
+| Type Parameter | Default type | Description |
+| ------ | ------ | ------ |
+| `TGlobalParams` *extends* `Record`\<`string`, `any`\> | `Record`\<`string`, `any`\> | The global params for the CLI |
 
 #### Constructors
 
@@ -40,7 +40,7 @@ cli.execute();
 
 > **new EasyCLI**\<`TGlobalParams`\>(`config`?): [`EasyCLI`](easy-cli.md#easyclitglobalparams)\<`TGlobalParams`\>
 
-Defined in: [app.ts:65](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L65)
+Defined in: [app.ts:73](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L73)
 
 Creates a new EasyCLI instance
 
@@ -48,7 +48,7 @@ Creates a new EasyCLI instance
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `config`? | [`EasyCLIConfig`](easy-cli.md#easycliconfigtgloablparams)\<`TGlobalParams`\> | The configuration for the CLI |
+| `config`? | [`EasyCLIConfig`](easy-cli.md#easycliconfigtglobalparams)\<`TGlobalParams`\> | The configuration for the CLI |
 
 ###### Returns
 
@@ -60,7 +60,7 @@ Creates a new EasyCLI instance
 
 > **setTheme**(`theme`): [`EasyCLI`](easy-cli.md#easyclitglobalparams)\<`TGlobalParams`\>
 
-Defined in: [app.ts:87](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L87)
+Defined in: [app.ts:96](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L96)
 
 Set the theme for the CLI, will overwrite any existing theme, and this theme will be passed to all commands unless overridden.
 
@@ -89,7 +89,7 @@ cli.setTheme(theme);
 
 > **setConfigFile**(`config`): [`EasyCLI`](easy-cli.md#easyclitglobalparams)\<`TGlobalParams`\>
 
-Defined in: [app.ts:109](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L109)
+Defined in: [app.ts:118](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L118)
 
 Set the configuration file for the CLI
 
@@ -120,7 +120,7 @@ cli.setConfigFile(configFile);
 
 > **setCommands**(`commands`): [`EasyCLI`](easy-cli.md#easyclitglobalparams)\<`TGlobalParams`\>
 
-Defined in: [app.ts:128](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L128)
+Defined in: [app.ts:137](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L137)
 
 Dangerously sets all the commands for the CLI, overwriting any existing commands.
 
@@ -148,7 +148,7 @@ cli.setCommands([command]);
 
 > **addCommand**\<`TParams`\>(`command`): [`EasyCLI`](easy-cli.md#easyclitglobalparams)\<`TGlobalParams`\>
 
-Defined in: [app.ts:151](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L151)
+Defined in: [app.ts:160](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L160)
 
 Adds a command to the CLI
 
@@ -156,7 +156,7 @@ Adds a command to the CLI
 
 | Type Parameter | Default type | Description |
 | ------ | ------ | ------ |
-| `TParams` | `Record`\<`string`, `any`\> | The params that this command accepts. |
+| `TParams` *extends* `Record`\<`string`, `any`\> | `Record`\<`string`, `any`\> | The params that this command accepts. |
 
 ###### Parameters
 
@@ -182,7 +182,7 @@ cli.addCommand(command);
 
 > **handleVerboseFlag**(`defaultVerbosity`?, `overrides`?): [`EasyCLI`](easy-cli.md#easyclitglobalparams)\<`TGlobalParams`\>
 
-Defined in: [app.ts:172](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L172)
+Defined in: [app.ts:181](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L181)
 
 Manage the verbose flag for the CLI
 
@@ -210,7 +210,7 @@ cli.handleVerboseFlag(0, { ... });
 
 > **handleConfigFileFlag**(`overrides`?): [`EasyCLI`](easy-cli.md#easyclitglobalparams)\<`TGlobalParams`\>
 
-Defined in: [app.ts:210](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L210)
+Defined in: [app.ts:219](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L219)
 
 Manage the configuration file flag for the CLI
 
@@ -242,7 +242,7 @@ cli.handleConfigFileFlag({ name: 'my-config' });
 
 > **execute**(`callback`?): `Promise`\<`void`\>
 
-Defined in: [app.ts:300](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L300)
+Defined in: [app.ts:309](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L309)
 
 Run the CLI with the provided arguments.
 
@@ -258,24 +258,24 @@ Run the CLI with the provided arguments.
 
 ## Interfaces
 
-### EasyCLIConfig\<TGloablParams\>
+### EasyCLIConfig\<TGlobalParams\>
 
-Defined in: [app.ts:22](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L22)
+Defined in: [app.ts:26](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L26)
 
 EasyCLIConfig
 The configuration for the EasyCLI
 
 #### Type Parameters
 
-| Type Parameter | Description |
-| ------ | ------ |
-| `TGloablParams` | An object representing the global params for the CLI |
+| Type Parameter | Default type | Description |
+| ------ | ------ | ------ |
+| `TGlobalParams` *extends* `Record`\<`string`, `any`\> | `Record`\<`string`, `any`\> | An object representing the global params for the CLI |
 
 #### Properties
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="executionname"></a> `executionName?` | `string` | The name to display in the help menu and error messages for the CLI | [app.ts:23](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L23) |
-| <a id="defaultcommand"></a> `defaultCommand?` | `string` | The default command to run if no command is provided (defaults to 'help') | [app.ts:24](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L24) |
-| <a id="commands"></a> `commands?` | [`EasyCLICommand`](commands.md#easyclicommandtparams-tglobalparams)\<`any`, `TGloablParams`\>[] | The commands to add to the CLI | [app.ts:25](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L25) |
-| <a id="globalflags"></a> `globalFlags?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<\{\}, `TGloablParams`\> | The global flags to add to the CLI | [app.ts:26](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L26) |
+| <a id="executionname"></a> `executionName?` | `string` | The name to display in the help menu and error messages for the CLI | [app.ts:29](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L29) |
+| <a id="defaultcommand"></a> `defaultCommand?` | `string` | The default command to run if no command is provided (defaults to 'help') | [app.ts:30](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L30) |
+| <a id="commands"></a> `commands?` | [`EasyCLICommand`](commands.md#easyclicommandtparams-tglobalparams)\<`any`, `TGlobalParams`\>[] | The commands to add to the CLI | [app.ts:31](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L31) |
+| <a id="globalflags"></a> `globalFlags?` | [`CommandOptionObject`](commands.md#commandoptionobjecttparams-tglobalparams)\<\{\}, `TGlobalParams`\> | The global flags to add to the CLI | [app.ts:32](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L32) |

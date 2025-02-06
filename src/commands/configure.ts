@@ -24,7 +24,7 @@ import { EasyCLITheme } from '../themes';
  *  prompts?: {
  *   // Prompts to ask the user for an input for the env key
  *   env: {
- *    describe: 'What environeent are you setting?',
+ *    describe: 'What environent are you setting?',
  *    type: 'string',
  *    prompt: 'always',
  *    demandOption: true,
@@ -38,13 +38,14 @@ export type ConfigureCommandOptions<TGlobalParams, TParams> =
   CommandSetupOptions<TGlobalParams, TParams> & {
     globalKeysToUse?: string[]; // What key(s) are you setting?
     transformer?: (params: TGlobalParams & TParams) => any; // How to transform the params before saving
+    callback?: (params: TGlobalParams & TParams) => void; // The callback to run after the command is executed, this is useful if you want to add additional functionality to the command ie. Copying a file
   };
 
 /**
  * A command to add a configure command to the CLI that will save the configuration
  *
  * @template TParams The params for the command
- * @template TGloablParams The global params for the CLI
+ * @template TGlobalParams The global params for the CLI
  * @extends EasyCLICommand
  *
  * @example
@@ -55,7 +56,7 @@ export type ConfigureCommandOptions<TGlobalParams, TParams> =
  *  prompts: {
  *    // Prompts to ask the user for an input for the env key
  *    env: {
- *     describe: 'What environeent are you setting?',
+ *     describe: 'What environent are you setting?',
  *     type: 'string',
  *     prompt: 'always',
  *     demandOption: true,
@@ -75,28 +76,29 @@ export type ConfigureCommandOptions<TGlobalParams, TParams> =
  * ```
  */
 export class EasyCLIConfigureCommand<
-  TParams,
-  TGloablParams
-> extends EasyCLICommand<TParams, TGloablParams> {
+  TParams extends Record<string, any> = Record<string, any>,
+  TGlobalParams extends Record<string, any> = Record<string, any>
+> extends EasyCLICommand<TParams, TGlobalParams> {
   /**
    * Creates a new configure command
    * @param {EasyCLIConfigFile} config The configuration file to use
    * @param {string} [name='configure'] The name of the command
-   * @param {ConfigureCommandOptions<TGloablParams, TParams>} [options={}] The options for the command
+   * @param {ConfigureCommandOptions<TGlobalParams, TParams>} [options={}] The options for the command
    */
   constructor(
     config: EasyCLIConfigFile,
     name: string = 'configure',
-    options: ConfigureCommandOptions<TGloablParams, TParams> = {}
+    options: ConfigureCommandOptions<TGlobalParams, TParams> = {}
   ) {
     const {
       globalKeysToUse = [],
-      transformer = (params: TGloablParams & TParams) => params,
+      transformer = (params: TGlobalParams & TParams) => params,
+      callback,
       ...commandOptions
     } = options;
 
     const handler = async (
-      params: TGloablParams & TParams,
+      params: TGlobalParams & TParams,
       theme: EasyCLITheme | null
     ) => {
       const logger = theme?.getLogger();
@@ -116,6 +118,10 @@ export class EasyCLIConfigureCommand<
       const transformed = transformer(clean);
       logger?.success('Saving configuration');
       await config.save(transformed);
+
+      if (callback) {
+        await callback(params);
+      }
     };
 
     super(name, handler, commandOptions);

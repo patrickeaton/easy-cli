@@ -1,4 +1,4 @@
-import { EasyCLITheme } from '../../src/themes';
+import { EasyCLITheme } from 'easy-cli/themes';
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -8,6 +8,7 @@ const main = async () => {
 
   const progressBar = theme.getStatusProgressBar('Records Processed');
 
+  // Generate an array of 100 items
   const arr = [...Array(100).keys()];
   progressBar.start(1, arr.length);
 

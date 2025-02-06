@@ -140,7 +140,7 @@ Defined in: [helpers/csv-file.ts:17](https://github.com/patrickeaton/easy-cli/bl
 
 > **read**(): `Promise`\<`TFileObject`[]\>
 
-Defined in: [helpers/csv-file.ts:36](https://github.com/patrickeaton/easy-cli/blob/master/src/helpers/csv-file.ts#L36)
+Defined in: [helpers/csv-file.ts:35](https://github.com/patrickeaton/easy-cli/blob/master/src/helpers/csv-file.ts#L35)
 
 Read a CSV file and parse it into an array of objects.
 
@@ -168,7 +168,7 @@ console.log(data);
 
 Defined in: [helpers/csv-file.ts:66](https://github.com/patrickeaton/easy-cli/blob/master/src/helpers/csv-file.ts#L66)
 
-Write an array of objects to a CSV file.
+Write an array of objects to a CSV file overwriting the existing file.
 
 ###### Parameters
 
@@ -193,6 +193,40 @@ const csvFile = new CsvFile('data.csv');
 await csvFile.write([
  { name: 'Alice', age: 25 },
  { name: 'Bob', age: 30 },
+]);
+```
+
+##### append()
+
+> **append**(`data`): `Promise`\<`void`\>
+
+Defined in: [helpers/csv-file.ts:89](https://github.com/patrickeaton/easy-cli/blob/master/src/helpers/csv-file.ts#L89)
+
+Append an array of objects to an existing CSV file.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `data` | `TFileObject`[] | The data to append to the CSV file. |
+
+###### Returns
+
+`Promise`\<`void`\>
+
+A promise that resolves when the file is written.
+
+###### Throws
+
+If there is an error writing the file.
+
+###### Example
+
+```typescript
+const csvFile = new CsvFile('data.csv');
+await csvFile.append([
+{ name: 'Alice', age: 25 },
+{ name: 'Bob', age: 30 },
 ]);
 ```
 

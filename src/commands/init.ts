@@ -11,13 +11,13 @@ import { EasyCLITheme } from '../themes';
  * @template TParams The params for the command
  *
  * @property {boolean} failOnExists Should the command fail if the config file already exists?
- * @property {string[]} globalKeysToUse What key(s) are you setting?
+ * @property {string[]} globalKeysToUse Any global keys that should be stored in the config file
  * @property {Partial<TGlobalParams & TParams>} defaults The default values to use
  * @property {(params: TGlobalParams & TParams) => any} transformer How to transform the params before saving
  * @property {string} configFlag The name of the variable to use for the config file
  *
  * @extends CommandSetupOptions
- * 
+ *
  * @example
  * ```typescript
  * {
@@ -38,14 +38,15 @@ export type InitCommandOptions<TGlobalParams, TParams> = CommandSetupOptions<
   defaults?: Partial<TGlobalParams & TParams>; // The default values to use
   transformer?: (params: TGlobalParams & TParams) => any; // How to transform the params before saving
   configFlag?: string; // The name of the variable to use for the config file
+  callback?: (params: TGlobalParams & TParams) => void; // The callback to run after the command is executed, this is useful if you want to add additional functionality to the command ie. Copying a file
 };
 
 /**
  * A command to add an init command to the CLI that will save the configuration
  *
  * @template TParams The params for the command
- * @template TGloablParams The global params for the CLI
- * 
+ * @template TGlobalParams The global params for the CLI
+ *
  * @extends EasyCLICommand
  *
  * @example
@@ -54,7 +55,7 @@ export type InitCommandOptions<TGlobalParams, TParams> = CommandSetupOptions<
  *   globalKeysToUse: ['verbose'],
  *   prompts: {
  *     env: {
- *       describe: 'What environeent are you setting?',
+ *       describe: 'What environent are you setting?',
  *       type: 'string',
  *       prompt: 'always',
  *       demandOption: true,
@@ -63,21 +64,20 @@ export type InitCommandOptions<TGlobalParams, TParams> = CommandSetupOptions<
  * });
  * ```
  */
-export class EasyCLIInitCommand<TParams, TGloablParams> extends EasyCLICommand<
-  TParams,
-  TGloablParams
-> {
-
+export class EasyCLIInitCommand<
+  TParams extends Record<string, any> = Record<string, any>,
+  TGlobalParams extends Record<string, any> = Record<string, any>
+> extends EasyCLICommand<TParams, TGlobalParams> {
   /**
    * Creates a new init command
    * @param {EasyCLIConfigFile} config The configuration file to use to save the config
    * @param {string} [name='init'] The name of the command
-   * @param {InitCommandOptions<TGloablParams, TParams>} [options={}] The options for the command
+   * @param {InitCommandOptions<TGlobalParams, TParams>} [options={}] The options for the command
    */
   constructor(
     config: EasyCLIConfigFile,
     name: string = 'init',
-    options: InitCommandOptions<TGloablParams, TParams> = {}
+    options: InitCommandOptions<TGlobalParams, TParams> = {}
   ) {
     if (!config) {
       throw new Error('EasyCLIConfigFile is required for init command');
@@ -85,14 +85,15 @@ export class EasyCLIInitCommand<TParams, TGloablParams> extends EasyCLICommand<
 
     const {
       globalKeysToUse = [],
-      transformer = (params: TGloablParams & TParams) => params,
+      transformer = (params: TGlobalParams & TParams) => params,
       defaults = {},
       configFlag = 'config',
+      callback,
       ...commandOptions
     } = options;
 
     const handler = async (
-      params: TGloablParams & TParams,
+      params: TGlobalParams & TParams,
       theme: EasyCLITheme | null
     ) => {
       if (
@@ -120,6 +121,10 @@ export class EasyCLIInitCommand<TParams, TGloablParams> extends EasyCLICommand<
       const transformed = transformer(clean);
       logger?.success('Saving config file');
       await config.save(transformed);
+
+      if (callback) {
+        await callback(params);
+      }
     };
 
     super(name, handler, commandOptions);

@@ -21,7 +21,6 @@ export class CsvFile<TFileObject> {
   /**
    * Read a CSV file and parse it into an array of objects.
    *
-   * @param path The path to the CSV file to read.
    * @throws {Error} If the file is not found or there is an error reading the file.
    *
    * @returns The parsed CSV file as an array of objects.
@@ -47,11 +46,10 @@ export class CsvFile<TFileObject> {
     });
 
   /**
-   * Write an array of objects to a CSV file.
+   * Write an array of objects to a CSV file overwriting the existing file.
    *
    * @param data The data to write to the CSV file.
-   * @param append Whether to append the data to the file or overwrite it.
-   * 
+   *
    * @throws {Error} If there is an error writing the file.
    *
    * @returns A promise that resolves when the file is written.
@@ -65,9 +63,32 @@ export class CsvFile<TFileObject> {
    * ]);
    * ```
    */
-  public write = async (data: TFileObject[], append = false): Promise<void> => {
-    const csv = new ObjectsToCsv(data, { append });
+  public write = async (data: TFileObject[]): Promise<void> => {
+    const csv = new ObjectsToCsv(data);
+    await csv.toDisk(this.path);
+  };
 
+  /**
+   * Append an array of objects to an existing CSV file.
+   *
+   * @param data The data to append to the CSV file.
+   *
+   * @throws {Error} If there is an error writing the file.
+   *
+   * @returns A promise that resolves when the file is written.
+   *
+   * @example
+   * ```typescript
+   * const csvFile = new CsvFile('data.csv');
+   * await csvFile.append([
+   * { name: 'Alice', age: 25 },
+   * { name: 'Bob', age: 30 },
+   * ]);
+   * ```
+   */
+  public append = async (data: TFileObject[]): Promise<void> => {
+    const existingData = await this.read();
+    const csv = new ObjectsToCsv([...existingData, ...data]);
     await csv.toDisk(this.path);
   };
 }

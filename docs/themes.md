@@ -1408,7 +1408,7 @@ A column in a themed table
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
 | <a id="name-3"></a> `name` | `string` | The name of the column | [themes/themed-table.ts:29](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/themed-table.ts#L29) |
-| <a id="data"></a> `data` | (`item`: `TItem`) => `string` | A function that returns the value to display | [themes/themed-table.ts:30](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/themed-table.ts#L30) |
+| <a id="data"></a> `data` | (`item`: `TItem`) => `string` \| `number` | A function that returns the value to display | [themes/themed-table.ts:30](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/themed-table.ts#L30) |
 | <a id="style"></a> `style?` | [`DisplayOptions`](themes.md#displayoptions-3) \| (`item`) => [`DisplayOptions`](themes.md#displayoptions-3) | The style for the column | [themes/themed-table.ts:31](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/themed-table.ts#L31) |
 | <a id="headerstyle"></a> `headerStyle?` | [`DisplayOptions`](themes.md#displayoptions-3) | The style for the header | [themes/themed-table.ts:32](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/themed-table.ts#L32) |
 | <a id="width"></a> `width?` | `number` | The width of the column | [themes/themed-table.ts:33](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/themed-table.ts#L33) |

@@ -8,21 +8,32 @@ A basic implementation that utilizes EasyCLI to build a simple CLI tool with con
 [Complex Implementation (golf game)](./golf/index.ts):
 A more complex implementation that runs a command line golf game and stores scores in a CSV file.
 
-## Theming
+### Configuration Files
 
-[Logger](./theming/logger.ts):
+[Basic](./configuration/basic.ts):
+An example for how to use the EasyCLIConfigFile with a basic configuration.
+
+[Project Root](./configuration/project-root.ts):
+An example for how to use the EasyCLIConfigFile with the project root.
+
+[Home Root](./configuration/home-dir.ts):
+An example for how to use the EasyCLIConfigFile with a file in the home directory.
+
+## Themes
+
+[Logger](./themes/logger.ts):
 An example for how to use the EasyCLILogger component to write formatted text and utilize verbosity.
 
-[Spinner](./theming/spinner.ts):
+[Spinner](./themes/spinner.ts):
 An example for using the ThemedSpinner component
 
-[Progress (Simple)](./theming/progress-simple.ts):
+[Progress (Simple)](./themes/progress-simple.ts):
 An example for using the ThemedSimpleProgressBar component
 
-[Progress (Status)](./theming/progress-with-status.ts):
+[Progress (Status)](./themes/progress-with-status.ts):
 An example for using the ThemedStatusProgressBar component. 
 
-[Table]('./theming/table.ts'):
+[Table]('./themes/table.ts'):
 An example for using the ThemedTable component.
 
 ## Prompts

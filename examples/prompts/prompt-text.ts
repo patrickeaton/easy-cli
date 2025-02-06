@@ -1,7 +1,7 @@
 import {
   promptTextInput,
-} from '../../src/prompts';
-import { EasyCLITheme } from '../../src/themes';
+} from 'easy-cli/prompts';
+import { EasyCLITheme } from 'easy-cli/themes';
 
 const main = async () => {
   const theme = new EasyCLITheme(3);

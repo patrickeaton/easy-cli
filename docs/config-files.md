@@ -224,7 +224,7 @@ merge_lowest_first - Look in the current directory and all parent directories, a
 
 ### ConfigFileRoot
 
-> **ConfigFileRoot**: `"cwd"` \| `"home"` \| `"app-root"`
+> **ConfigFileRoot**: `"cwd"` \| `"home"` \| `"project_root"`
 
 Defined in: [config-files/index.ts:48](https://github.com/patrickeaton/easy-cli/blob/master/src/config-files/index.ts#L48)
 
@@ -235,5 +235,5 @@ The root to use when looking for configuration files.
 ```ts
 cwd - Look in the current working directory for the configuration file.
 home - Look in the user's home directory for the configuration file.
-app-root - Look in the root directory of the application for the configuration file.
+project_root - Look in the root directory of the application for the configuration file.
 ```

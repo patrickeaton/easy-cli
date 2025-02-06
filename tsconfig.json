@@ -1,7 +1,6 @@
 {
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "examples/**/*.ts"],
   "compilerOptions": {
-    "outDir": "./dist",
     "baseUrl": ".",
     "module": "CommonJS",
     "target": "es2019",
@@ -15,14 +14,11 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "typeRoots": [
-      "./node_modules/@types",
-      "../../node_modules/@types"
-    ]
+    "typeRoots": ["./node_modules/@types", "../../node_modules/@types"],
+    "paths": {
+      "easy-cli": ["./src/index.ts"],
+      "easy-cli/*": ["./src/*"]
+    }
   },
-  "exclude": [
-    "node_modules",  
-    "*.json",
-    "dist"
-  ]
+  "exclude": ["node_modules", "*.json", "dist"]
 }
