@@ -37,15 +37,32 @@ export type ConfigFileRecursionBehaviour =
 
 /**
  * The root to use when looking for configuration files.
- * @typedef {'cwd' | 'home' | 'project_root'} ConfigFileRoot
+ * @typedef {'cwd' | 'home' | 'project_root' | 'workspace_root'} ConfigFileRoot
  *
  * @example
  * cwd - Look in the current working directory for the configuration file.
  * home - Look in the user's home directory for the configuration file.
- * project_root - Look in the root directory of the application for the configuration file.
+ * project_root - Look up the directory tree for the first package.json file and use that directory as the root.
+ * workspace_root - Look up the directory tree for the first package.json file with workspaces and use that directory as the root.
+ *
+ * Otherwise, you can provide a custom path to start looking for the configuration file.
  *
  */
-export type ConfigFileRoot = 'cwd' | 'home' | 'project_root';
+export type ConfigFileRoot = 'cwd' | 'home' | 'project_root' | 'workspace_root';
+
+/**
+ * Where to stop looking for the configuration file.
+ *
+ * @typedef {'project_root' | 'workspace_root'} ConfigFileRoot
+ *
+ * @example
+ * project_root - Look up the directory tree for the first package.json file and use that directory;
+ * workspace_root - Look up the directory tree for the first package.json file with workspaces and use that directory as the root.
+ *
+ * Otherwise, you can provide a custom path to start looking for the configuration file.
+ *
+ */
+export type ConfigFileRootTop = 'project_root' | 'workspace_root';
 
 /**
  * The parameters to use when loading a configuration file.
@@ -76,10 +93,13 @@ export type ConfigFileParams = {
   extensions: ValidExtensions[]; // What file extensions to look for, in order of preference (Default: ['ts', 'js', 'json'])
   recursion?: ConfigFileRecursionBehaviour; // How to handle recursive config files (Default: 'no_recursion')
   root?: ConfigFileRoot; // Where to start looking for the config file (Default: 'cwd')
+  top?: ConfigFileRootTop; // Where to stop looking for the config file (Default: 'project_root')
   path?: string; // The path to search for the config file from the basepath (Default: '')
   failOnMissing?: boolean; // Whether or not to fail if the file is missing
   // validator?: any; // TODO: ADD ZOD VALIDATOR
 };
+
+// TODO: Build out Defined ConfigFileTypes that can be used to validate the configuration files. ie. No recursion with a home dir root.
 
 /**
  * @class EasyCLIConfigFile
@@ -107,6 +127,7 @@ export class EasyCLIConfigFile<
   private extensions: ValidExtensions[];
   private recursion: ConfigFileRecursionBehaviour;
   private root: ConfigFileRoot;
+  private top: ConfigFileRootTop;
   private path: string;
   private failOnMissing: boolean;
 
@@ -122,6 +143,7 @@ export class EasyCLIConfigFile<
     extensions = ['ts', 'js', 'json'],
     recursion = 'no_recursion',
     root = 'cwd',
+    top = 'project_root',
     path = '',
     failOnMissing = false,
   }: ConfigFileParams) {
@@ -131,6 +153,40 @@ export class EasyCLIConfigFile<
     this.root = root;
     this.path = path;
     this.failOnMissing = failOnMissing;
+    this.top = top;
+  }
+
+  private findProjectRoot(
+    dir: string,
+    workspace: boolean = false
+  ): string | null {
+    let currentDir = path.resolve(dir);
+
+    while (true) {
+      if (fs.existsSync(path.resolve(currentDir, 'package.json'))) {
+        if (!workspace) return currentDir;
+
+        const packageJson = require(path.resolve(currentDir, 'package.json'));
+        if (packageJson.workspaces) return currentDir;
+      }
+
+      if (currentDir === path.resolve(currentDir, '..')) {
+        return null;
+      }
+
+      currentDir = path.resolve(currentDir, '..');
+    }
+  }
+
+  private getTopPath(): string | null {
+    switch (this.top) {
+      case 'project_root':
+        return this.findProjectRoot(process.cwd(), false);
+      case 'workspace_root':
+        return this.findProjectRoot(process.cwd(), true);
+      default:
+        return null;
+    }
   }
 
   /**
@@ -199,9 +255,11 @@ export class EasyCLIConfigFile<
     abortOnFirst: boolean = false
   ): TConfig[] {
     const configs: TConfig[] = [];
-    let currentDir = dir;
+    let currentDir = path.resolve(dir);
+    const topPath = this.getTopPath();
 
     while (true) {
+      console.log(currentDir);
       const config = this.processConfigurationFileInDir(currentDir);
 
       if (config) {
@@ -213,7 +271,16 @@ export class EasyCLIConfigFile<
         break;
       }
 
-      if (currentDir === appRootPath.toString()) {
+      // If we have a top path, we should stop once we reach it.
+      if (currentDir === topPath) {
+        break;
+      }
+
+      if (currentDir === os.homedir()) {
+        break;
+      }
+
+      if (currentDir === path.resolve(currentDir, '..')) {
         break;
       }
 
@@ -292,7 +359,7 @@ export class EasyCLIConfigFile<
    */
   private findConfigurationFile(filePath?: string): string {
     if (filePath) {
-      return filePath;
+      return path.resolve(filePath);
     }
 
     return path.resolve(
@@ -308,13 +375,15 @@ export class EasyCLIConfigFile<
    * @param {string} path A specific path to load the configuration from
    * @returns {TConfig} The configuration object loaded from the path
    */
-  private loadSpecificConfiguration(path: string): TConfig {
-    if (fs.existsSync(path)) {
-      return require(path);
+  private loadSpecificConfiguration(file: string): TConfig {
+    const resolvedPath = path.resolve(file);
+
+    if (fs.existsSync(resolvedPath)) {
+      return require(resolvedPath);
     }
 
     if (this.failOnMissing) {
-      throw new Error(`Configuration file not found at ${path}`);
+      throw new Error(`Configuration file not found at ${file}`);
     }
 
     return {} as TConfig;

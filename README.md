@@ -60,7 +60,7 @@ Themes are designed to provide, a way to make your app feel distinct and handle 
 [Table](https://github.com/patrickeaton/easy-cli/blob/main/examples/themes/table.ts)
 
 ```typescript
-import { EasyCLITheme } from 'easy-cli';
+import { EasyCLITheme } from 'easy-cli-framework';
 
 const theme = new EasyCLITheme(
   0, // Set the verbosity level to 0

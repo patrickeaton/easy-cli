@@ -1,4 +1,4 @@
-import { EasyCLIConfigFile } from 'easy-cli/config-files';
+import { EasyCLIConfigFile } from 'easy-cli-framework/config-files';
 
 /**
  * How to use the EasyCLIConfigFile class
@@ -10,7 +10,7 @@ const main = async () => {
   const config = new EasyCLIConfigFile({
     filename: 'config', // Set the filename to 'config'
     root: 'home', // Use the home directory as the root
-    path: '.easy-cli/', // Store the configuration file in the .easy-cli directory
+    path: '.easy-cli-framework/', // Store the configuration file in the .easy-cli-framework directory
     extensions: ['json'], // Use the JSON extension
   });
 

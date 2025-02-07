@@ -5,17 +5,17 @@ import {
   EasyCLIConfigFile,
   EasyCLIConfigureCommand,
   EasyCLIInitCommand,
-} from 'easy-cli';
+} from 'easy-cli-framework';
 
 // Create a new EasyCLI instance
 const app = new EasyCLI({
-  executionName: 'easy-cli',
+  executionName: 'easy-cli-framework',
 });
 
 // Create a new theme and config file instance
 const theme = new EasyCLITheme();
 const config = new EasyCLIConfigFile({
-  filename: 'easy-cli.config',
+  filename: 'easy-cli-framework.config',
   extensions: ['json'],
 });
 

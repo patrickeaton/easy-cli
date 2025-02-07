@@ -1,4 +1,4 @@
-import { EasyCLI, EasyCLICommand, EasyCLITheme } from 'easy-cli';
+import { EasyCLI, EasyCLICommand, EasyCLITheme } from 'easy-cli-framework';
 
 // Create a new theme
 const theme = new EasyCLITheme();
@@ -30,7 +30,7 @@ const command = new EasyCLICommand(
 
 // Create a new EasyCLI instance
 new EasyCLI({
-  executionName: 'easy-cli',
+  executionName: 'easy-cli-framework',
 })
   .setTheme(theme) // Set the theme
   .handleVerboseFlag() // Have EasyCLI handle the verbose flag as -v, -vv, -vvv OR --verbose 1, --verbose 2, --verbose 3

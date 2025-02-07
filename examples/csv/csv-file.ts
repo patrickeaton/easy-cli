@@ -1,4 +1,4 @@
-import { CsvFile } from 'easy-cli';
+import { CsvFile } from 'easy-cli-framework';
 
 const main = async () => {
   // Load CSV File

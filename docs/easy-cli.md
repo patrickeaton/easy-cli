@@ -242,7 +242,7 @@ cli.handleConfigFileFlag({ name: 'my-config' });
 
 > **execute**(`callback`?): `Promise`\<`void`\>
 
-Defined in: [app.ts:309](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L309)
+Defined in: [app.ts:317](https://github.com/patrickeaton/easy-cli/blob/master/src/app.ts#L317)
 
 Run the CLI with the provided arguments.
 
@@ -255,6 +255,15 @@ Run the CLI with the provided arguments.
 ###### Returns
 
 `Promise`\<`void`\>
+
+A promise that resolves when the CLI has finished executing
+
+###### Example
+
+```typescript
+const cli = new EasyCLI(...);
+cli.execute();
+```
 
 ## Interfaces
 

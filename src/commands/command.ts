@@ -94,8 +94,22 @@ export type CommandSetupOptions<TGlobalParams, TParams> = {
   flags?: CommandOptionObject<TGlobalParams, TParams>;
   prompts?: CommandOptionObject<TGlobalParams, TParams>;
   args?: CommandOptionObject<TGlobalParams, TParams>;
+  promptGlobalKeys?: (keyof TGlobalParams)[]; // What (global) key(s) should be prompted for, this is useful if you want to prompt the user for a global key?
   skipConfig?: boolean;
 };
+
+type ThemedCommandHandler<TParams, TGlobalParams> = (
+  params: TGlobalParams & TParams,
+  theme: EasyCLITheme
+) => unknown | Promise<unknown>;
+
+type UnthemedCommandHandler<TParams, TGlobalParams> = (
+  params: TGlobalParams & TParams
+) => unknown | Promise<unknown>;
+
+export type EasyClICommandHandler<TParams, TGlobalParams> =
+  | ThemedCommandHandler<TParams, TGlobalParams>
+  | UnthemedCommandHandler<TParams, TGlobalParams>;
 
 /**
  * A class that represents a command that can be run in the CLI.
@@ -136,10 +150,9 @@ export class EasyCLICommand<
   private flags: CommandOptionObject<TGlobalParams, TParams>;
   private prompts: CommandOptionObject<TGlobalParams, TParams>;
   private args: CommandOptionObject<TGlobalParams, TParams>;
-  private handler: (
-    params: TGlobalParams & TParams,
-    theme: EasyCLITheme | null
-  ) => void;
+  private handler: EasyClICommandHandler<TParams, TGlobalParams>;
+  private globalFlags: CommandOptionObject<TGlobalParams, {}> = {};
+  private promptGlobalKeys: (keyof TGlobalParams)[] = [];
 
   /**
    * Creates a new EasyCLICommand instance.
@@ -150,16 +163,14 @@ export class EasyCLICommand<
    */
   constructor(
     name: string,
-    handler: (
-      params: TParams & TGlobalParams,
-      theme: EasyCLITheme | null
-    ) => void,
+    handler: EasyClICommandHandler<TParams, TGlobalParams>,
     {
       description = '',
       aliases = [],
       flags = {} as CommandOptionObject<TGlobalParams, TParams>,
       prompts = {} as CommandOptionObject<TGlobalParams, TParams>,
       args = {} as CommandOptionObject<TGlobalParams, TParams>,
+      promptGlobalKeys = [],
       skipConfig = false,
     }: CommandSetupOptions<TGlobalParams, TParams> = {}
   ) {
@@ -171,6 +182,7 @@ export class EasyCLICommand<
     this.prompts = prompts;
     this.args = args;
     this.skipConfig = skipConfig;
+    this.promptGlobalKeys = promptGlobalKeys;
   }
 
   /**
@@ -309,6 +321,26 @@ export class EasyCLICommand<
   }
 
   /**
+   * Sets the global flags for the command, these flags will be available to all commands. Used by EasyCLI to set the global flags for the CLI in order to prompt any that are set.
+   *
+   * @param flags The flags to set as global flags
+   *
+   * @example
+   * ```typescript
+   * command.setGlobalFlags({
+   *   verbose: {
+   *    describe: 'The verbosity of the command',
+   *    type: 'number',
+   *    default: 0,
+   *   },
+   * });
+   *
+   */
+  public setGlobalFlags(flags: CommandOptionObject<TGlobalParams, {}>) {
+    this.globalFlags = flags;
+  }
+
+  /**
    * Prepare the flags for the command by setting the demandOption to false for flags that should be prompted.
    *
    * @returns A modified version of the flags object with the demandOption set to false for flags that should be prompted.
@@ -417,50 +449,42 @@ export class EasyCLICommand<
     // Merge the prompts from the prompts, flags and arguments
     const prompts = {
       ...this.prompts,
-      ...Object.entries({ ...this.args, ...this.flags })
+      ...Object.entries({ ...this.globalFlags, ...this.args, ...this.flags })
         // Filter out the values that should not be prompted
         .filter(([key, { prompt = 'never' }]: [any, any]) => {
-          if (prompt === 'always') return true; // Always prompt
+          if (prompt === 'always' || this.promptGlobalKeys.includes(key))
+            return true; // Always prompt
           if (prompt === 'never') return false; // Never prompt
 
           // If the prompt is missing, we need to check if the argument is missing
           return argv[key as keyof TParams & TGlobalParams] === undefined;
         })
         .reduce((acc, [key, config]) => {
-          acc[key as keyof TParams & TGlobalParams] = config;
+          acc[key as keyof TParams & TGlobalParams] = { ...config };
 
           return acc;
         }, {} as Record<keyof TParams & TGlobalParams, any>),
     };
 
-    return (
-      Object.entries<CommandOption>(prompts)
-        // Filter out the prompts that should not be prompted
-        .filter(([key, { prompt = 'never' }]) => {
-          if (prompt === 'always') return true;
-          if (prompt === 'never') return false;
+    return Object.entries<CommandOption>(prompts).reduce(
+      (acc, [key, { prompt = 'never', ...config }]) => {
+        acc[key as keyof TParams & TGlobalParams] = {
+          ...config,
+          type: convertYargsTypeToInteractiveTypes(
+            config?.type ?? 'string',
+            config?.choices,
+            config?.array
+          ),
+          name: key,
+          describe: config?.describe ?? config.description,
+          prompt: 'always',
+          demandOption: false,
+          default: argv[key as keyof TParams & TGlobalParams] ?? config.default,
+        };
 
-          // If the prompt is missing, we need to check if the argument is missing
-          return argv[key as keyof TParams & TGlobalParams] === undefined;
-        })
-        .reduce((acc, [key, { prompt = 'never', ...config }]) => {
-          acc[key as keyof TParams & TGlobalParams] = {
-            ...config,
-            type: convertYargsTypeToInteractiveTypes(
-              config?.type ?? 'string',
-              config?.choices,
-              config?.array
-            ),
-            name: key,
-            message: config.describe,
-            prompt: 'always',
-            demandOption: false,
-            default:
-              argv[key as keyof TParams & TGlobalParams] ?? config.default,
-          };
-
-          return acc;
-        }, {} as Record<keyof TParams & TGlobalParams, any>)
+        return acc;
+      },
+      {} as Record<keyof TParams & TGlobalParams, any>
     );
   }
 
@@ -507,7 +531,7 @@ export class EasyCLICommand<
    */
   public convertToYargsCommand(
     isDefault: boolean = false,
-    theme: EasyCLITheme | null = null
+    theme?: EasyCLITheme
   ): CommandModule {
     const flags = this.prepareFlags();
     const args = this.prepareArgs();
@@ -553,18 +577,19 @@ export class EasyCLICommand<
    *  command.run({ key: 'value' }, theme);
    * ```
    */
-  public async run(
-    params: TParams & TGlobalParams,
-    theme: EasyCLITheme | null
-  ) {
+  public async run(params: TParams & TGlobalParams, theme?: EasyCLITheme) {
     const promptParams = await this.prompt(params);
+    const args = {
+      ...params,
+      ...promptParams,
+    };
 
-    return this.handler(
-      {
-        ...params,
-        ...promptParams,
-      },
-      theme
-    );
+    if (!theme) {
+      return (this.handler as UnthemedCommandHandler<TParams, TGlobalParams>)(
+        args
+      );
+    }
+
+    return this.handler(args, theme);
   }
 }

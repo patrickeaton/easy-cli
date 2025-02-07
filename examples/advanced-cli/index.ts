@@ -6,7 +6,7 @@ import {
   EasyCLITheme,
   promptChoice,
   promptConfirm,
-} from 'easy-cli';
+} from 'easy-cli-framework';
 
 // Define the types for the golf game
 

@@ -1,4 +1,4 @@
-import { EasyCLICommand, EasyCLITheme } from 'easy-cli';
+import { EasyCLICommand, EasyCLITheme } from 'easy-cli-framework';
 import yargs from 'yargs';
 
 // Create a new theme

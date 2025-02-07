@@ -1,7 +1,11 @@
-import { command } from 'yargs';
-import { CommandSetupOptions, EasyCLICommand } from './command';
+import {
+  CommandOptionObject,
+  CommandSetupOptions,
+  EasyCLICommand,
+} from './command';
 import { EasyCLIConfigFile } from '../config-files';
 import { EasyCLITheme } from '../themes';
+import { access } from 'fs';
 
 /**
  * Options for the configure command
@@ -36,7 +40,7 @@ import { EasyCLITheme } from '../themes';
  */
 export type ConfigureCommandOptions<TGlobalParams, TParams> =
   CommandSetupOptions<TGlobalParams, TParams> & {
-    globalKeysToUse?: string[]; // What key(s) are you setting?
+    globalKeysToUse?: (keyof TGlobalParams)[]; // What key(s) are you setting?
     transformer?: (params: TGlobalParams & TParams) => any; // How to transform the params before saving
     callback?: (params: TGlobalParams & TParams) => void; // The callback to run after the command is executed, this is useful if you want to add additional functionality to the command ie. Copying a file
   };
@@ -99,7 +103,7 @@ export class EasyCLIConfigureCommand<
 
     const handler = async (
       params: TGlobalParams & TParams,
-      theme: EasyCLITheme | null
+      theme?: EasyCLITheme
     ) => {
       const logger = theme?.getLogger();
       const keys = [...this.getKeys(), ...globalKeysToUse];

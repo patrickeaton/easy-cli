@@ -137,7 +137,7 @@ console.log(exists);
 
 > **save**(`config`, `filePath`?): `Promise`\<`void`\>
 
-Defined in: [config-files/index.ts:389](https://github.com/patrickeaton/easy-cli/blob/master/src/config-files/index.ts#L389)
+Defined in: [config-files/index.ts:405](https://github.com/patrickeaton/easy-cli/blob/master/src/config-files/index.ts#L405)
 
 Save a configuration object to a file, using the given rules or an optional file path.
 
@@ -151,6 +151,23 @@ Save a configuration object to a file, using the given rules or an optional file
 ###### Returns
 
 `Promise`\<`void`\>
+
+###### Example
+
+```typescript
+const config = new EasyCLIConfigFile({
+filename: 'config',
+extensions: ['json', 'js', 'ts'],
+recursion: 'prefer_highest',
+root: 'cwd',
+});
+
+// Save the configuration file
+await config.save({
+var1: 'value1',
+var2: 'value2',
+});
+```
 
 ## Interfaces
 

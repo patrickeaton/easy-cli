@@ -1,7 +1,7 @@
 import {
   promptMultipleChoice,
-} from 'easy-cli/prompts';
-import { EasyCLITheme } from 'easy-cli/themes';
+} from 'easy-cli-framework/prompts';
+import { EasyCLITheme } from 'easy-cli-framework/themes';
 
 const main = async () => {
   const theme = new EasyCLITheme(3);

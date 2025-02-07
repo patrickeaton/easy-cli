@@ -56,9 +56,9 @@ export type StringDisplayOptions = {
  * @type {string | StringDisplayOptions | (string | StringDisplayOptions)[]}
  */
 export type DisplayOptions =
-  | string
+  | NamedDisplayOptions
   | StringDisplayOptions
-  | (string | StringDisplayOptions)[];
+  | (NamedDisplayOptions | StringDisplayOptions)[];
 
 /**
  * Named display options
@@ -138,9 +138,9 @@ export class EasyCLITheme {
   /**
    * An internal method to merge display options, allowing for multiple display options to be combined
    * ie. ['info', { bold: true }] => { color: '#F5F5F5', bold: true }
-   * 
+   *
    * @param {DisplayOptions} options The display options to merge
-   * 
+   *
    * @returns {StringDisplayOptions} A single display options object
    */
   private mergeDisplayOptions(options: DisplayOptions): StringDisplayOptions {
@@ -178,7 +178,7 @@ export class EasyCLITheme {
    *
    * @param {string} string The string to format
    * @param {DisplayOptions} options The display options to use
-   * 
+   *
    * @returns {string} The formatted string
    *
    * @example
@@ -207,7 +207,7 @@ export class EasyCLITheme {
    * Sets the verbosity level of the theme
    *
    * @param {number} verbosity The verbosity level to set
-   * 
+   *
    * @returns {EasyCLITheme} The theme with the verbosity level, useful for optional chaining
    */
   setVerbosity(verbosity: number): EasyCLITheme {

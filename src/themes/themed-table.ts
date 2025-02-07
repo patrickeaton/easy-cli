@@ -123,7 +123,7 @@ export class ThemedTable<TItem extends Record<string, any>> {
    * Render the table to the console
    *
    * @param {TItem[]} items The items to render
-   * 
+   *
    * @example
    * ```typescript
    * table.render([

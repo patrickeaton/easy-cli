@@ -1,5 +1,7 @@
-import { command } from 'yargs';
-import { CommandSetupOptions, EasyCLICommand } from './command';
+import {
+  CommandSetupOptions,
+  EasyCLICommand,
+} from './command';
 import { EasyCLIConfigFile } from '../config-files';
 import { EasyCLITheme } from '../themes';
 
@@ -11,7 +13,8 @@ import { EasyCLITheme } from '../themes';
  * @template TParams The params for the command
  *
  * @property {boolean} failOnExists Should the command fail if the config file already exists?
- * @property {string[]} globalKeysToUse Any global keys that should be stored in the config file
+ * @property {(keyof TGlobalParams)[]} globalKeysToUse Any global keys that should be stored in the config file
+ * @property {(keyof TGlobalParams)[]} globalKeysToPrompt Any global keys that should be prompted for.
  * @property {Partial<TGlobalParams & TParams>} defaults The default values to use
  * @property {(params: TGlobalParams & TParams) => any} transformer How to transform the params before saving
  * @property {string} configFlag The name of the variable to use for the config file
@@ -34,7 +37,7 @@ export type InitCommandOptions<TGlobalParams, TParams> = CommandSetupOptions<
   TParams
 > & {
   failOnExists?: boolean; // Should the command fail if the config file already exists?
-  globalKeysToUse?: string[]; // What key(s) are you setting?
+  globalKeysToUse?: (keyof TGlobalParams)[]; // What key(s) are you setting?
   defaults?: Partial<TGlobalParams & TParams>; // The default values to use
   transformer?: (params: TGlobalParams & TParams) => any; // How to transform the params before saving
   configFlag?: string; // The name of the variable to use for the config file
@@ -94,7 +97,7 @@ export class EasyCLIInitCommand<
 
     const handler = async (
       params: TGlobalParams & TParams,
-      theme: EasyCLITheme | null
+      theme?: EasyCLITheme
     ) => {
       if (
         options.failOnExists &&

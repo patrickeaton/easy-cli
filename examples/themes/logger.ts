@@ -1,4 +1,4 @@
-import { EasyCLITheme } from 'easy-cli/themes';
+import { EasyCLITheme } from 'easy-cli-framework/themes';
 
 const main = async () => {
   const theme = new EasyCLITheme(3);

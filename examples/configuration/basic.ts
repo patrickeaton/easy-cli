@@ -1,4 +1,4 @@
-import { EasyCLIConfigFile } from 'easy-cli/config-files';
+import { EasyCLIConfigFile } from 'easy-cli-framework/config-files';
 
 /**
  * How to use the EasyCLIConfigFile class
@@ -8,7 +8,7 @@ import { EasyCLIConfigFile } from 'easy-cli/config-files';
  */
 const main = async () => {
   const config = new EasyCLIConfigFile({
-    filename: 'easy-cli.config',
+    filename: 'easy-cli-framework.config',
     path: 'config',
     extensions: [ 'js'],
   });

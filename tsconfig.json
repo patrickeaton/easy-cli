@@ -16,8 +16,8 @@
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["./node_modules/@types", "../../node_modules/@types"],
     "paths": {
-      "easy-cli": ["./src/index.ts"],
-      "easy-cli/*": ["./src/*"]
+      "easy-cli-framework": ["./src/index.ts"],
+      "easy-cli-framework/*": ["./src/*"]
     }
   },
   "exclude": ["node_modules", "*.json", "dist"]

@@ -78,7 +78,7 @@ Creates a new EasyCLICommand instance.
 
 > **getNames**(): `string`[]
 
-Defined in: [commands/command.ts:179](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L179)
+Defined in: [commands/command.ts:184](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L184)
 
 ###### Returns
 
@@ -86,31 +86,35 @@ Defined in: [commands/command.ts:179](https://github.com/patrickeaton/easy-cli/b
 
 The names of the command and its aliases, this is used by EasyCLI to register the command with yargs and determine which command to run.
 
+###### Example
+
+```typescript
+command.getNames(); // ['do', 'd']
+```
+
 ##### getName()
 
 > **getName**(): `string`
 
-Defined in: [commands/command.ts:183](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L183)
+Defined in: [commands/command.ts:196](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L196)
 
 ###### Returns
 
 `string`
 
-##### getDescription()
+The name of the command, this is used by EasyCLI to register the command with yargs and determine which command to run.
 
-> **getDescription**(): `string`
+###### Example
 
-Defined in: [commands/command.ts:187](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L187)
-
-###### Returns
-
-`string`
+```typescript
+command.getName(); // 'do'
+```
 
 ##### getKeys()
 
 > **getKeys**(): `string`[]
 
-Defined in: [commands/command.ts:194](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L194)
+Defined in: [commands/command.ts:207](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L207)
 
 ###### Returns
 
@@ -118,11 +122,17 @@ Defined in: [commands/command.ts:194](https://github.com/patrickeaton/easy-cli/b
 
 The keys for all command arguments, flags and prompts. This is used by EasyCLI to determine which keys this command uses.
 
+###### Example
+
+```typescript
+command.getKeys(); // ['key', 'value', 'verbose']
+```
+
 ##### skipConfigLoad()
 
 > **skipConfigLoad**(): `boolean`
 
-Defined in: [commands/command.ts:205](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L205)
+Defined in: [commands/command.ts:223](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L223)
 
 ###### Returns
 
@@ -130,11 +140,17 @@ Defined in: [commands/command.ts:205](https://github.com/patrickeaton/easy-cli/b
 
 Whether the command should skip loading the configuration file. This is used by EasyCLI to determine if the command should load the configuration file.
 
+###### Example
+
+```typescript
+command.skipConfigLoad(); // false
+```
+
 ##### addFlag()
 
 > **addFlag**(`key`, `config`): [`EasyCLICommand`](commands.md#easyclicommandtparams-tglobalparams)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/command.ts:226](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L226)
+Defined in: [commands/command.ts:244](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L244)
 
 Adds a flag to the command.
 
@@ -165,7 +181,7 @@ command.addFlag('verbose', {
 
 > **addPrompt**(`key`, `config`): [`EasyCLICommand`](commands.md#easyclicommandtparams-tglobalparams)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/command.ts:250](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L250)
+Defined in: [commands/command.ts:268](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L268)
 
 Adds a prompt to the command.
 
@@ -198,7 +214,7 @@ command.addPrompt('env', {
 
 > **addArgument**(`key`, `config`): [`EasyCLICommand`](commands.md#easyclicommandtparams-tglobalparams)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/command.ts:285](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L285)
+Defined in: [commands/command.ts:303](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L303)
 
 Adds an argument (positional option) to the command.
 
@@ -242,7 +258,7 @@ command.addArgument('keys', {
 
 > **getDefaultArgv**(): `TParams`
 
-Defined in: [commands/command.ts:342](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L342)
+Defined in: [commands/command.ts:365](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L365)
 
 Returns the default values for the command arguments and flags, this is used by EasyCLI to determine the default values for the command and whether the config file values should be used to override the defaults.
 
@@ -252,11 +268,17 @@ Returns the default values for the command arguments and flags, this is used by 
 
 The default values for the command arguments and flags
 
+###### Example
+
+```typescript
+command.getDefaultArgv(); // { key: undefined, value: undefined, verbose: 0 }
+```
+
 ##### convertToYargsCommand()
 
 > **convertToYargsCommand**(`isDefault`, `theme`): `CommandModule`
 
-Defined in: [commands/command.ts:485](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L485)
+Defined in: [commands/command.ts:508](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L508)
 
 Converts the command to a yargs command. This is used by EasyCLI to register the command with yargs.
 This can also be used to directly register the command with yargs.
@@ -294,7 +316,7 @@ yargs.command(command.convertToYargsCommand());
 
 > **run**(`params`, `theme`): `Promise`\<`void`\>
 
-Defined in: [commands/command.ts:526](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L526)
+Defined in: [commands/command.ts:556](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L556)
 
 Runs the command with the provided arguments.
 
@@ -308,6 +330,14 @@ Runs the command with the provided arguments.
 ###### Returns
 
 `Promise`\<`void`\>
+
+The result of the command handler.
+
+###### Example
+
+```typescript
+ command.run({ key: 'value' }, theme);
+```
 
 ***
 
@@ -388,13 +418,19 @@ Creates a new configure command
 
 > **getNames**(): `string`[]
 
-Defined in: [commands/command.ts:179](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L179)
+Defined in: [commands/command.ts:184](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L184)
 
 ###### Returns
 
 `string`[]
 
 The names of the command and its aliases, this is used by EasyCLI to register the command with yargs and determine which command to run.
+
+###### Example
+
+```typescript
+command.getNames(); // ['do', 'd']
+```
 
 ###### Inherited from
 
@@ -404,41 +440,41 @@ The names of the command and its aliases, this is used by EasyCLI to register th
 
 > **getName**(): `string`
 
-Defined in: [commands/command.ts:183](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L183)
+Defined in: [commands/command.ts:196](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L196)
 
 ###### Returns
 
 `string`
+
+The name of the command, this is used by EasyCLI to register the command with yargs and determine which command to run.
+
+###### Example
+
+```typescript
+command.getName(); // 'do'
+```
 
 ###### Inherited from
 
 [`EasyCLICommand`](commands.md#easyclicommandtparams-tglobalparams).[`getName`](commands.md#getname)
 
-##### getDescription()
-
-> **getDescription**(): `string`
-
-Defined in: [commands/command.ts:187](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L187)
-
-###### Returns
-
-`string`
-
-###### Inherited from
-
-[`EasyCLICommand`](commands.md#easyclicommandtparams-tglobalparams).[`getDescription`](commands.md#getdescription)
-
 ##### getKeys()
 
 > **getKeys**(): `string`[]
 
-Defined in: [commands/command.ts:194](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L194)
+Defined in: [commands/command.ts:207](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L207)
 
 ###### Returns
 
 `string`[]
 
 The keys for all command arguments, flags and prompts. This is used by EasyCLI to determine which keys this command uses.
+
+###### Example
+
+```typescript
+command.getKeys(); // ['key', 'value', 'verbose']
+```
 
 ###### Inherited from
 
@@ -448,13 +484,19 @@ The keys for all command arguments, flags and prompts. This is used by EasyCLI t
 
 > **skipConfigLoad**(): `boolean`
 
-Defined in: [commands/command.ts:205](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L205)
+Defined in: [commands/command.ts:223](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L223)
 
 ###### Returns
 
 `boolean`
 
 Whether the command should skip loading the configuration file. This is used by EasyCLI to determine if the command should load the configuration file.
+
+###### Example
+
+```typescript
+command.skipConfigLoad(); // false
+```
 
 ###### Inherited from
 
@@ -464,7 +506,7 @@ Whether the command should skip loading the configuration file. This is used by 
 
 > **addFlag**(`key`, `config`): [`EasyCLIConfigureCommand`](commands.md#easycliconfigurecommandtparams-tglobalparams)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/command.ts:226](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L226)
+Defined in: [commands/command.ts:244](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L244)
 
 Adds a flag to the command.
 
@@ -499,7 +541,7 @@ command.addFlag('verbose', {
 
 > **addPrompt**(`key`, `config`): [`EasyCLIConfigureCommand`](commands.md#easycliconfigurecommandtparams-tglobalparams)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/command.ts:250](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L250)
+Defined in: [commands/command.ts:268](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L268)
 
 Adds a prompt to the command.
 
@@ -536,7 +578,7 @@ command.addPrompt('env', {
 
 > **addArgument**(`key`, `config`): [`EasyCLIConfigureCommand`](commands.md#easycliconfigurecommandtparams-tglobalparams)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/command.ts:285](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L285)
+Defined in: [commands/command.ts:303](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L303)
 
 Adds an argument (positional option) to the command.
 
@@ -584,7 +626,7 @@ command.addArgument('keys', {
 
 > **getDefaultArgv**(): `TParams`
 
-Defined in: [commands/command.ts:342](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L342)
+Defined in: [commands/command.ts:365](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L365)
 
 Returns the default values for the command arguments and flags, this is used by EasyCLI to determine the default values for the command and whether the config file values should be used to override the defaults.
 
@@ -594,6 +636,12 @@ Returns the default values for the command arguments and flags, this is used by 
 
 The default values for the command arguments and flags
 
+###### Example
+
+```typescript
+command.getDefaultArgv(); // { key: undefined, value: undefined, verbose: 0 }
+```
+
 ###### Inherited from
 
 [`EasyCLICommand`](commands.md#easyclicommandtparams-tglobalparams).[`getDefaultArgv`](commands.md#getdefaultargv)
@@ -602,7 +650,7 @@ The default values for the command arguments and flags
 
 > **convertToYargsCommand**(`isDefault`, `theme`): `CommandModule`
 
-Defined in: [commands/command.ts:485](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L485)
+Defined in: [commands/command.ts:508](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L508)
 
 Converts the command to a yargs command. This is used by EasyCLI to register the command with yargs.
 This can also be used to directly register the command with yargs.
@@ -644,7 +692,7 @@ yargs.command(command.convertToYargsCommand());
 
 > **run**(`params`, `theme`): `Promise`\<`void`\>
 
-Defined in: [commands/command.ts:526](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L526)
+Defined in: [commands/command.ts:556](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L556)
 
 Runs the command with the provided arguments.
 
@@ -658,6 +706,14 @@ Runs the command with the provided arguments.
 ###### Returns
 
 `Promise`\<`void`\>
+
+The result of the command handler.
+
+###### Example
+
+```typescript
+ command.run({ key: 'value' }, theme);
+```
 
 ###### Inherited from
 
@@ -730,13 +786,19 @@ Creates a new init command
 
 > **getNames**(): `string`[]
 
-Defined in: [commands/command.ts:179](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L179)
+Defined in: [commands/command.ts:184](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L184)
 
 ###### Returns
 
 `string`[]
 
 The names of the command and its aliases, this is used by EasyCLI to register the command with yargs and determine which command to run.
+
+###### Example
+
+```typescript
+command.getNames(); // ['do', 'd']
+```
 
 ###### Inherited from
 
@@ -746,41 +808,41 @@ The names of the command and its aliases, this is used by EasyCLI to register th
 
 > **getName**(): `string`
 
-Defined in: [commands/command.ts:183](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L183)
+Defined in: [commands/command.ts:196](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L196)
 
 ###### Returns
 
 `string`
+
+The name of the command, this is used by EasyCLI to register the command with yargs and determine which command to run.
+
+###### Example
+
+```typescript
+command.getName(); // 'do'
+```
 
 ###### Inherited from
 
 [`EasyCLICommand`](commands.md#easyclicommandtparams-tglobalparams).[`getName`](commands.md#getname)
 
-##### getDescription()
-
-> **getDescription**(): `string`
-
-Defined in: [commands/command.ts:187](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L187)
-
-###### Returns
-
-`string`
-
-###### Inherited from
-
-[`EasyCLICommand`](commands.md#easyclicommandtparams-tglobalparams).[`getDescription`](commands.md#getdescription)
-
 ##### getKeys()
 
 > **getKeys**(): `string`[]
 
-Defined in: [commands/command.ts:194](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L194)
+Defined in: [commands/command.ts:207](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L207)
 
 ###### Returns
 
 `string`[]
 
 The keys for all command arguments, flags and prompts. This is used by EasyCLI to determine which keys this command uses.
+
+###### Example
+
+```typescript
+command.getKeys(); // ['key', 'value', 'verbose']
+```
 
 ###### Inherited from
 
@@ -790,13 +852,19 @@ The keys for all command arguments, flags and prompts. This is used by EasyCLI t
 
 > **skipConfigLoad**(): `boolean`
 
-Defined in: [commands/command.ts:205](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L205)
+Defined in: [commands/command.ts:223](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L223)
 
 ###### Returns
 
 `boolean`
 
 Whether the command should skip loading the configuration file. This is used by EasyCLI to determine if the command should load the configuration file.
+
+###### Example
+
+```typescript
+command.skipConfigLoad(); // false
+```
 
 ###### Inherited from
 
@@ -806,7 +874,7 @@ Whether the command should skip loading the configuration file. This is used by 
 
 > **addFlag**(`key`, `config`): [`EasyCLIInitCommand`](commands.md#easycliinitcommandtparams-tglobalparams)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/command.ts:226](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L226)
+Defined in: [commands/command.ts:244](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L244)
 
 Adds a flag to the command.
 
@@ -841,7 +909,7 @@ command.addFlag('verbose', {
 
 > **addPrompt**(`key`, `config`): [`EasyCLIInitCommand`](commands.md#easycliinitcommandtparams-tglobalparams)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/command.ts:250](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L250)
+Defined in: [commands/command.ts:268](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L268)
 
 Adds a prompt to the command.
 
@@ -878,7 +946,7 @@ command.addPrompt('env', {
 
 > **addArgument**(`key`, `config`): [`EasyCLIInitCommand`](commands.md#easycliinitcommandtparams-tglobalparams)\<`TParams`, `TGlobalParams`\>
 
-Defined in: [commands/command.ts:285](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L285)
+Defined in: [commands/command.ts:303](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L303)
 
 Adds an argument (positional option) to the command.
 
@@ -926,7 +994,7 @@ command.addArgument('keys', {
 
 > **getDefaultArgv**(): `TParams`
 
-Defined in: [commands/command.ts:342](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L342)
+Defined in: [commands/command.ts:365](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L365)
 
 Returns the default values for the command arguments and flags, this is used by EasyCLI to determine the default values for the command and whether the config file values should be used to override the defaults.
 
@@ -936,6 +1004,12 @@ Returns the default values for the command arguments and flags, this is used by 
 
 The default values for the command arguments and flags
 
+###### Example
+
+```typescript
+command.getDefaultArgv(); // { key: undefined, value: undefined, verbose: 0 }
+```
+
 ###### Inherited from
 
 [`EasyCLICommand`](commands.md#easyclicommandtparams-tglobalparams).[`getDefaultArgv`](commands.md#getdefaultargv)
@@ -944,7 +1018,7 @@ The default values for the command arguments and flags
 
 > **convertToYargsCommand**(`isDefault`, `theme`): `CommandModule`
 
-Defined in: [commands/command.ts:485](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L485)
+Defined in: [commands/command.ts:508](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L508)
 
 Converts the command to a yargs command. This is used by EasyCLI to register the command with yargs.
 This can also be used to directly register the command with yargs.
@@ -986,7 +1060,7 @@ yargs.command(command.convertToYargsCommand());
 
 > **run**(`params`, `theme`): `Promise`\<`void`\>
 
-Defined in: [commands/command.ts:526](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L526)
+Defined in: [commands/command.ts:556](https://github.com/patrickeaton/easy-cli/blob/master/src/commands/command.ts#L556)
 
 Runs the command with the provided arguments.
 
@@ -1000,6 +1074,14 @@ Runs the command with the provided arguments.
 ###### Returns
 
 `Promise`\<`void`\>
+
+The result of the command handler.
+
+###### Example
+
+```typescript
+ command.run({ key: 'value' }, theme);
+```
 
 ###### Inherited from
 

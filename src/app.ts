@@ -58,7 +58,7 @@ export class EasyCLI<
   private executionName: string = '';
   private defaultCommand: string = 'help';
   private commands: EasyCLICommand<any, TGlobalParams>[] = [];
-  private theme: EasyCLITheme | null = null;
+  private theme?: EasyCLITheme;
   private globalFlags: CommandOptionObject<{}, TGlobalParams> =
     {} as CommandOptionObject<{}, TGlobalParams>;
   private verboseFlag: string | null = null;
@@ -93,7 +93,7 @@ export class EasyCLI<
    * cli.setTheme(theme);
    * ```
    */
-  public setTheme(theme: EasyCLITheme | null): EasyCLI<TGlobalParams> {
+  public setTheme(theme: EasyCLITheme): EasyCLI<TGlobalParams> {
     this.theme = theme;
     return this;
   }
@@ -328,10 +328,11 @@ export class EasyCLI<
 
     // Add the commands
     this.commands.forEach(command => {
+      command.setGlobalFlags(this.globalFlags);
       app.command(
         command.convertToYargsCommand(
           command.getName() === this.defaultCommand, // If this is the default command it needs to add $0 to the command
-          this.theme // Pass the theme to the command
+          this?.theme // Pass the theme to the command
         )
       );
     });

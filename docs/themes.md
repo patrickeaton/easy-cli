@@ -258,7 +258,7 @@ Defined in: [themes/logger/index.ts:87](https://github.com/patrickeaton/easy-cli
 
 > **force**(): `void`
 
-Defined in: [themes/logger/index.ts:97](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L97)
+Defined in: [themes/logger/index.ts:103](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L103)
 
 Forces the log to be output
 
@@ -270,7 +270,7 @@ Forces the log to be output
 
 ### EasyCLILogger
 
-Defined in: [themes/logger/index.ts:150](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L150)
+Defined in: [themes/logger/index.ts:156](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L156)
 
 A logger for use with CLI applicatiions. This logger allows for logging with different verbosity levels and themes
 
@@ -295,7 +295,7 @@ const logs = logger.getExecutionLogs();
 
 > **new EasyCLILogger**(`options`): [`EasyCLILogger`](themes.md#easyclilogger)
 
-Defined in: [themes/logger/index.ts:177](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L177)
+Defined in: [themes/logger/index.ts:183](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L183)
 
 Instantiates a new logger with the given theme and verbosity level.
 
@@ -331,7 +331,7 @@ Instantiates a new logger with the given theme and verbosity level.
 
 > **log**(...`args`): [`EasyCLILoggerResponse`](themes.md#easycliloggerresponse)
 
-Defined in: [themes/logger/index.ts:259](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L259)
+Defined in: [themes/logger/index.ts:265](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L265)
 
 Writes a log to the console depending on the verbosity level, using the log display options.
 
@@ -357,7 +357,7 @@ logger.log('Hello, world!');
 
 > **warn**(...`args`): [`EasyCLILoggerResponse`](themes.md#easycliloggerresponse)
 
-Defined in: [themes/logger/index.ts:273](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L273)
+Defined in: [themes/logger/index.ts:280](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L280)
 
 Writes a warning to the console depending on the verbosity level, using the log display options.
 
@@ -383,7 +383,7 @@ logger.warn('Hello, world!');
 
 > **info**(...`args`): [`EasyCLILoggerResponse`](themes.md#easycliloggerresponse)
 
-Defined in: [themes/logger/index.ts:288](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L288)
+Defined in: [themes/logger/index.ts:296](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L296)
 
 Writes an info message to the console depending on the verbosity level, using the log display options.
 
@@ -409,7 +409,7 @@ logger.info('Hello, world!');
 
 > **error**(...`args`): [`EasyCLILoggerResponse`](themes.md#easycliloggerresponse)
 
-Defined in: [themes/logger/index.ts:303](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L303)
+Defined in: [themes/logger/index.ts:312](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L312)
 
 Writes an error to the console depending on the verbosity level, using the log display options.
 
@@ -435,7 +435,7 @@ logger.error('Hello, world!');
 
 > **success**(...`args`): [`EasyCLILoggerResponse`](themes.md#easycliloggerresponse)
 
-Defined in: [themes/logger/index.ts:318](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L318)
+Defined in: [themes/logger/index.ts:328](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L328)
 
 Writes a success to the console depending on the verbosity level, using the log display options.
 
@@ -461,7 +461,7 @@ logger.success('Hello, world!');
 
 > **printFormattedString**(...`args`): `void`
 
-Defined in: [themes/logger/index.ts:333](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L333)
+Defined in: [themes/logger/index.ts:343](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L343)
 
 Takes a list of arguments and prints them to the console in the format provided.
 
@@ -486,7 +486,7 @@ logger.printFormattedString('Hello, world!', { text: 'Hello, world!', format: 'i
 
 > **getExecutionLogs**(): `string`[]
 
-Defined in: [themes/logger/index.ts:373](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L373)
+Defined in: [themes/logger/index.ts:383](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L383)
 
 Gets the execution logs, including logs that were not output due to verbosity.
 This is useful for debugging and logging to a file after execution.
@@ -516,7 +516,7 @@ console.log(logs);
 
 ### ThemedProgressBar\<T\>
 
-Defined in: [themes/progress/base.ts:65](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L65)
+Defined in: [themes/progress/base.ts:80](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L80)
 
 A themed progress bar, can be overridden to add additional functionality
 
@@ -536,6 +536,21 @@ The display options for the progress bar
 
 The options for the progress bar
 
+#### Example
+
+```typescript
+const progressBar = new ThemedProgressBar(theme, 'progress', displayOptions, {
+  showPercentage: true,
+  percentageDisplayOptions: 'info',
+  showTimeElapsed: true,
+  timeElapsedDisplayOptions: 'info',
+  showTimeLeft: true,
+  timeLeftDisplayOptions: 'info',
+  showCompleted: true,
+  completedDisplayOptions: 'info',
+});
+```
+
 #### Extended by
 
 - [`ThemedSimpleProgressBar`](themes.md#themedsimpleprogressbar)
@@ -551,22 +566,33 @@ The options for the progress bar
 
 ##### new ThemedProgressBar()
 
-> **new ThemedProgressBar**\<`T`\>(`theme`, `name`, `displayOptions`, `progressBarOptions`): [`ThemedProgressBar`](themes.md#themedprogressbart)\<`T`\>
+> **new ThemedProgressBar**\<`T`\>(`theme`, `name`, `displayOptions`, `progressBarOptions`?): [`ThemedProgressBar`](themes.md#themedprogressbart)\<`T`\>
 
-Defined in: [themes/progress/base.ts:74](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L74)
+Defined in: [themes/progress/base.ts:105](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L105)
+
+Creates an instance of ThemedProgressBar
 
 ###### Parameters
 
-| Parameter | Type | Default value |
-| ------ | ------ | ------ |
-| `theme` | [`EasyCLITheme`](themes.md#easyclitheme) | `undefined` |
-| `name` | `string` | `undefined` |
-| `displayOptions` | [`DisplayOptions`](themes.md#displayoptions-3) | `undefined` |
-| `progressBarOptions` | [`ThemedProgressBarOptions`](themes.md#themedprogressbaroptions) | `DEFAULT_PROGRESS_BAR_OPTIONS` |
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `theme` | [`EasyCLITheme`](themes.md#easyclitheme) | `undefined` | The theme to use |
+| `name` | `string` | `undefined` | The name of the progress bar |
+| `displayOptions` | [`DisplayOptions`](themes.md#displayoptions-3) | `undefined` | The display options for the progress bar |
+| `progressBarOptions`? | [`ThemedProgressBarOptions`](themes.md#themedprogressbaroptions) | `DEFAULT_PROGRESS_BAR_OPTIONS` | The options for the progress bar |
 
 ###### Returns
 
 [`ThemedProgressBar`](themes.md#themedprogressbart)\<`T`\>
+
+###### Example
+
+```typescript
+const progressBar = new ThemedProgressBar(theme, 'progress', displayOptions, {
+ showPercentage: true,
+ percentageDisplayOptions: 'info',
+});
+```
 
 #### Methods
 
@@ -574,7 +600,7 @@ Defined in: [themes/progress/base.ts:74](https://github.com/patrickeaton/easy-cl
 
 > `protected` **getOptions**(): `Options`
 
-Defined in: [themes/progress/base.ts:94](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L94)
+Defined in: [themes/progress/base.ts:125](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L125)
 
 An internal method to get the options for the progress bar
 
@@ -588,7 +614,7 @@ The options for the progress bar
 
 > **start**(`initial`, `total`, `payload`, `options`): `SingleBar`
 
-Defined in: [themes/progress/base.ts:166](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L166)
+Defined in: [themes/progress/base.ts:204](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L204)
 
 Starts the progress bar
 
@@ -605,11 +631,19 @@ Starts the progress bar
 
 `SingleBar`
 
+The progress bar
+
+###### Example
+
+```typescript
+ progressBar.start(0, 100);
+```
+
 ##### stop()
 
 > **stop**(): `void`
 
-Defined in: [themes/progress/base.ts:183](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L183)
+Defined in: [themes/progress/base.ts:226](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L226)
 
 Stops the progress bar
 
@@ -617,37 +651,43 @@ Stops the progress bar
 
 `void`
 
+###### Example
+
+```typescript
+progressBar.stop();
+```
+
 #### Properties
 
 ##### name
 
 > `protected` **name**: `string`
 
-Defined in: [themes/progress/base.ts:68](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L68)
+Defined in: [themes/progress/base.ts:83](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L83)
 
 ##### theme
 
 > `protected` **theme**: [`EasyCLITheme`](themes.md#easyclitheme)
 
-Defined in: [themes/progress/base.ts:69](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L69)
+Defined in: [themes/progress/base.ts:84](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L84)
 
 ##### displayOptions
 
 > `protected` **displayOptions**: [`DisplayOptions`](themes.md#displayoptions-3)
 
-Defined in: [themes/progress/base.ts:70](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L70)
+Defined in: [themes/progress/base.ts:85](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L85)
 
 ##### progressBar
 
 > `protected` **progressBar**: `null` \| `SingleBar`
 
-Defined in: [themes/progress/base.ts:71](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L71)
+Defined in: [themes/progress/base.ts:86](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L86)
 
 ##### progressBarOptions
 
 > `protected` **progressBarOptions**: `T`
 
-Defined in: [themes/progress/base.ts:72](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L72)
+Defined in: [themes/progress/base.ts:87](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L87)
 
 ***
 
@@ -657,7 +697,7 @@ Defined in: [themes/progress/progress-with-status.ts:96](https://github.com/patr
 
 A themed status progress bar that shows the progress of a task while also showing the current status of the task
 
- *  ThemedStatusProgressBar
+ ThemedStatusProgressBar
 
 #### Param
 
@@ -727,13 +767,19 @@ Defined in: [themes/progress/progress-with-status.ts:97](https://github.com/patr
 
 > **stop**(): `void`
 
-Defined in: [themes/progress/base.ts:183](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L183)
+Defined in: [themes/progress/base.ts:226](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L226)
 
 Stops the progress bar
 
 ###### Returns
 
 `void`
+
+###### Example
+
+```typescript
+progressBar.stop();
+```
 
 ###### Inherited from
 
@@ -761,7 +807,7 @@ The options for the progress bar
 
 > **start**(`initial`, `total`): `SingleBar`
 
-Defined in: [themes/progress/progress-with-status.ts:152](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/progress-with-status.ts#L152)
+Defined in: [themes/progress/progress-with-status.ts:158](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/progress-with-status.ts#L158)
 
 Starts the progress bar
 
@@ -778,6 +824,12 @@ Starts the progress bar
 
 an instance of the progress bar
 
+###### Example
+
+```typescript
+progressBar.start(0, 100);
+```
+
 ###### Overrides
 
 [`ThemedProgressBar`](themes.md#themedprogressbart).[`start`](themes.md#start)
@@ -786,7 +838,7 @@ an instance of the progress bar
 
 > **update**(`progress`, `payload`): `void`
 
-Defined in: [themes/progress/progress-with-status.ts:162](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/progress-with-status.ts#L162)
+Defined in: [themes/progress/progress-with-status.ts:173](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/progress-with-status.ts#L173)
 
 Updates the progress bar
 
@@ -801,11 +853,17 @@ Updates the progress bar
 
 `void`
 
+###### Example
+
+```typescript
+progressBar.update(50, { current: 'Processing record XXX', success: 10, warn: 5, error: 0 });
+```
+
 ##### increment()
 
 > **increment**(`payload`): `void`
 
-Defined in: [themes/progress/progress-with-status.ts:171](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/progress-with-status.ts#L171)
+Defined in: [themes/progress/progress-with-status.ts:187](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/progress-with-status.ts#L187)
 
 Increments the progress bar
 
@@ -819,13 +877,19 @@ Increments the progress bar
 
 `void`
 
+###### Example
+
+```typescript
+progressBar.increment({ current: 'Processing record XXX', success: 10, warn: 5, error: 0 });
+```
+
 #### Properties
 
 ##### name
 
 > `protected` **name**: `string`
 
-Defined in: [themes/progress/base.ts:68](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L68)
+Defined in: [themes/progress/base.ts:83](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L83)
 
 ###### Inherited from
 
@@ -835,7 +899,7 @@ Defined in: [themes/progress/base.ts:68](https://github.com/patrickeaton/easy-cl
 
 > `protected` **theme**: [`EasyCLITheme`](themes.md#easyclitheme)
 
-Defined in: [themes/progress/base.ts:69](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L69)
+Defined in: [themes/progress/base.ts:84](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L84)
 
 ###### Inherited from
 
@@ -845,7 +909,7 @@ Defined in: [themes/progress/base.ts:69](https://github.com/patrickeaton/easy-cl
 
 > `protected` **displayOptions**: [`DisplayOptions`](themes.md#displayoptions-3)
 
-Defined in: [themes/progress/base.ts:70](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L70)
+Defined in: [themes/progress/base.ts:85](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L85)
 
 ###### Inherited from
 
@@ -855,7 +919,7 @@ Defined in: [themes/progress/base.ts:70](https://github.com/patrickeaton/easy-cl
 
 > `protected` **progressBar**: `null` \| `SingleBar`
 
-Defined in: [themes/progress/base.ts:71](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L71)
+Defined in: [themes/progress/base.ts:86](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L86)
 
 ###### Inherited from
 
@@ -865,7 +929,7 @@ Defined in: [themes/progress/base.ts:71](https://github.com/patrickeaton/easy-cl
 
 > `protected` **progressBarOptions**: [`ThemedStatusProgressBarOptions`](themes.md#themedstatusprogressbaroptions)
 
-Defined in: [themes/progress/base.ts:72](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L72)
+Defined in: [themes/progress/base.ts:87](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L87)
 
 ###### Inherited from
 
@@ -943,13 +1007,19 @@ Defined in: [themes/progress/simple-progress.ts:56](https://github.com/patrickea
 
 > **stop**(): `void`
 
-Defined in: [themes/progress/base.ts:183](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L183)
+Defined in: [themes/progress/base.ts:226](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L226)
 
 Stops the progress bar
 
 ###### Returns
 
 `void`
+
+###### Example
+
+```typescript
+progressBar.stop();
+```
 
 ###### Inherited from
 
@@ -975,7 +1045,7 @@ An internal method to get the options for the progress bar
 
 > **start**(`initial`, `total`): `SingleBar`
 
-Defined in: [themes/progress/simple-progress.ts:93](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/simple-progress.ts#L93)
+Defined in: [themes/progress/simple-progress.ts:98](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/simple-progress.ts#L98)
 
 Starts the progress bar
 
@@ -992,6 +1062,12 @@ Starts the progress bar
 
 The progress bar
 
+###### Example
+
+```typescript
+progressBar.start(0, 100);
+```
+
 ###### Overrides
 
 [`ThemedProgressBar`](themes.md#themedprogressbart).[`start`](themes.md#start)
@@ -1000,7 +1076,7 @@ The progress bar
 
 > **update**(`progress`, `current`?): `void`
 
-Defined in: [themes/progress/simple-progress.ts:103](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/simple-progress.ts#L103)
+Defined in: [themes/progress/simple-progress.ts:113](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/simple-progress.ts#L113)
 
 Updates the progress bar
 
@@ -1015,11 +1091,17 @@ Updates the progress bar
 
 `void`
 
+###### Example
+
+```typescript
+progressBar.update(50, 'Record 1');
+```
+
 ##### increment()
 
 > **increment**(`current`?): `void`
 
-Defined in: [themes/progress/simple-progress.ts:114](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/simple-progress.ts#L114)
+Defined in: [themes/progress/simple-progress.ts:129](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/simple-progress.ts#L129)
 
 Increments the progress bar by one.
 
@@ -1033,13 +1115,19 @@ Increments the progress bar by one.
 
 `void`
 
+###### Example
+
+```typescript
+progressBar.increment('Record 1');
+```
+
 #### Properties
 
 ##### name
 
 > `protected` **name**: `string`
 
-Defined in: [themes/progress/base.ts:68](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L68)
+Defined in: [themes/progress/base.ts:83](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L83)
 
 ###### Inherited from
 
@@ -1049,7 +1137,7 @@ Defined in: [themes/progress/base.ts:68](https://github.com/patrickeaton/easy-cl
 
 > `protected` **theme**: [`EasyCLITheme`](themes.md#easyclitheme)
 
-Defined in: [themes/progress/base.ts:69](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L69)
+Defined in: [themes/progress/base.ts:84](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L84)
 
 ###### Inherited from
 
@@ -1059,7 +1147,7 @@ Defined in: [themes/progress/base.ts:69](https://github.com/patrickeaton/easy-cl
 
 > `protected` **displayOptions**: [`DisplayOptions`](themes.md#displayoptions-3)
 
-Defined in: [themes/progress/base.ts:70](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L70)
+Defined in: [themes/progress/base.ts:85](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L85)
 
 ###### Inherited from
 
@@ -1069,7 +1157,7 @@ Defined in: [themes/progress/base.ts:70](https://github.com/patrickeaton/easy-cl
 
 > `protected` **progressBar**: `null` \| `SingleBar`
 
-Defined in: [themes/progress/base.ts:71](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L71)
+Defined in: [themes/progress/base.ts:86](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L86)
 
 ###### Inherited from
 
@@ -1079,7 +1167,7 @@ Defined in: [themes/progress/base.ts:71](https://github.com/patrickeaton/easy-cl
 
 > `protected` **progressBarOptions**: [`ThemedSimpleProgressBarOptions`](themes.md#themedsimpleprogressbaroptions)
 
-Defined in: [themes/progress/base.ts:72](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L72)
+Defined in: [themes/progress/base.ts:87](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/progress/base.ts#L87)
 
 ###### Inherited from
 
@@ -1138,7 +1226,7 @@ Creates an instance of ThemedSpinner
 
 > **start**(`text`, `options`?): `Ora`
 
-Defined in: [themes/themed-spinner.ts:42](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/themed-spinner.ts#L42)
+Defined in: [themes/themed-spinner.ts:47](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/themed-spinner.ts#L47)
 
 Starts the spinner
 
@@ -1155,17 +1243,29 @@ Starts the spinner
 
 The spinner instance
 
+###### Example
+
+```typescript
+spinner.start('Loading...');
+```
+
 ##### stop()
 
 > **stop**(): `void`
 
-Defined in: [themes/themed-spinner.ts:54](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/themed-spinner.ts#L54)
+Defined in: [themes/themed-spinner.ts:64](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/themed-spinner.ts#L64)
 
 Stops the spinner
 
 ###### Returns
 
 `void`
+
+###### Example
+
+```typescript
+spinner.stop();
+```
 
 ***
 
@@ -1227,7 +1327,7 @@ Defined in: [themes/themed-table.ts:94](https://github.com/patrickeaton/easy-cli
 
 > **render**(`items`): `void`
 
-Defined in: [themes/themed-table.ts:127](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/themed-table.ts#L127)
+Defined in: [themes/themed-table.ts:135](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/themed-table.ts#L135)
 
 Render the table to the console
 
@@ -1240,6 +1340,15 @@ Render the table to the console
 ###### Returns
 
 `void`
+
+###### Example
+
+```typescript
+table.render([
+ { name: 'Alice', age: 25 },
+ { name: 'Bob', age: 30 },
+]);
+```
 
 ## Interfaces
 
@@ -1308,7 +1417,7 @@ Defined in: [themes/progress/progress-with-status.ts:23](https://github.com/patr
 
 Options for a ThemedStatusProgressBar that extends a ThemedProgressBar
 
- *  ThemedStatusProgressBarOptions
+ ThemedStatusProgressBarOptions
 
 #### Properties
 
@@ -1484,7 +1593,7 @@ Supported log types
 
 > **EasyCLILoggerProps**: `object`
 
-Defined in: [themes/logger/index.ts:126](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L126)
+Defined in: [themes/logger/index.ts:132](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L132)
 
 The properties for the logger
 
@@ -1492,10 +1601,10 @@ The properties for the logger
 
 | Name | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="theme-4"></a> `theme` | [`EasyCLITheme`](themes.md#easyclitheme) | [themes/logger/index.ts:127](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L127) |
-| <a id="verbosity"></a> `verbosity`? | `number` | [themes/logger/index.ts:128](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L128) |
-| <a id="verbositythresholds"></a> `verbosityThresholds`? | `Record`\<[`SupportedLogType`](themes.md#supportedlogtype), `number`\> | [themes/logger/index.ts:129](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L129) |
-| <a id="timestamp"></a> `timestamp`? | `boolean` | [themes/logger/index.ts:130](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L130) |
+| <a id="theme-4"></a> `theme` | [`EasyCLITheme`](themes.md#easyclitheme) | [themes/logger/index.ts:133](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L133) |
+| <a id="verbosity"></a> `verbosity`? | `number` | [themes/logger/index.ts:134](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L134) |
+| <a id="verbositythresholds"></a> `verbosityThresholds`? | `Record`\<[`SupportedLogType`](themes.md#supportedlogtype), `number`\> | [themes/logger/index.ts:135](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L135) |
+| <a id="timestamp"></a> `timestamp`? | `boolean` | [themes/logger/index.ts:136](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/logger/index.ts#L136) |
 
 #### Param
 

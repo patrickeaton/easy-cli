@@ -1,5 +1,5 @@
 {
-  "name": "easy-cli",
+  "name": "easy-cli-framework",
   "version": "1.0.0",
   "description": "A framework for building CLI applications that are robust and easy to maintain. Supports theming, configuration files, interactive prompts, and more.",
   "main": "dist/index.js",

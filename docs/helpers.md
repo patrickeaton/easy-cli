@@ -80,7 +80,7 @@ interactive: true,
 
 > **processFile**(`path`): `Promise`\<`TObject`[]\>
 
-Defined in: [helpers/csv-file-mapper.ts:280](https://github.com/patrickeaton/easy-cli/blob/master/src/helpers/csv-file-mapper.ts#L280)
+Defined in: [helpers/csv-file-mapper.ts:286](https://github.com/patrickeaton/easy-cli/blob/master/src/helpers/csv-file-mapper.ts#L286)
 
 Process a CSV file and return the data as an array of transformed objects.
 
@@ -99,6 +99,13 @@ The data from the CSV file as an array of transformed objects
 ###### Throws
 
 If there are validation errors in the CSV file and the validate option is set to true.
+
+###### Example
+
+```typescript
+const csvProcessor = new CSVMapper({...});
+const data = await csvProcessor.processFile('./username.csv');
+```
 
 ***
 
@@ -140,7 +147,7 @@ Defined in: [helpers/csv-file.ts:17](https://github.com/patrickeaton/easy-cli/bl
 
 > **read**(): `Promise`\<`TFileObject`[]\>
 
-Defined in: [helpers/csv-file.ts:35](https://github.com/patrickeaton/easy-cli/blob/master/src/helpers/csv-file.ts#L35)
+Defined in: [helpers/csv-file.ts:34](https://github.com/patrickeaton/easy-cli/blob/master/src/helpers/csv-file.ts#L34)
 
 Read a CSV file and parse it into an array of objects.
 
@@ -159,14 +166,13 @@ If the file is not found or there is an error reading the file.
 ```typescript
 const csvFile = new CsvFile('data.csv');
 const data = await csvFile.read();
-console.log(data);
 ```
 
 ##### write()
 
 > **write**(`data`): `Promise`\<`void`\>
 
-Defined in: [helpers/csv-file.ts:66](https://github.com/patrickeaton/easy-cli/blob/master/src/helpers/csv-file.ts#L66)
+Defined in: [helpers/csv-file.ts:65](https://github.com/patrickeaton/easy-cli/blob/master/src/helpers/csv-file.ts#L65)
 
 Write an array of objects to a CSV file overwriting the existing file.
 
@@ -200,7 +206,7 @@ await csvFile.write([
 
 > **append**(`data`): `Promise`\<`void`\>
 
-Defined in: [helpers/csv-file.ts:89](https://github.com/patrickeaton/easy-cli/blob/master/src/helpers/csv-file.ts#L89)
+Defined in: [helpers/csv-file.ts:88](https://github.com/patrickeaton/easy-cli/blob/master/src/helpers/csv-file.ts#L88)
 
 Append an array of objects to an existing CSV file.
 
