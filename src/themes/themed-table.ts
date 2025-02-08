@@ -139,7 +139,6 @@ export class ThemedTable<TItem extends Record<string, any>> {
         this.theme.formattedString(column.name, column.headerStyle ?? 'default')
       ),
       colWidths: this.columns.map(column => column.width ?? defaultWidth),
-      truncate: '…',
       colAligns: this.columns.map(column => column.align ?? 'middle'),
       colors: false,
     });

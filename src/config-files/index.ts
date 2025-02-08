@@ -259,7 +259,6 @@ export class EasyCLIConfigFile<
     const topPath = this.getTopPath();
 
     while (true) {
-      console.log(currentDir);
       const config = this.processConfigurationFileInDir(currentDir);
 
       if (config) {
