@@ -68,7 +68,7 @@ Set the theme for the CLI, will overwrite any existing theme, and this theme wil
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `theme` | `null` \| [`EasyCLITheme`](themes.md#easyclitheme) | The theme to use |
+| `theme` | [`EasyCLITheme`](themes.md#easyclitheme) | The theme to use |
 
 ###### Returns
 

@@ -1561,7 +1561,7 @@ Options for the themed table
 
 ### DisplayOptions
 
-> **DisplayOptions**: `string` \| [`StringDisplayOptions`](themes.md#stringdisplayoptions) \| (`string` \| [`StringDisplayOptions`](themes.md#stringdisplayoptions))[]
+> **DisplayOptions**: [`NamedDisplayOptions`](themes.md#nameddisplayoptions) \| [`StringDisplayOptions`](themes.md#stringdisplayoptions) \| ([`NamedDisplayOptions`](themes.md#nameddisplayoptions) \| [`StringDisplayOptions`](themes.md#stringdisplayoptions))[]
 
 Defined in: [themes/index.ts:58](https://github.com/patrickeaton/easy-cli/blob/master/src/themes/index.ts#L58)
 

@@ -91,7 +91,7 @@ Easily manage configuration files for CLI applications. It supports globally sto
 [Recursive Config Files](https://github.com/patrickeaton/easy-cli/blob/main/examples/configuration/recursive.ts)
 
 ```typescript
-import { EasyCLIConfigFile } from 'easy-cli/config';
+import { EasyCLIConfigFile } from 'easy-cli-framework/config';
 
 const config = new EasyCLIConfigFile({
   filename: 'my-app.config',
@@ -119,7 +119,7 @@ Easy CLI Commands are built on top of `yargs` and `yargs-interactive` to be able
 Easily create managed commands that can handle interactive prompts. Can be used with EasyCLI or directly with yargs
 
 ```typescript
-import { EasyCLICommand, EasyCLI } from 'easy-cli';
+import { EasyCLICommand, EasyCLI } from 'easy-cli-framework';
 import yargs from 'yargs';
 
 const command = new EasyCLICommand(
@@ -160,7 +160,7 @@ import {
   promptMultipleChoice,
   promptNumber,
   promptText,
-} from 'easy-cli/prompts';
+} from 'easy-cli-framework/prompts';
 
 // Prompt the user to select a choice
 const choice = await promptChoice('Select a choice', ['A', 'B', 'C']);
@@ -211,7 +211,7 @@ These helper functions are designed to make life easiser when interacting with C
 [CSV Mapper](https://github.com/patrickeaton/easy-cli/blob/main/examples/csv/csv-mapper.ts)
 
 ```typescript
-import { CSVMapper } from 'easy-cli/helpers';
+import { CSVMapper } from 'easy-cli-framework/helpers';
 
 const csvMapper = new CSVMapper({
   mappings: {
