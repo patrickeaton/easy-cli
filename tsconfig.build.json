@@ -8,11 +8,13 @@
 
     "sourceMap": true,
     "declaration": true,
+    "inlineSources": true,
 
     "strict": true,
     "strictPropertyInitialization": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
+
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["./node_modules/@types", "../../node_modules/@types"]
   },

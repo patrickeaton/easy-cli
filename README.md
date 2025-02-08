@@ -29,7 +29,7 @@ EasyCLI is designed as a total framework for building awesome command-line appli
 [Advanced](https://github.com/patrickeaton/easy-cli/blob/main/examples/advanced-cli/index.ts)
 
 ```typescript
-import { EasyCLI, EasyCLICommand, EasyCLITheme } from 'easy-cli';
+import { EasyCLI, EasyCLICommand, EasyCLITheme } from 'easy-cli-framework';
 
 const theme = new EasyCLITheme();
 const app = new EasyCLI('easy-cli', {

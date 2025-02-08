@@ -3,20 +3,46 @@
   "version": "1.1.1",
   "description": "A framework for building CLI applications that are robust and easy to maintain. Supports theming, configuration files, interactive prompts, and more.",
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
+    "./app": "./dist/app.js",
     "./helpers": "./dist/helpers/index.js",
     "./themes": "./dist/themes/index.js",
     "./prompts": "./dist/prompts/index.js",
-    "./config": "./dist/config/index.js"
+    "./config": "./dist/config-files/index.js",
+    "./commands": "./dist/commands/index.js"
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/index.d.ts"
+      ],
+      "./app": [
+        "./dist/app.d.ts"
+      ],
+      "./helpers": [
+        "./dist/helpers/index.d.ts"
+      ],
+      "./themes": [
+        "./dist/themes/index.d.ts"
+      ],
+      "./prompts": [
+        "./dist/prompts/index.d.ts"
+      ],
+      "./config": [
+        "./dist/config-files/index.d.ts"
+      ],
+      "./commands": [
+        "./dist/commands/index.d.ts"
+      ]
+    }
   },
   "author": "@patrickeaton",
   "license": "MIT",
   "private": false,
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
+    "analyze": "rollup -c ./rollup.analyze.config.js --bundleConfigAsCjs",
     "docs": "typedoc",
     "prepare": "husky"
   },
@@ -45,6 +71,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
     "rollup": "^4.9.5",
+    "rollup-plugin-analyzer": "^4.0.0",
     "rollup-plugin-cleandir": "^3.0.0",
     "rollup-plugin-typescript2": "^0.36.0",
     "ts-node": "^10.9.2",

@@ -6,6 +6,10 @@ import { cleandir } from "rollup-plugin-cleandir";
 export default {
   input: [
     'src/index.ts',
+    'src/commands/index.ts',
+    'src/app.ts',
+    'src/config-files/index.ts',
+    'src/prompts/index.ts',
   ],
   output: [
     {
