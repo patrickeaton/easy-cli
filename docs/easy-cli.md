@@ -97,7 +97,7 @@ Set the configuration file for the CLI
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `config` | [`EasyCLIConfigFile`](config-files.md#easycliconfigfiletconfig) | The configuration file to use |
+| `config` | [`EasyCLIConfigFile`](config-files.md#easycliconfigfiletparams) | The configuration file to use |
 
 ###### Returns
 
