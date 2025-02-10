@@ -1,0 +1,10 @@
+{
+  "local": {
+    "verbose": 0,
+    "env": "env_local2"
+  },
+  "default": {
+    "verbose": 3,
+    "env": "default"
+  }
+}

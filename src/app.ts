@@ -268,7 +268,7 @@ export class EasyCLI<
 
       const configPath = argv?.[this?.configFlag as string] ?? null;
 
-      const config = this.configFile.load(configPath);
+      const config = this.configFile.load(configPath, argv);
 
       const defaults: any = this.getDefaults();
 

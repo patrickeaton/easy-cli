@@ -5,6 +5,9 @@
 [Basic Implementation](./basic-cli-with-config/index.ts):
 A basic implementation that utilizes EasyCLI to build a simple CLI tool with configuration and verbosity.
 
+[Profiles Implementation](./cli-with-config-and-profiles):
+A implementation that uses profiles inside the config file, so you can store the config for multiple profiles simultaneously.
+
 [Complex Implementation (golf game)](./advanced-cli/index.ts):
 A more complex implementation that runs a command line golf game and stores scores in a CSV file.
 

@@ -15,7 +15,6 @@ import { access } from 'fs';
  * @template TParams The params for the command
  *
  * @property {string[]} globalKeysToUse What key(s) are you setting?
- * @property {(params: TGlobalParams & TParams) => any} transformer How to transform the params before saving
  *
  * @extends CommandSetupOptions
  *
@@ -41,7 +40,6 @@ import { access } from 'fs';
 export type ConfigureCommandOptions<TGlobalParams, TParams> =
   CommandSetupOptions<TGlobalParams, TParams> & {
     globalKeysToUse?: (keyof TGlobalParams)[]; // What key(s) are you setting?
-    transformer?: (params: TGlobalParams & TParams) => any; // How to transform the params before saving
     callback?: (params: TGlobalParams & TParams) => void; // The callback to run after the command is executed, this is useful if you want to add additional functionality to the command ie. Copying a file
   };
 
@@ -96,7 +94,6 @@ export class EasyCLIConfigureCommand<
   ) {
     const {
       globalKeysToUse = [],
-      transformer = (params: TGlobalParams & TParams) => params,
       callback,
       ...commandOptions
     } = options;
@@ -119,9 +116,8 @@ export class EasyCLIConfigureCommand<
         {} as any
       );
 
-      const transformed = transformer(clean);
       logger?.success('Saving configuration');
-      await config.save(transformed);
+      await config.save(clean);
 
       if (callback) {
         await callback(params);

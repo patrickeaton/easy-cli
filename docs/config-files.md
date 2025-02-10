@@ -61,7 +61,7 @@ The EasyCLIConfigFile instance
 
 > **load**(`path`?): `TConfig`
 
-Defined in: [config-files/index.ts:414](https://github.com/patrickeaton/easy-cli/blob/master/src/config-files/index.ts#L414)
+Defined in: [config-files/index.ts:413](https://github.com/patrickeaton/easy-cli/blob/master/src/config-files/index.ts#L413)
 
 Load a configuration file from the given rules. Can be overridden by providing a path.
 
@@ -98,7 +98,7 @@ const configuration = config.load('path/to/config.json');
 
 > **fileExists**(`filePath`?): `boolean`
 
-Defined in: [config-files/index.ts:444](https://github.com/patrickeaton/easy-cli/blob/master/src/config-files/index.ts#L444)
+Defined in: [config-files/index.ts:443](https://github.com/patrickeaton/easy-cli/blob/master/src/config-files/index.ts#L443)
 
 Check if a configuration file exists.
 
@@ -137,7 +137,7 @@ console.log(exists);
 
 > **save**(`config`, `filePath`?): `Promise`\<`void`\>
 
-Defined in: [config-files/index.ts:474](https://github.com/patrickeaton/easy-cli/blob/master/src/config-files/index.ts#L474)
+Defined in: [config-files/index.ts:473](https://github.com/patrickeaton/easy-cli/blob/master/src/config-files/index.ts#L473)
 
 Save a configuration object to a file, using the given rules or an optional file path.
 

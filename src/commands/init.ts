@@ -1,7 +1,4 @@
-import {
-  CommandSetupOptions,
-  EasyCLICommand,
-} from './command';
+import { CommandSetupOptions, EasyCLICommand } from './command';
 import { EasyCLIConfigFile } from '../config-files';
 import { EasyCLITheme } from '../themes';
 
@@ -27,7 +24,6 @@ import { EasyCLITheme } from '../themes';
  * failOnExists?: boolean; // Should the command fail if the config file already exists?
  * globalKeysToUse?: string[]; // What key(s) are you setting?
  * defaults?: Partial<TGlobalParams & TParams>; // The default values to use
- * transformer?: (params: TGlobalParams & TParams) => any; // How to transform the params before saving
  * configFlag?: string; // The name of the variable to use for the config file
  * }
  * ```
@@ -39,7 +35,6 @@ export type InitCommandOptions<TGlobalParams, TParams> = CommandSetupOptions<
   failOnExists?: boolean; // Should the command fail if the config file already exists?
   globalKeysToUse?: (keyof TGlobalParams)[]; // What key(s) are you setting?
   defaults?: Partial<TGlobalParams & TParams>; // The default values to use
-  transformer?: (params: TGlobalParams & TParams) => any; // How to transform the params before saving
   configFlag?: string; // The name of the variable to use for the config file
   callback?: (params: TGlobalParams & TParams) => void; // The callback to run after the command is executed, this is useful if you want to add additional functionality to the command ie. Copying a file
 };
@@ -88,7 +83,6 @@ export class EasyCLIInitCommand<
 
     const {
       globalKeysToUse = [],
-      transformer = (params: TGlobalParams & TParams) => params,
       defaults = {},
       configFlag = 'config',
       callback,
@@ -99,13 +93,6 @@ export class EasyCLIInitCommand<
       params: TGlobalParams & TParams,
       theme?: EasyCLITheme
     ) => {
-      if (
-        options.failOnExists &&
-        config.fileExists((params as any)?.[configFlag] ?? null)
-      ) {
-        throw new Error('Config file already exists');
-      }
-
       const logger = theme?.getLogger();
 
       const keys = [...this.getKeys(), ...globalKeysToUse];
@@ -121,15 +108,29 @@ export class EasyCLIInitCommand<
         defaults as any
       );
 
-      const transformed = transformer(clean);
       logger?.success('Saving config file');
-      await config.save(transformed);
+      await config.save(clean);
 
       if (callback) {
         await callback(params);
       }
     };
 
-    super(name, handler, commandOptions);
+    const validator = async (params: TGlobalParams & TParams) => {
+      if (
+        options.failOnExists &&
+        config.fileExists((params as any)?.[configFlag] ?? null)
+      ) {
+        throw new Error('Config file already exists');
+      }
+
+      if (commandOptions.validator) {
+        return commandOptions.validator(params);
+      }
+
+      return true;
+    };
+
+    super(name, handler, { ...commandOptions, validator });
   }
 }

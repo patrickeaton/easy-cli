@@ -65,6 +65,40 @@ export type ConfigFileRoot = 'cwd' | 'home' | 'project_root' | 'workspace_root';
 export type ConfigFileRootTop = 'project_root' | 'workspace_root';
 
 /**
+ * Simple object check.
+ * @param item
+ * @returns {boolean}
+ */
+export function isObject(item: any) {
+  return item && typeof item === 'object' && !Array.isArray(item);
+}
+
+/**
+ * Deep merge two objects.
+ * @param target
+ * @param ...sources
+ */
+export function mergeDeep(...sources: any[]): any {
+  const target = sources.shift();
+
+  if (!sources.length) return target;
+  const source = sources.shift();
+
+  if (isObject(target) && isObject(source)) {
+    for (const key in source) {
+      if (isObject(source[key])) {
+        if (!target[key]) Object.assign(target, { [key]: {} });
+        mergeDeep(target[key], source[key]);
+      } else {
+        Object.assign(target, { [key]: source[key] });
+      }
+    }
+  }
+
+  return mergeDeep(target, ...sources);
+}
+
+/**
  * The parameters to use when loading a configuration file.
  *
  * @interface {Object} ConfigFileParams
@@ -88,7 +122,9 @@ export type ConfigFileRootTop = 'project_root' | 'workspace_root';
  * }
  * ```
  */
-export type ConfigFileParams = {
+export type ConfigFileParams<
+  TParams extends Record<string, any> = Record<string, any>
+> = {
   filename: string; // THe base filename to look for, without the extension.
   extensions: ValidExtensions[]; // What file extensions to look for, in order of preference (Default: ['ts', 'js', 'json'])
   recursion?: ConfigFileRecursionBehaviour; // How to handle recursive config files (Default: 'no_recursion')
@@ -96,6 +132,13 @@ export type ConfigFileParams = {
   top?: ConfigFileRootTop; // Where to stop looking for the config file (Default: 'project_root')
   path?: string; // The path to search for the config file from the basepath (Default: '')
   failOnMissing?: boolean; // Whether or not to fail if the file is missing
+  saveTransform?: (
+    config: TParams | Record<string, TParams>
+  ) => TParams | Record<string, TParams>; // A function to transform the configuration before saving
+  loadTransform?: (
+    config: TParams | Record<string, TParams>,
+    argv: Partial<TParams>
+  ) => TParams; // A function to transform the configuration after loading
   // validator?: any; // TODO: ADD ZOD VALIDATOR
 };
 
@@ -106,7 +149,7 @@ export type ConfigFileParams = {
  *
  * A class to make it easier to load configuration files in a consistent way, with support for different file extensions, recursion, and root directories.
  *
- * @template TConfig A type representing the configuration object that will be managed by the configuration file.
+ * @template TParams A type representing the configuration object that will be managed by the configuration file.
  *
  * @example
  * ```typescript
@@ -121,7 +164,7 @@ export type ConfigFileParams = {
  * ```
  */
 export class EasyCLIConfigFile<
-  TConfig extends Record<string, any> = Record<string, any>
+  TParams extends Record<string, any> = Record<string, any>
 > {
   private filename: string;
   private extensions: ValidExtensions[];
@@ -130,6 +173,13 @@ export class EasyCLIConfigFile<
   private top: ConfigFileRootTop;
   private path: string;
   private failOnMissing: boolean;
+  private saveTransform?: (
+    config: TParams | Record<string, TParams>
+  ) => TParams | Record<string, TParams>; // A function to transform the configuration before saving
+  loadTransform?: (
+    config: TParams | Record<string, TParams>,
+    argv: Partial<TParams>
+  ) => TParams; // A function to transform the configuration after loading
 
   /**
    * Create a new configuration file handler instance.
@@ -146,7 +196,9 @@ export class EasyCLIConfigFile<
     top = 'project_root',
     path = '',
     failOnMissing = false,
-  }: ConfigFileParams) {
+    saveTransform,
+    loadTransform,
+  }: ConfigFileParams<TParams>) {
     this.filename = filename;
     this.extensions = extensions;
     this.recursion = recursion;
@@ -154,6 +206,8 @@ export class EasyCLIConfigFile<
     this.path = path;
     this.failOnMissing = failOnMissing;
     this.top = top;
+    this.saveTransform = saveTransform;
+    this.loadTransform = loadTransform;
   }
 
   private findProjectRoot(
@@ -192,19 +246,19 @@ export class EasyCLIConfigFile<
   /**
    * Merge a list of configuration objects into a single object.
    *
-   * @param {TConfig[]} configs A sorted list of configuration objects to merge
+   * @param {TParams[]} configs A sorted list of configuration objects to merge
    *
-   * @returns {TConfig} The merged configuration object
+   * @returns {TParams} The merged configuration object
    */
-  private mergeConfigurationSets<TConfig extends Record<string, any>>(
-    configs: TConfig[]
-  ): TConfig {
+  private mergeConfigurationSets<TParams extends Record<string, any>>(
+    configs: TParams[]
+  ): TParams {
     return configs.reduce((acc, config) => {
       return {
         ...acc,
         ...config,
       };
-    }, {} as TConfig);
+    }, {} as TParams);
   }
 
   /**
@@ -212,9 +266,12 @@ export class EasyCLIConfigFile<
    *
    * @param dir The directory to check for the configuration file
    *
-   * @returns {TConfig | null} The configuration object if found, or null if not found
+   * @returns {TParams | null} The configuration object if found, or null if not found
    */
-  private processConfigurationFileInDir(dir: string): TConfig | null {
+  private processConfigurationFileInDir(
+    dir: string,
+    argv: Partial<TParams>
+  ): TParams | null {
     for (const extension of this.extensions) {
       try {
         const resolvedPath = path.resolve(
@@ -229,7 +286,8 @@ export class EasyCLIConfigFile<
           case 'json':
           case 'js':
           case 'ts':
-            return require(resolvedPath);
+            const data = require(resolvedPath);
+            return this.loadTransform ? this.loadTransform(data, argv) : data;
           // TODO: Add support for yaml and yml
           default:
             throw new Error('Unsupported file extension');
@@ -248,21 +306,22 @@ export class EasyCLIConfigFile<
    * @param {string} dir The directory to start looking in
    * @param {boolean} abortOnFirst Only return the first configuration found
    *
-   * @returns {TConfig[]} A list of configuration objects found in the directories
+   * @returns {TParams[]} A list of configuration objects found in the directories
    */
   private loadConfigurationTree(
     dir: string,
-    abortOnFirst: boolean = false
-  ): TConfig[] {
-    const configs: TConfig[] = [];
+    abortOnFirst: boolean = false,
+    argv: Partial<TParams>
+  ): TParams[] {
+    const configs: TParams[] = [];
     let currentDir = path.resolve(dir);
     const topPath = this.getTopPath();
 
     while (true) {
-      const config = this.processConfigurationFileInDir(currentDir);
+      const config = this.processConfigurationFileInDir(currentDir, argv);
 
       if (config) {
-        configs.push(config as TConfig);
+        configs.push(config as TParams);
       }
 
       // If we are aborting on the first config, once we've found one, we can stop.
@@ -294,9 +353,12 @@ export class EasyCLIConfigFile<
    *
    * @param path The path to load the configuration from
    *
-   * @returns {TConfig} The loaded configuration object
+   * @returns {TParams} The loaded configuration object
    */
-  private loadConfigurationFromPath(path: string): TConfig {
+  private loadConfigurationFromPath(
+    path: string,
+    argv: Partial<TParams>
+  ): TParams {
     const { filename, recursion = 'prefer_lowest' } = this;
 
     if (!filename)
@@ -304,32 +366,33 @@ export class EasyCLIConfigFile<
 
     // When there is no recursion, we only need to look in the current directory.
     if (recursion === 'no_recursion') {
-      return (this.processConfigurationFileInDir(path) ?? {}) as TConfig;
+      return (this.processConfigurationFileInDir(path, argv) ?? {}) as TParams;
     }
 
     // If we are recursing, we need to look in the current directory and all parent directories.
     const configs = this.loadConfigurationTree(
       path,
-      recursion === 'prefer_lowest'
+      recursion === 'prefer_lowest',
+      argv
     );
 
     if (!configs.length) {
       if (this.failOnMissing) throw new Error('No configuration file found');
-      return {} as TConfig;
+      return {} as TParams;
     }
 
     switch (recursion) {
       case 'prefer_lowest':
-        return configs.shift() as TConfig;
+        return configs.shift() as TParams;
       case 'prefer_highest':
-        return configs.pop() as TConfig;
+        return configs.pop() as TParams;
       case 'merge_highest_first':
-        return this.mergeConfigurationSets(configs) as TConfig;
+        return this.mergeConfigurationSets(configs) as TParams;
       case 'merge_lowest_first':
-        return this.mergeConfigurationSets(configs.reverse()) as TConfig;
+        return this.mergeConfigurationSets(configs.reverse()) as TParams;
     }
 
-    return {} as TConfig;
+    return {} as TParams;
   }
 
   /**
@@ -372,27 +435,32 @@ export class EasyCLIConfigFile<
    * Load a configuration file from a specific path instead of using the default path.
    *
    * @param {string} path A specific path to load the configuration from
-   * @returns {TConfig} The configuration object loaded from the path
+   * @returns {TParams} The configuration object loaded from the path
    */
-  private loadSpecificConfiguration(file: string): TConfig {
+  private loadSpecificConfiguration(
+    file: string,
+    argv: Partial<TParams>
+  ): TParams {
     const resolvedPath = path.resolve(file);
 
     if (fs.existsSync(resolvedPath)) {
-      return require(resolvedPath);
+      const data = require(resolvedPath);
+
+      return this.loadTransform ? this.loadTransform(data, argv) : data;
     }
 
     if (this.failOnMissing) {
       throw new Error(`Configuration file not found at ${file}`);
     }
 
-    return {} as TConfig;
+    return {} as TParams;
   }
 
   /**
    * Load a configuration file from the given rules. Can be overridden by providing a path.
    *
    * @param {string} path An optional path override to use when loading the configuration file, otherwise it will use the default path.
-   * @returns {TConfig} The loaded configuration object
+   * @returns {TParams} The loaded configuration object
    *
    * @example
    * ```typescript
@@ -410,10 +478,10 @@ export class EasyCLIConfigFile<
    * const configuration = config.load('path/to/config.json');
    * ```
    */
-  public load(path?: string): TConfig {
-    if (path) return this.loadSpecificConfiguration(path);
+  public load(path?: string, argv: Partial<TParams> = {}): TParams {
+    if (path) return this.loadSpecificConfiguration(path, argv);
 
-    return this.loadConfigurationFromPath(this.getBasePath());
+    return this.loadConfigurationFromPath(this.getBasePath(), argv);
   }
 
   /**
@@ -449,7 +517,7 @@ export class EasyCLIConfigFile<
   /**
    * Save a configuration object to a file, using the given rules or an optional file path.
    *
-   * @param {TConfig} config The configuration object to save
+   * @param {TParams} config The configuration object to save
    * @param {string} filePath The file path to save the configuration to
    *
    * @returns {Promise<void>}
@@ -470,7 +538,7 @@ export class EasyCLIConfigFile<
    * });
    * ```
    */
-  public async save(config: TConfig, filePath?: string): Promise<void> {
+  public async save(config: TParams, filePath?: string): Promise<void> {
     if (!this.filename)
       throw new Error('No filename provided in config file params');
 
@@ -485,15 +553,27 @@ export class EasyCLIConfigFile<
 
     const resolvedPath = this.findConfigurationFile(filePath);
 
+    let existing = {};
+
+    if (fs.existsSync(resolvedPath)) {
+      existing = require(resolvedPath);
+    }
+
+    // Don't override the existing configuration, merge it.
+    const merged = mergeDeep(
+      existing,
+      this.saveTransform ? this.saveTransform(config) : config
+    );
+
     switch (extension) {
       case 'json':
-        await fs.writeFileSync(resolvedPath, JSON.stringify(config, null, 2));
+        await fs.writeFileSync(resolvedPath, JSON.stringify(merged, null, 2));
         break;
       case 'js':
       case 'ts':
         await fs.writeFileSync(
           resolvedPath,
-          `module.exports = ${JSON.stringify(config, null, 2)};`
+          `module.exports = ${JSON.stringify(merged, null, 2)};`
         );
         break;
     }

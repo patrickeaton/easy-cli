@@ -26,6 +26,7 @@ EasyCLI is designed as a total framework for building awesome command-line appli
 #### Examples
 
 [Basic](https://github.com/patrickeaton/easy-cli/blob/main/examples/basic-cli-with-config/index.ts) |
+[Profiles](https://github.com/patrickeaton/easy-cli/blob/main/examples/cli-with-config-and-profiles/index.ts) |
 [Advanced](https://github.com/patrickeaton/easy-cli/blob/main/examples/advanced-cli/index.ts)
 
 ```typescript

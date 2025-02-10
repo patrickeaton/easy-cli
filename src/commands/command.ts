@@ -73,6 +73,7 @@ export type CommandOptionObject<TParams, TGlobalParams> = Record<
  * @property {CommandOptionObject<TGlobalParams, TParams>} flags The flags for the command
  * @property {CommandOptionObject<TGlobalParams, TParams>} prompts The prompts for the command
  * @property {CommandOptionObject<TGlobalParams, TParams>} args The positional arguments for the command
+ * @property {(params: TGlobalParams & TParams) => boolean} validator A function to validate the params before running the command, runs before the prompts
  * @property {boolean} skipConfig Should the command skip loading the configuration file
  * @extends CommandSetupOptions
  *
@@ -83,6 +84,7 @@ export type CommandOptionObject<TParams, TGlobalParams> = Record<
  *   aliases?: string[]; // The aliases for the command
  *   flags?: CommandOptionObject<TGlobalParams, TParams>; // The flags for the command
  *   prompts?: CommandOptionObject<TGlobalParams, TParams>; // The prompts for the command
+ *   validator?: (params: TGlobalParams & TParams) => boolean | Promise<boolean>; // A function to validate the params before running the command, runs before the prompts
  *   args?: CommandOptionObject<TGlobalParams, TParams>; // The positional arguments for the command
  *   skipConfig?: boolean; // Should the command skip loading the configuration file
  * }
@@ -95,6 +97,7 @@ export type CommandSetupOptions<TGlobalParams, TParams> = {
   prompts?: CommandOptionObject<TGlobalParams, TParams>;
   args?: CommandOptionObject<TGlobalParams, TParams>;
   promptGlobalKeys?: (keyof TGlobalParams)[]; // What (global) key(s) should be prompted for, this is useful if you want to prompt the user for a global key?
+  validator?: (params: TGlobalParams & TParams) => boolean | Promise<boolean>; // A function to validate the params before running the command, runs before the prompts
   skipConfig?: boolean;
 };
 
@@ -153,6 +156,9 @@ export class EasyCLICommand<
   private handler: EasyClICommandHandler<TParams, TGlobalParams>;
   private globalFlags: CommandOptionObject<TGlobalParams, {}> = {};
   private promptGlobalKeys: (keyof TGlobalParams)[] = [];
+  private validator: (
+    params: TGlobalParams & TParams
+  ) => boolean | Promise<boolean>;
 
   /**
    * Creates a new EasyCLICommand instance.
@@ -172,6 +178,7 @@ export class EasyCLICommand<
       args = {} as CommandOptionObject<TGlobalParams, TParams>,
       promptGlobalKeys = [],
       skipConfig = false,
+      validator = () => true,
     }: CommandSetupOptions<TGlobalParams, TParams> = {}
   ) {
     this.name = name;
@@ -183,6 +190,7 @@ export class EasyCLICommand<
     this.args = args;
     this.skipConfig = skipConfig;
     this.promptGlobalKeys = promptGlobalKeys;
+    this.validator = validator;
   }
 
   /**
@@ -578,6 +586,10 @@ export class EasyCLICommand<
    * ```
    */
   public async run(params: TParams & TGlobalParams, theme?: EasyCLITheme) {
+    if (!(await this.validator(params))) {
+      return;
+    }
+
     const promptParams = await this.prompt(params);
     const args = {
       ...params,
